@@ -1,0 +1,58 @@
+options:
+	p: &8&L| &b&lSIGN &8&L| 
+	
+command /sign:
+	aliases: /signmode
+	trigger:
+		if {signmode.%player%} is set:
+			delete {signmode.%player%}
+			wait 1 tick
+			message "{@p} &9"
+			message "{@p} &7Du har slået signmode &c&lFRA!"
+			message "{@p} &9"
+			delete {signline1.%player%}
+			delete {signline2.%player%}
+			delete {signline3.%player%}
+			delete {signline4.%player%}
+			stop
+		if {signmode.%player%} is not set:
+			set {signmode.%player%} to true
+			wait 1 tick
+			message "{@p} &9"
+			message "{@p} &7Du har slået signmode &a&lTIL!"
+			message "{@p} &7Venstreklik på et &B&lSKILT &7for at kopiere det!"
+			message "{@p} &7Højreklik på et &B&lSKILT &7for at placere tekst!"
+			message "{@p} &9"
+			stop
+			
+on rightclick on sign:
+	if {signmode.%player%} is set:
+		if {signline1.%player%}, {signline2.%player%}, {signline3.%player%} and {signline4.%player%} is set:
+			if player can build at event-block:
+				if line 1 of event-block is "%player%":
+					set line 1 of event-block to "%{signline1.%player%}%"
+					set line 2 of event-block to "%{signline2.%player%}%"
+					set line 3 of event-block to "%{signline3.%player%}%"
+					set line 4 of event-block to "%{signline4.%player%}%"
+					wait 1 tick
+					message "{@p} &7Du har pasted et skilt &a&lsuccesfuldt&7!"
+					stop
+				else:
+					message "{@p} &7Der &c&lSKAL &7stå dit ingame navn på første linje før du kan paste et skilt"
+		else:
+			message "{@p} &7Du skal &c&lvenstreklikke &7på et skilt først for at kopiere det!"
+			stop
+			
+on leftclick on sign:
+	if {signmode.%player%} is set:
+		if player can build at event-block:
+			if line 1 of event-block is "%player%":
+				set {signline1.%player%} to "%line 1 of event-block%"
+				set {signline2.%player%} to "%line 2 of event-block%"
+				set {signline3.%player%} to "%line 3 of event-block%"
+				set {signline4.%player%} to "%line 4 of event-block%"
+				wait 2 ticks
+				message "{@p} &7Du har kopieret et skilt &a&lsuccesfuldt&7!"
+				stop
+			else:
+				message "{@p} &7Der &c&lSKAL &7stå dit ingame navn på første linje før du kan kopiere et skilt"

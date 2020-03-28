@@ -1,0 +1,995 @@
+
+
+options:
+	Prefix: &8&l| &a&lRANKUP &8&L|
+	Prefix2: &8&l| &c&lRANKUP &8&L|
+
+	B: 50000 #50 k
+	C: 75000 #75 k
+	D: 100000 #100 k
+	E: 500000 #500 k
+	F: 3000000 #3m mil
+	G: 8500000 #8,5 mil
+	H: 20000000 #20 mil
+	I: 25000000 #25 mil
+	J: 40000000 #40 mil
+	K: 80000000 #80 mil
+	L: 122000000 #122 mil
+	M: 150000000 #150 mil
+	N: 200000000 #200 mil
+	O: 390000000 #390 mil
+	P: 652000000 #652 mil
+	Q: 838000000 #838 mil
+	R: 950000000 #950 mil
+	S: 1200000000 #1,2 mia
+	T: 1500000000 #1,5 mia
+	U: 2500000000 #2,5 mia
+	V: 3580000000 #3,58 mia
+	W: 6050000000 #6,05 mia
+	X: 45050000000 #45,05 mia
+	Y: 80550000000 #80,55 mia
+	Z: 100250000000 #105,25 mia
+	PRESTIGE: 20000000 #20 mil
+
+on join:
+	if {rank::%player%} is not set:
+		set {rank::%player%} to "&8&l| &a&lA &8&l|"
+		set {rankboard::%player%} to {rank::%player%} 
+		replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+		
+		set {ranknext::%player%} to "B"
+		set {checkrankneed::%player%} to {@B}
+		set {sellmore.spiller::%player%} to 1
+		
+		execute console command "/pex user %player% add essentials.warps.a1"
+		execute console command "/pex user %player% add essentials.warps.a2"
+		
+		
+		
+		
+		
+command /setrank [<offline player>] [<text>]:
+	permission: *
+	trigger:
+		if arg-1 is set:
+			if arg-2 is "A":
+				set {rank::%arg-1%} to "&8&l| &a&l%arg-2% &8&l|"
+				message "{@Prefix2} &c&l%arg-1% &7rank er nu sat til &c&l&n%{rank::%arg-1%}%"
+				
+				set {rankboard::%arg-1%} to {rank::%arg-1%} 
+				replace all "&8&l| " and " &8&l|" in {rankboard::%arg-1%} with ""
+				
+				set {ranknext::%arg-1%} to "B"
+				set {checkrankneed::%arg-1%} to {@B}
+				set {sellmore.spiller::%arg-1%} to 1
+				
+				set {ranknextneed::%arg-1%} to "&C&L$50 &c&LK" 
+				
+				
+				execute console command "/pex user %arg-1% add essentials.warps.a1"
+				execute console command "/pex user %arg-1% add essentials.warps.a2"
+				
+				execute console command "/pex user %arg-1% remove essentials.warps.b"
+				execute console command "/pex user %arg-1% remove essentials.warps.c"
+				execute console command "/pex user %arg-1% remove essentials.warps.d"
+				execute console command "/pex user %arg-1% remove essentials.warps.e"
+				execute console command "/pex user %arg-1% remove essentials.warps.f"
+				execute console command "/pex user %arg-1% remove essentials.warps.g"
+				execute console command "/pex user %arg-1% remove essentials.warps.h"
+				execute console command "/pex user %arg-1% remove essentials.warps.i"
+				execute console command "/pex user %arg-1% remove essentials.warps.j"
+				execute console command "/pex user %arg-1% remove essentials.warps.k"
+				execute console command "/pex user %arg-1% remove essentials.warps.l"
+				execute console command "/pex user %arg-1% remove essentials.warps.m"
+				execute console command "/pex user %arg-1% remove essentials.warps.n"
+				execute console command "/pex user %arg-1% remove essentials.warps.o"
+				execute console command "/pex user %arg-1% remove essentials.warps.p"
+				execute console command "/pex user %arg-1% remove essentials.warps.q"
+				execute console command "/pex user %arg-1% remove essentials.warps.r"
+				execute console command "/pex user %arg-1% remove essentials.warps.s"
+				execute console command "/pex user %arg-1% remove essentials.warps.t"
+				execute console command "/pex user %arg-1% remove essentials.warps.u"
+				execute console command "/pex user %arg-1% remove essentials.warps.v"
+				execute console command "/pex user %arg-1% remove essentials.warps.w"
+				execute console command "/pex user %arg-1% remove essentials.warps.x"
+				execute console command "/pex user %arg-1% remove essentials.warps.y"
+				execute console command "/pex user %arg-1% remove essentials.warps.z"
+
+					
+
+command /setprestige [<offline player>] [<text>]:
+	permission: *
+	trigger:
+		if arg-1 is set:
+			if arg-2 is set:
+				if arg-2 is "0":
+					delete {rank.prestige::%arg-1%}
+					message "{@Prefix2} &c&l%arg-1% &7prestige er nu sat til &c&l&n%arg-2%"
+					
+				
+				
+				
+				
+command /rankup [<text>]:
+	trigger:
+		if arg-1 is "priser":
+			send "&8&m--------&8&l ( &b&lRANKUP &F&LPRISER &8&L) &8&m--------"
+			send ""
+			send " &8- &a&lB &a&l$&f&l50&a&l K"
+			send " &8- &a&lC &a&l$&f&l75&a&l K"
+			send " &8- &a&lD &a&l$&f&l100&a&l K"
+			send " &8- &a&lE &a&l$&f&l500&a&l K"
+			send " &8- &a&lF &a&l$&f&l3&a&l MIL"
+			send " &8- &a&lG &a&l$&f&l8.5&a&l MIL"
+			send " &8- &a&lH &a&l$&f&l20&a&l MIL"
+			send " &8- &a&lI &a&l$&f&l25&a&l MIL"
+			send " &8- &a&lJ &a&l$&f&l40&a&l MIL"
+			send " &8- &a&lK &a&l$&f&l80&a&l MIL"
+			send " &8- &a&lL &a&l$&f&l122&a&l MIL"
+			send " &8- &a&lM &a&l$&f&l150&a&l MIL"
+			send " &8- &a&lN &a&l$&f&l200&a&l MIL"
+			send " &8- &a&lO &a&l$&f&l390&a&l MIL"
+			send " &8- &a&lP &a&l$&f&l652&a&l MIL"
+			send " &8- &a&lQ &a&l$&f&l838&a&l MIL"
+			send " &8- &a&lR &a&l$&f&l950&a&l MIL"
+			send " &8- &a&lS &a&l$&f&l1.2&a&l MIA"
+			send " &8- &a&lT &a&l$&f&l1.5&a&l MIA"
+			send " &8- &a&lU &a&l$&f&l2.5&a&l MIA"
+			send " &8- &a&lV &a&l$&f&l3.58&a&l MIA"
+			send " &8- &a&lW &a&l$&f&l6.05 &a&lMIA"
+			send " &8- &a&lX &a&l$&f&l45,05 &a&lMIA"
+			send " &8- &a&lY &a&l$&f&l80,55 &a&lMIA"
+			send " &8- &a&lZ &a&l$&f&l105,25 &a&lMIA"
+			send ""
+			send " &8- &b&lPRESTIGE &a&l$&f&l20 &a&lMIL "
+			send ""
+			send "&8&m--------&8&l ( &b&lRANKUP &F&LPRISER &8&L) &8&m--------"
+			stop
+			
+		else if arg-1 is "pris":
+			send "&8&m--------&8&l ( &b&lRANKUP &F&LPRISER &8&L) &8&m--------"
+			send ""
+			send " &8- &a&lB &a&l$&f&l50&a&l K"
+			send " &8- &a&lC &a&l$&f&l75&a&l K"
+			send " &8- &a&lD &a&l$&f&l100&a&l K"
+			send " &8- &a&lE &a&l$&f&l500&a&l K"
+			send " &8- &a&lF &a&l$&f&l3&a&l MIL"
+			send " &8- &a&lG &a&l$&f&l8.5&a&l MIL"
+			send " &8- &a&lH &a&l$&f&l20&a&l MIL"
+			send " &8- &a&lI &a&l$&f&l25&a&l MIL"
+			send " &8- &a&lJ &a&l$&f&l40&a&l MIL"
+			send " &8- &a&lK &a&l$&f&l80&a&l MIL"
+			send " &8- &a&lL &a&l$&f&l122&a&l MIL"
+			send " &8- &a&lM &a&l$&f&l150&a&l MIL"
+			send " &8- &a&lN &a&l$&f&l200&a&l MIL"
+			send " &8- &a&lO &a&l$&f&l390&a&l MIL"
+			send " &8- &a&lP &a&l$&f&l652&a&l MIL"
+			send " &8- &a&lQ &a&l$&f&l838&a&l MIL"
+			send " &8- &a&lR &a&l$&f&l950&a&l MIL"
+			send " &8- &a&lS &a&l$&f&l1.2&a&l MIA"
+			send " &8- &a&lT &a&l$&f&l1.5&a&l MIA"
+			send " &8- &a&lU &a&l$&f&l2.5&a&l MIA"
+			send " &8- &a&lV &a&l$&f&l3.58&a&l MIA"
+			send " &8- &a&lW &a&l$&f&l6.05 &a&lMIA"
+			send " &8- &a&lX &a&l$&f&l45,05 &a&lMIA"
+			send " &8- &a&lY &a&l$&f&l80,55 &a&lMIA"
+			send " &8- &a&lZ &a&l$&f&l105,25 &a&lMIA"
+			send ""
+			send " &8- &b&lPRESTIGE &a&l$&f&l20 &a&lMIL "
+			send ""
+			send "&8&m--------&8&l ( &b&lRANKUP &F&LPRISER &8&L) &8&m--------"
+			stop
+			
+			
+			
+		else if arg-1 is not set:
+			set {_b} to player's balance
+
+			if {rank::%player%} contains "&8&l| &a&lA &8&l|":
+				if {_b} is greater than or equal to {@B}:
+					remove {@B} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lB &8&l|"
+					set {ranknext::%player%} to "C"
+					set {checkrankneed::%player%} to {@C}
+					set {ranknextneed::%player%} to "&C&L$75 &c&LK" 
+					
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.b"
+					stop
+					
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@B} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+			else if {rank::%player%} contains "&8&l| &a&lB &8&l|":
+				if {_b} is greater than or equal to {@C}:
+					remove {@C} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lC &8&l|"
+					set {ranknext::%player%} to "D"
+					set {checkrankneed::%player%} to {@D}
+					set {ranknextneed::%player%} to "&C&L$100 &c&LK" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.c"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@C} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+			else if {rank::%player%} contains "&8&l| &a&lC &8&l|":
+				if {_b} is greater than or equal to {@D}:
+					remove {@D} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lD &8&l|"
+					set {ranknext::%player%} to "E"
+					set {checkrankneed::%player%} to {@E}
+					set {ranknextneed::%player%} to "&C&L$500 &c&LK" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.d"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@D} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+			else if {rank::%player%} contains "&8&l| &a&lD &8&l|":
+				if {_b} is greater than or equal to {@E}:
+					remove {@E} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lE &8&l|"
+					set {ranknext::%player%} to "F"
+					set {checkrankneed::%player%} to {@F}
+					set {ranknextneed::%player%} to "&C&L$3 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.e"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@E} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+
+			else if {rank::%player%} contains "&8&l| &a&lE &8&l|":
+				if {_b} is greater than or equal to {@F}:
+					remove {@F} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lF &8&l|"
+					set {ranknext::%player%} to "G"
+					set {checkrankneed::%player%} to {@G}
+					set {ranknextneed::%player%} to "&C&L$8,5 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.f"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@F} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+
+			else if {rank::%player%} contains "&8&l| &a&lF &8&l|":
+				if {_b} is greater than or equal to {@G}:
+					remove {@G} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lG &8&l|"
+					set {ranknext::%player%} to "H"
+					set {checkrankneed::%player%} to {@H}
+					set {ranknextneed::%player%} to "&C&L$20 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.g"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@G} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+			else if {rank::%player%} contains "&8&l| &a&lG &8&l|":
+				if {_b} is greater than or equal to {@H}:
+					remove {@H} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lH &8&l|"
+					set {ranknext::%player%} to "I"
+					set {checkrankneed::%player%} to {@I}
+					set {ranknextneed::%player%} to "&C&L$25 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.h"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@H} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+
+			else if {rank::%player%} contains "&8&l| &a&lH &8&l|":
+				if {_b} is greater than or equal to {@I}:
+					remove {@I} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lI &8&l|"
+					set {ranknext::%player%} to "J"
+					set {checkrankneed::%player%} to {@J}
+					set {ranknextneed::%player%} to "&C&L$40 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.i"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@I} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+
+			else if {rank::%player%} contains "&8&l| &a&lI &8&l|":
+				if {_b} is greater than or equal to {@J}:
+					remove {@J} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lJ &8&l|"
+					set {ranknext::%player%} to "K"
+					set {checkrankneed::%player%} to {@K}
+					set {ranknextneed::%player%} to "&C&L$80 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.j"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@J} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+			else if {rank::%player%} contains "&8&l| &a&lJ &8&l|":
+				if {_b} is greater than or equal to {@K}:
+					remove {@K} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lK &8&l|"
+					set {ranknext::%player%} to "L"
+					set {checkrankneed::%player%} to {@L}
+					set {ranknextneed::%player%} to "&C&L$122 &c&LMIL" 
+					
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.k"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@K} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+
+			else if {rank::%player%} contains "&8&l| &a&lK &8&l|":
+				if {_b} is greater than or equal to {@L}:
+					remove {@L} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lL &8&l|"
+					set {ranknext::%player%} to "M"
+					set {checkrankneed::%player%} to {@M}
+					set {ranknextneed::%player%} to "&C&L$150 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.l"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@L} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+
+			else if {rank::%player%} contains "&8&l| &a&lL &8&l|":
+				if {_b} is greater than or equal to {@M}:
+					remove {@M} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lM &8&l|"
+					set {ranknext::%player%} to "N"
+					set {checkrankneed::%player%} to {@N}
+					set {ranknextneed::%player%} to "&C&L$200 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.m"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@M} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+
+					
+			else if {rank::%player%} contains "&8&l| &a&lM &8&l|":
+				if {_b} is greater than or equal to {@N}:
+					remove {@N} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lN &8&l|"
+					set {ranknext::%player%} to "O"
+					set {checkrankneed::%player%} to {@O}
+					set {ranknextneed::%player%} to "&C&L$390 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.n"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@N} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lN &8&l|":
+				if {_b} is greater than or equal to {@O}:
+					remove {@O} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lO &8&l|"
+					set {ranknext::%player%} to "P"
+					set {checkrankneed::%player%} to {@P}
+					set {ranknextneed::%player%} to "&C&L$652 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.o"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@O} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lO &8&l|":
+				if {_b} is greater than or equal to {@P}:
+					remove {@P} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lP &8&l|"
+					set {ranknext::%player%} to "Q"
+					set {checkrankneed::%player%} to {@Q}
+					set {ranknextneed::%player%} to "&C&L$838 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.p"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@P} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+										
+					
+			else if {rank::%player%} contains "&8&l| &a&lP &8&l|":
+				if {_b} is greater than or equal to {@Q}:
+					remove {@Q} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lQ &8&l|"
+					set {ranknext::%player%} to "R"
+					set {checkrankneed::%player%} to {@R}
+					set {ranknextneed::%player%} to "&C&L$950 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.q"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@Q} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+										
+					
+			else if {rank::%player%} contains "&8&l| &a&lQ &8&l|":
+				if {_b} is greater than or equal to {@R}:
+					remove {@R} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lR &8&l|"
+					set {ranknext::%player%} to "S"
+					set {checkrankneed::%player%} to {@S}
+					set {ranknextneed::%player%} to "&C&L$1,2 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.r"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@R} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+														
+					
+			else if {rank::%player%} contains "&8&l| &a&lR &8&l|":
+				if {_b} is greater than or equal to {@S}:
+					remove {@S} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lS &8&l|"
+					set {ranknext::%player%} to "T"
+					set {checkrankneed::%player%} to {@T}
+					set {ranknextneed::%player%} to "&C&L$1,5 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.s"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@S} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lS &8&l|":
+				if {_b} is greater than or equal to {@T}:
+					remove {@T} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lT &8&l|"
+					set {ranknext::%player%} to "U"
+					set {checkrankneed::%player%} to {@U}
+					set {ranknextneed::%player%} to "&C&L$2,5 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.t"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@S} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+
+					
+			else if {rank::%player%} contains "&8&l| &a&lT &8&l|":
+				if {_b} is greater than or equal to {@U}:
+					remove {@U} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lU &8&l|"
+					set {ranknext::%player%} to "V"
+					set {checkrankneed::%player%} to {@V}
+					set {ranknextneed::%player%} to "&C&L$3,58 &c&LMIA" 
+					
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.u"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@U} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lU &8&l|":
+				if {_b} is greater than or equal to {@V}:
+					remove {@V} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lV &8&l|"
+					set {ranknext::%player%} to "W"
+					set {checkrankneed::%player%} to {@W}
+					set {ranknextneed::%player%} to "&C&L$6,05 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.v"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@V} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+
+					
+			else if {rank::%player%} contains "&8&l| &a&lV &8&l|":
+				if {_b} is greater than or equal to {@W}:
+					remove {@W} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lW &8&l|"
+					set {ranknext::%player%} to "X"
+					set {checkrankneed::%player%} to {@X}
+					set {ranknextneed::%player%} to "&C&L$15,05 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.w"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@W} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lW &8&l|":
+				if {_b} is greater than or equal to {@X}:
+					remove {@X} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lX &8&l|"
+					set {ranknext::%player%} to "Y"
+					set {checkrankneed::%player%} to {@Y}
+					set {ranknextneed::%player%} to "&C&L$30,55 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.x"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@X} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lX &8&l|":
+				if {_b} is greater than or equal to {@Y}:
+					remove {@Y} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lY &8&l|"
+					set {ranknext::%player%} to "Z"
+					set {checkrankneed::%player%} to {@Z}
+					set {ranknextneed::%player%} to "&C&L$50,25 &c&LMIA" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds	
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.y"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@Y} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lY &8&l|":
+				if {_b} is greater than or equal to {@Z}:
+					remove {@Z} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lZ &8&l|"
+					set {ranknext::%player%} to "P1"
+					set {checkrankneed::%player%} to {@PRESTIGE}
+					set {ranknextneed::%player%} to "&C&L$20 &c&LMIL" 
+					
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &a&l&n%{rankboard::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &a&l&n%{rankboard::%player%}%" for 2 seconds
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 0.5
+					execute console command "/pex user %player% add essentials.warps.z"
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@Z} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop
+					
+					
+					
+					
+			else if {rank::%player%} contains "&8&l| &a&lZ &8&l|":
+				if {_b} is greater than or equal to {@PRESTIGE}:
+					remove {@PRESTIGE} from player's balance
+					
+					set {rank::%player%} to "&8&l| &a&lA &8&l|"
+					set {ranknext::%player%} to "B"
+					
+					
+					if {rank.prestige::%player%} is not set:	
+						set {rank.prestige.antal::%player%} to 1
+						set {rank.prestige::%player%} to "&8&l| &b&lP&f&l%{rank.prestige.antal::%player%}%"
+						
+					else:
+						set {rank.prestige.antal::%player%} to {rank.prestige.antal::%player%} + 1
+						set {rank.prestige::%player%} to "&8&l| &b&lP&f&l%{rank.prestige.antal::%player%}%"
+						
+						
+					set {rankboard::%player%} to {rank::%player%} 
+					replace all "&8&l| " and " &8&l|" in {rankboard::%player%} with ""
+					set {checkrankneed::%player%} to {@B}
+					
+					broadcast "{@Prefix} &a&l%player% &7rankede op til &b&lP&f&l%{rank.prestige.antal::%player%}%"
+					send player title "&a&l&nRANKUP!" with subtitle "&7Du rankede op til &b&lP&f&l%{rank.prestige.antal::%player%}%" for 2 seconds
+					launch flickering ball firework colored blue and white at player's location timed 0
+					launch flickering ball firework colored blue and white at player's location timed 0
+					set {sellmore.spiller::%player%} to {sellmore.spiller::%player%} + 2
+					
+					execute console command "/pex user %player% remove essentials.warps.b"
+					execute console command "/pex user %player% remove essentials.warps.c"
+					execute console command "/pex user %player% remove essentials.warps.d"
+					execute console command "/pex user %player% remove essentials.warps.e"
+					execute console command "/pex user %player% remove essentials.warps.f"
+					execute console command "/pex user %player% remove essentials.warps.g"
+					execute console command "/pex user %player% remove essentials.warps.h"
+					execute console command "/pex user %player% remove essentials.warps.i"
+					execute console command "/pex user %player% remove essentials.warps.j"
+					execute console command "/pex user %player% remove essentials.warps.k"
+					execute console command "/pex user %player% remove essentials.warps.l"
+					execute console command "/pex user %player% remove essentials.warps.m"
+					execute console command "/pex user %player% remove essentials.warps.n"
+					execute console command "/pex user %player% remove essentials.warps.o"
+					execute console command "/pex user %player% remove essentials.warps.p"
+					execute console command "/pex user %player% remove essentials.warps.q"
+					execute console command "/pex user %player% remove essentials.warps.r"
+					execute console command "/pex user %player% remove essentials.warps.s"
+					execute console command "/pex user %player% remove essentials.warps.t"
+					execute console command "/pex user %player% remove essentials.warps.u"
+					execute console command "/pex user %player% remove essentials.warps.v"
+					execute console command "/pex user %player% remove essentials.warps.w"
+					execute console command "/pex user %player% remove essentials.warps.x"
+					execute console command "/pex user %player% remove essentials.warps.y"
+					execute console command "/pex user %player% remove essentials.warps.z"
+					
+				
+					
+					stop
+					
+				else:
+					message "{@Prefix2} &7Du mangler &c&l&n$%{@PRESTIGE} - player's balance%&7 for at ranke op til &c&l&n%{ranknext::%player%}%!"
+					stop					
+				
+		
+Command /setopp:
+	permission: *
+	trigger:
+		loop {rank.prestige.antal::*}:
+			add 1 to {_size}
+			if {_low.to.high.list::%loop-value%} is not set:
+				set {_low.to.high.list::%loop-value%} to loop-index
+			else:
+				set {_n} to 0
+				loop {_size} times:
+					set {_n} to {_n}+1
+					{_low.to.high.list::%loop-value-1%.%{_n}%} is not set
+					set {_low.to.high.list::%loop-value-1%.%{_n}%} to loop-index
+					stop loop
+					
+					
+		wait 1 tick
+		set {_n} to size of {_low.to.high.list::*}
+		loop {_low.to.high.list::*}:
+			set {_high.to.low.list::%{_n}%} to loop-value
+			set {_n} to {_n}-1
+			
+			
+		message "&8&m----------------&8&l ( &b&lTOP &F&LGEMS &8&L) &8&m-----------------" 
+		message " "	
+
+		loop {_high.to.low.list::*}:
+			add 1 to {_result}
+			 
+			 
+			send " &8&l| &a&l%{_result}% &8&l| &b&l%loop-value% &8&l- &b&l%{rank.prestige.antal::%loop-value%}%" to player
+	
+			
+			if {_result} is 10:
+				stop 
+		
+		message " "
+		message "&8&m----------------&8&l ( &b&lTOP &F&LGEMS &8&L) &8&m-----------------" 
+
+
+
+
+			
+every 1.5 seconds:
+	if {sellboost.igang} isn't set:
+		loop all players:
+		
+			loop-player is in "opprison" or "Plotsverden"
+
+			set {_loadprocent::%loop-player%} to "%loop-player's balance / {checkrankneed::%loop-player%} * 100%" parsed as a number
+			
+			wait 2 tick 
+		
+			if {_loadprocent::%loop-player%} is less than 0:
+				set {_setprocentbar::%loop-player%} to "&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 5:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+			
+			else if {_loadprocent::%loop-player%} is less than 10:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+			
+			else if {_loadprocent::%loop-player%} is less than 15:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 20:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 25:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+
+			else if {_loadprocent::%loop-player%} is less than 30:
+				set {_setprocentbar::%loop-player%} to "&c&l⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 35:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 40:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 45:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 50:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 55:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 60:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 65:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 70:
+				set {_setprocentbar::%loop-player%} to "&e&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 75:
+				set {_setprocentbar::%loop-player%} to "&a&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 80:
+				set {_setprocentbar::%loop-player%} to "&a&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 85:
+				set {_setprocentbar::%loop-player%} to "&a&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤⬤⬤"
+				
+			else if {_loadprocent::%loop-player%} is less than 90:
+				set {_setprocentbar::%loop-player%} to "&a&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤⬤"
+		
+			else if {_loadprocent::%loop-player%} is less than 95:
+				set {_setprocentbar::%loop-player%} to "&A&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤&7&l⬤"
+		
+			else if {_loadprocent::%loop-player%} is more than or equal to 100:
+				set {_setprocentbar::%loop-player%} to "&A&l⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+				set {_loadprocent::%loop-player%} to 100
+			
+			
+			wait 3 tick
+			set action bar of loop-player to "         %{_setprocentbar::%loop-player%}% &8&l( &f&l%{_loadprocent::%loop-player%}%%% &8&l)" 
+			
+	else if {sellboost.igang} is true:
+		loop all players:
+			set action bar of loop-player to "&d&lSELL &F&LBOOST &f&l- &b&l&N1x&7 &8&l( &c&l%{sellboost.timer}% &8&L)" 
+					
+				
+				
+				
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		

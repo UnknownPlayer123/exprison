@@ -1,0 +1,26 @@
+command /repair:
+	trigger:
+		if tool is not block:
+			if tool is not hoe:
+				if player doesn't have permission "repair.donator":
+					if {rcooldown.%uuid of player%} wasn't more than 20 minutes ago:
+						set {_cooldown} to 20 minutes
+						remove difference between now and {rcooldown.%uuid of player%} from {_cooldown}
+						set {_cooldown} to "%{_cooldown}%=?*"
+						replace all "=?*" with "" in {_cooldown}
+						set {_cooldown::*} to {_cooldown} split at " "
+						send "&8&L| &e&lREPAIR &8&L| &7Du skal vente &c&l%{_cooldown::1}% Min &7før du kan &a&Lbruge &7det igen"
+						stop
+						
+				repair player's tool
+				send "&8&L| &e&lREPAIR &8&L| &7Du har &e&lREPAIRET &7dit item" to command sender
+				set {rcooldown.%uuid of player%} to now
+			else:
+				send "&8&L| &e&lREPAIR &8&L| &7Du kan ikke bruge &e&lrepair &7på dette."
+		else:
+			send "&8&L| &e&lREPAIR &8&L| &7Du kan ikke bruge &e&lrepair &7på dette."
+	
+on join:
+	if {rcooldown.%uuid of player%} is not set:
+		set {rcooldown.%uuid of player%} to now
+		remove 20 minutes from {rcooldown.%uuid of player%}

@@ -1,0 +1,400 @@
+options:	
+	prefix: &8&l| &a&lENCHANT &8&l|
+	prefix2: &8&l| &c&lENCHANT &8&l|
+
+
+								
+on block break:
+	lore of player's tool contains "&f&l* ENCHANT &8&l( &b&lBOMBE &8&l)":
+		loop blocks in radius 1.8 of event-block:
+			if player doesn't have enough space for loop-block:
+				if {autosell::%player%} is true:
+					execute player command "sell"
+					stop 		
+			
+				else:
+					send player title "&c&lFuld inventory!" with subtitle "&7Tøm dit inventory!" for 3 seconds
+			
+			else:
+			
+				if region at loop-block contains "plotmines_":
+		
+					if loop-block is coal ore:
+						give player 1 coal item
+						set loop-block to air
+					if loop-block is gold ore:
+						give player 1 gold ingot item
+						set loop-block to air
+					if loop-block is iron ore:
+						give player 1 iron ingot item
+						set loop-block to air
+					if loop-block is diamond ore:
+						give player 1 diamond
+						set loop-block to air
+					if loop-block is emerald ore:
+						give player 1 emerald
+						set loop-block to air
+					if loop-block is lapis ore:
+						give player 3 lapis
+						set loop-block to air
+					if loop-block is redstone ore:
+						give player 3 redstone
+						set loop-block to air
+					if loop-block is quartz ore:
+						give player 1 quartz item
+						set loop-block to air
+					if loop-block is stone:
+						give player 1 cobble_stone
+						set loop-block to air
+						
+					else if loop-block isn't bedrock:
+						give player 1 of loop-block
+						set loop-block to air	
+					
+					
+						
+						
+				else:		
+					if region at loop-block contains "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+						if player can build at loop-block:
+							if loop-block is coal ore:
+								give player 1 coal item
+								set loop-block to air
+							if loop-block is gold ore:
+								give player 1 gold ingot item
+								set loop-block to air
+							if loop-block is iron ore:
+								give player 1 iron ingot item
+								set loop-block to air
+							if loop-block is diamond ore:
+								give player 1 diamond
+								set loop-block to air
+							if loop-block is emerald ore:
+								give player 1 emerald
+								set loop-block to air
+							if loop-block is lapis ore:
+								give player 3 lapis
+								set loop-block to air
+							if loop-block is redstone ore:
+								give player 3 redstone
+								set loop-block to air
+							if loop-block is quartz ore:
+								give player 1 quartz item
+								set loop-block to air
+							if loop-block is stone:
+								give player 1 cobble_stone
+								set loop-block to air
+								
+							else if loop-block isn't bedrock:
+								give player 1 of loop-block
+								set loop-block to air	
+						
+						
+	lore of player's tool contains "&f&l* ENCHANT &8&l( &B&lLASER &8&l)":
+		set {_chance} to random integer between 1 and 100
+		if {_chance} is between 1 and 20:
+			loop blocks between event-block and block at location 3 blocks south of event-block:
+			
+				if region at loop-block contains "plotmines" or "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+					#if player can build at loop-block:
+					if loop-block is coal ore:
+						give player 1 coal item
+						set loop-block to air
+					if loop-block is gold ore:
+						give player 1 gold ingot item
+						set loop-block to air
+					if loop-block is iron ore:
+						give player 1 iron ingot item
+						set loop-block to air
+					if loop-block is diamond ore:
+						give player 1 diamond
+						set loop-block to air
+					if loop-block is emerald ore:
+						give player 1 emerald
+						set loop-block to air
+					if loop-block is lapis ore:
+						give player 3 lapis
+						set loop-block to air
+					if loop-block is redstone ore:
+						give player 3 redstone
+						set loop-block to air
+					if loop-block is quartz ore:
+						give player 1 quartz item
+						set loop-block to air
+					if loop-block is stone:
+						give player 1 cobble_stone
+						set loop-block to air
+						
+					else if loop-block isn't bedrock:
+						give player 5 of loop-block
+						set loop-block to air	
+					
+
+							
+			loop blocks between event-block and block at location 3 blocks east of event-block:
+			
+				if region at loop-block contains "plotmines" or "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+					#if player can build at loop-block:
+					if loop-block is coal ore:
+						give player 1 coal item
+						set loop-block to air
+					if loop-block is gold ore:
+						give player 1 gold ingot item
+						set loop-block to air
+					if loop-block is iron ore:
+						give player 1 iron ingot item
+						set loop-block to air
+					if loop-block is diamond ore:
+						give player 1 diamond
+						set loop-block to air
+					if loop-block is emerald ore:
+						give player 1 emerald
+						set loop-block to air
+					if loop-block is lapis ore:
+						give player 3 lapis
+						set loop-block to air
+					if loop-block is redstone ore:
+						give player 3 redstone
+						set loop-block to air
+					if loop-block is quartz ore:
+						give player 1 quartz item
+						set loop-block to air
+					if loop-block is stone:
+						give player 1 cobble_stone
+						set loop-block to air
+						
+					else if loop-block isn't bedrock:
+						give player 5 of loop-block
+						set loop-block to air	
+						
+
+			loop blocks between event-block and block at location 3 blocks north of event-block:
+			
+				if region at loop-block contains "plotmines" or "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+					#if player can build at loop-block:
+					if loop-block is coal ore:
+						give player 1 coal item
+						set loop-block to air
+					if loop-block is gold ore:
+						give player 1 gold ingot item
+						set loop-block to air
+					if loop-block is iron ore:
+						give player 1 iron ingot item
+						set loop-block to air
+					if loop-block is diamond ore:
+						give player 1 diamond
+						set loop-block to air
+					if loop-block is emerald ore:
+						give player 1 emerald
+						set loop-block to air
+					if loop-block is lapis ore:
+						give player 3 lapis
+						set loop-block to air
+					if loop-block is redstone ore:
+						give player 3 redstone
+						set loop-block to air
+					if loop-block is quartz ore:
+						give player 1 quartz item
+						set loop-block to air
+					if loop-block is stone:
+						give player 1 cobble_stone
+						set loop-block to air
+						
+					else if loop-block isn't bedrock:
+						give player 5 of loop-block
+						set loop-block to air	
+						
+	
+			loop blocks between event-block and block at location 3 blocks west of event-block:
+			
+				if region at loop-block contains "plotmines" or "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+					#if player can build at loop-block:
+					if loop-block is coal ore:
+						give player 1 coal item
+						set loop-block to air
+					if loop-block is gold ore:
+						give player 1 gold ingot item
+						set loop-block to air
+					if loop-block is iron ore:
+						give player 1 iron ingot item
+						set loop-block to air
+					if loop-block is diamond ore:
+						give player 1 diamond
+						set loop-block to air
+					if loop-block is emerald ore:
+						give player 1 emerald
+						set loop-block to air
+					if loop-block is lapis ore:
+						give player 3 lapis
+						set loop-block to air
+					if loop-block is redstone ore:
+						give player 3 redstone
+						set loop-block to air
+					if loop-block is quartz ore:
+						give player 1 quartz item
+						set loop-block to air
+					if loop-block is stone:
+						give player 1 cobble_stone
+						set loop-block to air
+						
+					else if loop-block isn't bedrock:
+						give player 5 of loop-block
+						set loop-block to air	
+							
+						
+on player drop of a diamond pickaxe or a gold pickaxe or a iron pickaxe or a stone pickaxe or a wooden pickaxe:
+	if lore of event-item contains "||&f&l* ENCHANT &8&l( &b&lNODROP &8&l)":
+		cancel the event
+		message "{@prefix} &7Du har &b&lNODROP &7på dit item, så du kan ikke droppe det." to player
+		
+
+
+
+		
+		
+		
+
+
+command /givepickaxe [<offline player>] [<text>]:
+	trigger:
+		if arg-2 = "laser":
+			add 1 of glowing wooden pickaxe named "&4&LDRILL &f&lPICKAXE" with lore "||&f&l* ENCHANT &8&l( &4&lDRILL &8&l)||&f&l* ENCHANT &8&l( &b&lNODROP &8&l)||||&4&LDRILL &7er et enchant||&7som skyder snowballs||&7og miner blocks for dig" to arg-1's inventory 
+			
+		
+
+on break:
+	if name of player's held item is "&4&LDRILL &f&lPICKAXE":
+		repair player's tool 
+	
+	
+	
+on rightclick with pickaxe:
+	if name of player's held item is "&4&LDRILL &f&lPICKAXE":
+	
+		if {laserpickaxecooldown::%player%} is not set:
+		
+			set {laserpickaxecooldown::%player%} to true
+			shoot a snowball from player at speed 2
+			play "ENDERDRAGON_HIT" to player at volume 0.3
+			wait 0.08 second
+			delete {laserpickaxecooldown::%player%}
+			
+		else:
+			
+			stop 
+			
+
+
+#on shoot:
+#	projectile is an snowball
+#	wait 2 tick 
+#	while ground state of projectile is false:
+#		show 4 "SPELL" particles at location of projectile for shooter offset by 0.4, 0.5, 0.4
+#		wait 1 tick 
+		
+
+   
+on projectile hit:
+	if projectile is a snowball:
+		set {_p} to shooter
+		wait 1 tick
+		set {_blocks} to block at location of projectile
+		loop blocks in radius 1.41 of {_blocks}:
+			if region at loop-block contains "minea1" or "minea2" or "mineb" or "minec" or "mined" or "minee" or "minef" or "mineg" or "mineh" or "minei" or "minej" or "minek" or "minel" or "minem" or "minen" or "mineo" or "minep" or "mineq" or "miner" or "mines" or "minet" or "mineu" or "minev" or "minew" or "minex" or "miney" or "minez":
+			
+				if {_p} doesn't have enough space for loop-block:
+					if {autosell::%{_p}%} is true:
+						execute {_p} command "sell"
+						stop 
+						
+					else:
+						send {_p} title "&c&lFuld inventory!" with subtitle "&7Tøm dit inventory!" for 3 seconds
+					
+				else:
+					if shooter can build at loop-block:
+						show 1 "LAVA" particles at location of loop-block for {_p} offset by 0.4, 0.5, 0.4
+						add drops from loop-block to {_drops::*}
+						set loop-block to air
+						add {_drops::*} to {_p}'s inventory
+							
+						If shooter's gamemode is survival:	
+			
+							chance of 0.1%:
+								send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n3&f gems" for 2 seconds
+								add 3 to {gems::%shooter%}
+								stop
+							chance of 0.02%:
+								send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n5&f gems" for 2 seconds
+								add 5 to {gems::%shooter%}
+								stop
+							chance of 0.0010%:
+								send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n10&f gems" for 2 seconds
+								add 10 to {gems::%shooter%}
+								stop
+								
+								
+							chance of 0.01%:
+								add glowing name tag named "&9&lPICKAXE &f&lKEY" to {rewards.%shooter%::*}
+								send shooter title "&9&LPICKAXE &f&lKEY" with subtitle "&7Du har fået en &9&LPICKAXE &f&lKEY" for 2 seconds
+								wait 1 seconds
+								send shooter title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+								stop 
+
+								
+							chance of 0.01%:
+								add glowing name tag named "&c&lREWARD &f&lKEY" to {rewards.%shooter%::*}
+								send shooter title "&c&lREWARD &f&lKEY" with subtitle "&7Du har fået en &c&lREWARD &f&lKEY" for 2 seconds
+								wait 1 seconds
+								send shooter title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+								stop 
+
+			
+			if region at loop-block contains "plotmines_": 
+			
+			
+				if {_p} doesn't have enough space for loop-block:
+					if {autosell::%{_p}%} is true:
+						execute {_p} command "sell"
+						stop 
+						
+					else:
+						send {_p} title "&c&lFuld inventory!" with subtitle "&7Tøm dit inventory!" for 3 seconds
+					
+				else:
+					show 1 "LAVA" particles at location of loop-block for {_p} offset by 0.4, 0.5, 0.4
+					add drops from loop-block to {_drops::*}
+					set loop-block to air
+					add {_drops::*} to {_p}'s inventory
+					
+
+
+					If shooter's gamemode is survival:	
+		
+						chance of 0.01%:
+							send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n3&f gems" for 2 seconds
+							add 3 to {gems::%shooter%}
+							stop
+						chance of 0.001%:
+							send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n5&f gems" for 2 seconds
+							add 5 to {gems::%shooter%}
+							stop
+						chance of 0.00010%:
+							send shooter title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n10&f gems" for 2 seconds
+							add 10 to {gems::%shooter%}
+							stop
+							
+							
+						chance of 0.01%:
+							add glowing name tag named "&9&lPICKAXE &f&lKEY" to {rewards.%shooter%::*}
+							send shooter title "&9&LPICKAXE &f&lKEY" with subtitle "&7Du har fået en &9&LPICKAXE &f&lKEY" for 2 seconds
+							wait 1 seconds
+							send shooter title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+							stop 
+
+							
+						chance of 0.01%:
+							add glowing name tag named "&c&lREWARD &f&lKEY" to {rewards.%shooter%::*}
+							send shooter title "&c&lREWARD &f&lKEY" with subtitle "&7Du har fået en &c&lREWARD &f&lKEY" for 2 seconds
+							wait 1 seconds
+							send shooter title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+							stop 

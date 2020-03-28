@@ -1,0 +1,794 @@
+options:
+	prefix: &8&l| &b&lPLOTMINER &8&L|
+
+every 30 second:
+	loop {mines::*}:
+		set {_mine} to loop-value
+		if {pm.%{_mine}%.block1} is set:
+			if {pm.%{_mine}%.block2} is set:
+				if {pm.%{_mine}%.block3} is set:
+					if {pm.%{_mine}%.block4} is set:
+						set {_pos1} to position 1 of wg region "plotmines_%{_mine}%" in "Plotsverden"
+						set {_pos2} to position 2 of wg region "plotmines_%{_mine}%" in "Plotsverden"
+						loop blocks within {_pos1} to {_pos2}:
+							if loop-block is air:
+								set {_randomInt} to random integer between 1 and 4
+								if {_randomInt} is 1:
+									set loop-block to {pm.%{_mine}%.block1} parsed as a item type
+								else if {_randomInt} is 2:
+									set loop-block to {pm.%{_mine}%.block2} parsed as a item type
+								else if {_randomInt} is 3:
+									set loop-block to {pm.%{_mine}%.block3} parsed as a item type
+								else if {_randomInt} is 4:
+									set loop-block to {pm.%{_mine}%.block4} parsed as a item type
+						loop all players:
+							if "%region at loop-player%" is "plotmines_%{_mine}%":
+								run loop-player cmd "/top" as op 
+					
+		wait 1 tick
+			
+on left click with stick:
+	if {pm.%player%.markingRegion} is set:
+		if player can build at targeted block:
+			cancel event
+			if {pm.%player%.times} is higher than or equal to 5:
+				delete {pm.%player%.markingRegion}
+				delete {pm.%player%.pos1}
+				delete {pm.%player%.pos2}
+				delete {pm.%player%.times}
+				set {pm.%player%.canceled} to true
+				send "{@prefix} &7Din opsÃ¦tning er blevet &c&lannulleret!"
+				stop
+			if {pm.%player%.pos1} is set:
+				delete block at {pm.%player%.pos1}  
+			set targeted block to bedrock
+			set {pm.%player%.pos1} to location of targeted block
+			send "{@prefix} &7Du har markeret position &a&l1"
+			add 1 to {pm.%player%.times}
+
+on right click with stick:
+	if {pm.%player%.markingRegion} is set:
+		if player can build at targeted block:
+			cancel event
+			if {pm.%player%.pos1} isn't set:
+				send "{@prefix} &7Du skal makere position &a&l1 &7først!"
+				stop
+			set {pm.%player%.pos2} to location of targeted block
+			if {pm.%player%.markingRegion} is "s":
+				set {_errorM} to 5
+				set {_size} to 25
+			else if {pm.%player%.markingRegion} is "m":
+				set {_errorM} to 10
+				set {_size} to 100
+			else if {pm.%player%.markingRegion} is "l":
+				set {_errorM} to 20
+				set {_size} to 400
+			set {_c} to 0
+			loop blocks within {pm.%player%.pos1} to {pm.%player%.pos2}:
+				add 1 to {_c}
+			if {_c} isn't {_size}:
+				delete {pm.%player%.pos2}
+				send "{@prefix} &7Du skal markere et &a&l%{_errorM}%&8x&a&l%{_errorM}%&7 område!"
+				stop
+			send "{@prefix} &7Du har markeret position &a&l2"
+			delete {pm.%player%.markingRegion}
+			
+
+command /pandapeter112:
+	permission: *
+	trigger:
+		send "Miner: %{mines::*}%"
+			
+
+command /plotminer [<text>] [<text>]:
+	aliases: /plotmine, /plotminesm 
+	trigger:
+		wait 3 ticks
+		if arg 1 isn't set:
+			open chest with 5 rows named "&b&lPLOTMINE &F&LMENU" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&lPLOTMINE &F&LMENU":
+				format slot 19 of player with 1 bedrock named "&B&l&nOPRET PLOTMINE" with lore "||&A&LKLIK HER&7 for at||&7oprette en mine||&9" to close then run [invoke "createMine" from uuid of player]
+				format slot 22 of player with 1 white banner item named "&d&l&nREDIGER PLOTMINE" with lore "||&A&LKLIK HER &7for at||&7rediger dine plotmine(r)||&9" to close then run [execute player command "/plotmine edit"]
+				format slot 25 of player with 1 barrier named "&c&l&nFJERN PLOTMINE" with lore "||&7Kontakt en &c&lAdmin+ &7på||&7vores discord server||||&d&lDiscord.cubemc.dk &7hvis du||&7vil have fjernet din mine" to be unstealable
+			
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close  
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+				
+				format slot 36 of player with light blue stained glass pane named "&f" to close
+				format slot 37 of player with light blue stained glass pane named "&f" to close
+				format slot 38 of player with light blue stained glass pane named "&f" to close
+				format slot 39 of player with light blue stained glass pane named "&f" to close
+				format slot 40 of player with light blue stained glass pane named "&f" to close
+				format slot 41 of player with light blue stained glass pane named "&f" to close
+				format slot 42 of player with light blue stained glass pane named "&f" to close 
+				format slot 43 of player with light blue stained glass pane named "&f" to close
+				format slot 44 of player with light blue stained glass pane named "&f" to close
+			
+			
+		else if arg 1 is "create" or "opret":
+			if arg 2 is "small" or "lille":
+				loop {pm.%uuid of player%.notUsed::*}:
+					if loop-value is "small":
+						set {_slot} to 0
+						loop 36 times:
+							add slot {_slot} of player to {event.%player%.inventory::*} 
+							add 1 to {_slot}
+						add player's helmet slot to {event.%player%.inventory::*} 
+						add player's chestplate slot to {event.%player%.inventory::*} 
+						add player's leggings slot to {event.%player%.inventory::*} 
+						add player's boots slot to {event.%player%.inventory::*} 
+						clear player's inventory
+						wait 3 ticks
+						add glowing stick named "&8&l( &a&l! &8&l) &a&lPLOTMINE &f&lMAKØR &8&l( &a&l! &8&l)" with lore "||&a&l&lKLIK &7for at||&7markere postion &f&L1 &7& &f&L2||||&7Du &A&Lskal &7makere et||&f8&8x&f8 &7område" to slot 4 of player's inventory
+						set {pm.%player%.markingRegion} to "s"
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r               &e&lDu er nu klar til at"
+						send "&r              &e&loprette din plotmine!"
+						send ""
+						send "&r             &7Kig på beskrivelsen af din"
+						send "&r      &a&lPLOTMINE MAKØR&7 for at komme i gang"
+						send ""
+						send "&r                 &7Du kan bruge &4&l!&c&lcancel&7"
+						send "&r              &7for at annulere processen"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						
+						while {pm.%player%.markingRegion} is set:
+							wait 3 ticks
+							if {pm.%player%.markingRegion} isn't set:
+								clear player's inventory
+								set {_slot} to 0
+								loop 36 times:
+									set slot {_slot} of player to {event.%player%.inventory::%loop-value-2%} 
+									add 1 to {_slot}
+								set player's helmet slot to {event.%player%.inventory::37} 
+								set player's chestplate slot to {event.%player%.inventory::38} 
+								set player's leggings slot to {event.%player%.inventory::39} 
+								set player's boots slot to {event.%player%.inventory::40}
+								delete {event.%player%.inventory::*}
+								if {pm.%player%.canceled} is set:
+									delete {pm.%player%.canceled}
+									stop
+						
+							remove 9 from y coordinate of {pm.%player%.pos2}
+						loop blocks within {pm.%player%.pos1} to {pm.%player%.pos2}:
+							set loop-block to air
+							
+						while {_id} isn't set:
+							set {_id} to ""
+							loop 4 times:
+								set {_char%loop-value-2%} to random integer between 1 and 9
+								set {_id} to "%{_id}%%{_char%loop-value-2%}%"
+							loop {mines::*}:
+								set {_mine} to loop-value-2
+								if {_mine} is {_id} parsed as a number:
+									delete {_id}
+									
+						set {pm.%{_id}%.owner} to uuid of player
+						set {pm.%{_id}%.public} to false
+						set {pm.%{_id}%.type} to 1
+						
+						add {_id} parsed as a number to {mines::*}
+						remove "small" from {pm.%uuid of player%.notUsed::*}
+									
+						create wg region "plotmines_%{_id}%" between {pm.%player%.pos1} and {pm.%player%.pos2} in player's world
+						delete {pm.%player%.pos1}
+						delete {pm.%player%.pos2}
+						delete {pm.%player%.times}
+						add member player to wg region "plotmines_%{_id}%" in player's world
+						execute console command "/rg flag plotmines_%{_id}% -w Plotsverden block-break allow"
+						
+						set {_pos1} to position 1 of wg region "plotmines_%{_id}%" in player's world
+						set {_pos2} to position 2 of wg region "plotmines_%{_id}%" in player's world
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r                    &e&lTillykke! Du har "
+						send "&r       &e&lsucesfuldt oprettet din plotmine"
+						send "&r                        &7&lID&8&l: &a&l%{_id}%"
+						send ""
+						send "&r                &8&l/&a&lplotmine edit&7 for at"
+						send "&r      &7redigere tilladelser og blocks i din mine"
+						send ""
+						send "&r               &7Kontakt &c&lstaff&7 hvis du"
+						send "&r             &7har yderligere spørgsmål"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						stop
+					
+				send "{@prefix} &7Du har &c&likke &7adgang til at oprette denne mine!"
+				send "{@prefix} &7Køb adgang til plotminer via &a&lBuy!"
+			
+			else if arg 2 is "medium" or "mellem":
+				loop {pm.%uuid of player%.notUsed::*}:
+					if loop-value is "medium":
+						set {_slot} to 0
+						loop 36 times:
+							add slot {_slot} of player to {event.%player%.inventory::*} 
+							add 1 to {_slot}
+						add player's helmet slot to {event.%player%.inventory::*} 
+						add player's chestplate slot to {event.%player%.inventory::*} 
+						add player's leggings slot to {event.%player%.inventory::*} 
+						add player's boots slot to {event.%player%.inventory::*} 
+						clear player's inventory
+						wait 3 ticks
+						add glowing stick named "&8&l( &a&l! &8&l) &a&lPLOTMINE &f&lMAKØR &8&l( &a&l! &8&l)" with lore "||&a&l&lKLIK &7for at||&7markere postion &f&L1 &7& &f&L2||||&7Du &A&Lskal &7makere et||&f10&8x&f10 &7område" to slot 4 of player's inventory
+						set {pm.%player%.markingRegion} to "m"
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r               &e&lDu er nu klar til at"
+						send "&r              &e&loprette din plotmine!"
+						send ""
+						send "&r             &7Kig på beskrivelsen af din"
+						send "&r      &a&lPLOTMINE MAKØR&7 for at komme i gang"
+						send ""
+						send "&r                 &7Du kan bruge &4&l!&c&lcancel&7"
+						send "&r              &7for at annulere processen"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						
+						while {pm.%player%.markingRegion} is set:
+							wait 3 ticks
+							if {pm.%player%.markingRegion} isn't set:
+								clear player's inventory
+								set {_slot} to 0
+								loop 36 times:
+									set slot {_slot} of player to {event.%player%.inventory::%loop-value-2%} 
+									add 1 to {_slot}
+								set player's helmet slot to {event.%player%.inventory::37} 
+								set player's chestplate slot to {event.%player%.inventory::38} 
+								set player's leggings slot to {event.%player%.inventory::39} 
+								set player's boots slot to {event.%player%.inventory::40}
+								delete {event.%player%.inventory::*}
+								if {pm.%player%.canceled} is set:
+									delete {pm.%player%.canceled}
+									stop
+									
+						remove 9 from y coordinate of {pm.%player%.pos2}
+						loop blocks within {pm.%player%.pos1} to {pm.%player%.pos2}:
+							set loop-block to air
+							
+						while {_id} isn't set:
+							set {_id} to ""
+							loop 4 times:
+								set {_char%loop-value-2%} to random integer between 1 and 9
+								set {_id} to "%{_id}%%{_char%loop-value-2%}%"
+							loop {mines::*}:
+								set {_mine} to loop-value-2
+								if {_mine} is {_id} parsed as a number:
+									delete {_id}
+									
+						set {pm.%{_id}%.owner} to uuid of player
+						set {pm.%{_id}%.public} to false
+						set {pm.%{_id}%.type} to 2
+						
+						add {_id} parsed as a number to {mines::*}
+						remove "medium" from {pm.%uuid of player%.notUsed::*}
+									
+						create wg region "plotmines_%{_id}%" between {pm.%player%.pos1} and {pm.%player%.pos2} in player's world
+						delete {pm.%player%.pos1}
+						delete {pm.%player%.pos2}
+						delete {pm.%player%.times}
+						add member player to wg region "plotmines_%{_id}%" in player's world
+						execute console command "/rg flag plotmines_%{_id}% -w Plotsverden block-break allow"
+						
+						set {_pos1} to position 1 of wg region "plotmines_%{_id}%" in player's world
+						set {_pos2} to position 2 of wg region "plotmines_%{_id}%" in player's world
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r                    &e&lTillykke! Du har "
+						send "&r       &e&lsucesfuldt oprettet din plotmine"
+						send "&r                        &7&lID&8&l: &a&l%{_id}%"
+						send ""
+						send "&r                &8&l/&a&lplotmine edit&7 for at"
+						send "&r      &7redigere tilladelser og blocks i din mine"
+						send ""
+						send "&r               &7Kontakt &c&lstaff&7 hvis du"
+						send "&r             &7har yderligere spørgsmål"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						stop
+					
+				send "{@prefix} &7Du har &c&likke &7adgang til at oprette denne mine!"
+				send "{@prefix} &7Køb adgang til plotminer via &a&lBuy!"
+				
+			else if arg 2 is "large" or "stor":
+				loop {pm.%uuid of player%.notUsed::*}:
+					if loop-value is "large":
+						set {_slot} to 0
+						loop 36 times:
+							add slot {_slot} of player to {event.%player%.inventory::*} 
+							add 1 to {_slot}
+						add player's helmet slot to {event.%player%.inventory::*} 
+						add player's chestplate slot to {event.%player%.inventory::*} 
+						add player's leggings slot to {event.%player%.inventory::*} 
+						add player's boots slot to {event.%player%.inventory::*} 
+						clear player's inventory
+						wait 3 ticks
+						add glowing stick named "&8&l( &a&l! &8&l) &a&lPLOTMINE &f&lMAKØR &8&l( &a&l! &8&l)" with lore "||&a&l&lKLIK &7for at||&7markere postion &f&L1 &7& &f&L2||||&7Du &A&Lskal &7makere et||&f20&8x&f20 &7område" to slot 4 of player's inventory
+						set {pm.%player%.markingRegion} to "l"
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r               &e&lDu er nu klar til at"
+						send "&r              &e&loprette din plotmine!"
+						send ""
+						send "&r             &7Kig på beskrivelsen af din"
+						send "&r      &a&lPLOTMINE MAKØR&7 for at komme i gang"
+						send ""
+						send "&r                 &7Du kan bruge &4&l!&c&lcancel&7"
+						send "&r              &7for at annulere processen"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						
+						while {pm.%player%.markingRegion} is set:
+							wait 3 ticks
+							if {pm.%player%.markingRegion} isn't set:
+								clear player's inventory
+								set {_slot} to 0
+								loop 36 times:
+									set slot {_slot} of player to {event.%player%.inventory::%loop-value-2%} 
+									add 1 to {_slot}
+								set player's helmet slot to {event.%player%.inventory::37} 
+								set player's chestplate slot to {event.%player%.inventory::38} 
+								set player's leggings slot to {event.%player%.inventory::39} 
+								set player's boots slot to {event.%player%.inventory::40}
+								delete {event.%player%.inventory::*}
+								if {pm.%player%.canceled} is set:
+									delete {pm.%player%.canceled}
+									stop
+									
+						remove 14 from y coordinate of {pm.%player%.pos2}
+						loop blocks within {pm.%player%.pos1} to {pm.%player%.pos2}:
+							set loop-block to air
+							
+						while {_id} isn't set:
+							set {_id} to ""
+							loop 4 times:
+								set {_char%loop-value-2%} to random integer between 1 and 9
+								set {_id} to "%{_id}%%{_char%loop-value-2%}%"
+							loop {mines::*}:
+								set {_mine} to loop-value-2
+								if {_mine} is {_id} parsed as a number:
+									delete {_id}
+									
+						set {pm.%{_id}%.owner} to uuid of player
+						set {pm.%{_id}%.public} to false
+						set {pm.%{_id}%.type} to 3
+						
+						add {_id} parsed as a number to {mines::*}
+						remove "large" from {pm.%uuid of player%.notUsed::*}
+									
+						create wg region "plotmines_%{_id}%" between {pm.%player%.pos1} and {pm.%player%.pos2} in player's world
+						delete {pm.%player%.pos1}
+						delete {pm.%player%.pos2}
+						delete {pm.%player%.times}
+						add member player to wg region "plotmines_%{_id}%" in player's world
+						execute console command "/rg flag plotmines_%{_id}% -w Plotsverden block-break allow"
+						
+						set {_pos1} to position 1 of wg region "plotmines_%{_id}%" in player's world
+						set {_pos2} to position 2 of wg region "plotmines_%{_id}%" in player's world
+						
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						send "&r                    &e&lTillykke! Du har "
+						send "&r       &e&lsuccesfuldt oprettet din plotmine"
+						send "&r                        &7&lID&8&l: &a&l%{_id}%"
+						send ""
+						send "&r                &8&l/&a&lplotmine edit&7 for at"
+						send "&r      &7redigere tilladelser og blocks i din mine"
+						send ""
+						send "&r               &7Kontakt &c&lstaff&7 hvis du"
+						send "&r             &7har yderligere spørgsmål"
+						send ""
+						send "&7&m                    {@prefix}&7&m                    "
+						send ""
+						stop
+					
+				send "{@prefix} &7Du har &c&likke &7adgang til at oprette denne mine!"
+				send "{@prefix} &7KÃ¸b adgang til plotminer via &a&lBuy!"
+					
+		else if arg 1 is "edit" or "rediger":
+			if arg 2 is set:
+				if player has permission "*":
+					invoke "editMine" from uuid of player and arg 2 parsed as a number
+					
+			open chest with 5 rows named "&b&lPLOTMINE &F&LOVERSIGT" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&lPLOTMINE &F&LOVERSIGT":
+			
+				set {_slot} to 9
+				loop {mines::*}:
+					if {pm.%loop-value%.owner} is uuid of player:
+						set {_mine} to loop-value
+						set slot {_slot} of player's current inventory to glowing book named "&b&lMINE &8&l: &F&l%{_mine}%" with lore "||&A&LKLIK HER&7 for at edit||&7den valgte plotmine!||&9"
+						add 1 to {_slot}
+				
+			
+				
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close  
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+				
+				format slot 36 of player with light blue stained glass pane named "&f" to close
+				format slot 37 of player with light blue stained glass pane named "&f" to close
+				format slot 38 of player with light blue stained glass pane named "&f" to close
+				format slot 39 of player with light blue stained glass pane named "&f" to close
+				format slot 40 of player with light blue stained glass pane named "&f" to close
+				format slot 41 of player with light blue stained glass pane named "&f" to close
+				format slot 42 of player with light blue stained glass pane named "&f" to close 
+				format slot 43 of player with light blue stained glass pane named "&f" to close
+				format slot 44 of player with light blue stained glass pane named "&f" to close
+		
+		
+		else if arg 1 is "all" or "alle":
+			if player has permission "*":
+				send ""
+				send "&8&m-----------------&8&l ( &b&lPLOT &F&LOVERSIGT &8&L) &8&m------------------" 
+				send ""
+				loop {mines::*}:
+					send "&A&L * ID &8&L- &f&L%loop-value%"
+				send ""
+				send "&8&m-----------------&8&l ( &b&lPLOT &F&LOVERSIGT &8&L) &8&m------------------" 
+				send ""
+		
+		else if arg 1 parsed as a offline player is set:
+			if player has permission "*":
+				send ""
+				send "&8&m------------&8&l ( &b&l%arg-1% &F&LOVERSIGT &8&L) &8&m-------------" 
+				send ""
+				loop {pm.%uuid of arg 1 parsed as a player%.notUsed::*}:
+					send "&A&L * MINE &8&L- &f&L%loop-value%"
+		
+				send ""
+				send "&8&m------------&8&l ( &b&l%arg-1% &F&LOVERSIGT &8&L) &8&m-------------" 
+				send ""
+				
+				
+		
+		
+sub "createMine":
+	set {_uuid} to parameter-1
+	set {_p} to player from {_uuid}
+	wait 3 ticks
+	open chest with 5 rows named "&b&lPLOTMINE &F&LOPRET" to {_p}
+	wait 3 ticks
+	if inventory name of {_p}'s current inventory is "&b&lPLOTMINE &F&LOPRET":
+		set {_small.placed} to 0
+		set {_medium.placed} to 0
+		set {_large.placed} to 0
+		set {_small} to 0
+		set {_medium} to 0
+		set {_large} to 0
+		
+		loop {mines::*}:
+			if {pm.%loop-value%.owner} is {_uuid}:
+				if {pm.%loop-value%.type} is 1:
+					add 1 to {_small.placed}
+					add 1 to {_small}
+				else if {pm.%loop-value%.type} is 2:
+					add 1 to {_medium.placed}
+					add 1 to {_medium}
+				if {pm.%loop-value%.type} is 3:
+					add 1 to {_large.placed}
+					add 1 to {_large}
+				
+		loop {pm.%{_uuid}%.notUsed::*}:
+			if loop-value is "small":
+				add 1 to {_small}
+			else if loop-value is "medium":
+				add 1 to {_medium}
+			else if loop-value is "large":
+				add 1 to {_large}
+
+		format slot 0 of {_p} with white stained glass pane named "&f" to close
+		format slot 1 of {_p} with white stained glass pane named "&f" to close  
+		format slot 2 of {_p} with white stained glass pane named "&f" to close
+		format slot 3 of {_p} with white stained glass pane named "&f" to close
+		format slot 4 of {_p} with white stained glass pane named "&f" to close
+		format slot 5 of {_p} with white stained glass pane named "&f" to close
+		format slot 6 of {_p} with white stained glass pane named "&f" to close
+		format slot 7 of {_p} with white stained glass pane named "&f" to close
+		format slot 8 of {_p} with white stained glass pane named "&f" to close
+		
+		format slot 36 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 37 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 38 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 39 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 40 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 41 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 42 of {_p} with light blue stained glass pane named "&f" to close 
+		format slot 43 of {_p} with light blue stained glass pane named "&f" to close
+		format slot 44 of {_p} with light blue stained glass pane named "&f" to close
+				
+				
+		
+		format slot 19 of {_p} with 1 bedrock named "&B&lPLOTMINE &F&LLILLE" with lore "&8&L * &7Du har oprettet &8&l( &f%{_small.placed}%&8/&f%{_small}% &8&l)" to close then run [execute {_p} command "/plotminer opret lille"]
+		format slot 22 of {_p} with 1 bedrock named "&B&lPLOTMINE &F&LMELLEM" with lore "&8&L * &7Du har oprettet &8&l( &f%{_medium.placed}%&8/&f%{_medium}% &8&l)" to close then run [execute {_p} command "/plotminer opret mellem"]
+		format slot 25 of {_p} with 1 bedrock named "&B&lPLOTMINE &F&LSTOR" with lore "&8&L * &7Du har oprettet &8&l( &f%{_large.placed}%&8/&f%{_large}% &8&l)" to close then run [execute {_p} command "/plotminer opret stor"]
+		
+
+
+on inventory click:
+	if inventory name of player's current inventory is "&b&lPLOTMINE &F&LOVERSIGT":
+		if clicked slot is between 9 and 27:
+			if clicked item isn't air:
+				cancel event
+				set {_name} to name of clicked item
+				set {_name::*} to uncolored {_name} split at " "
+				set {_id} to {_name::3}
+				replace all "&b&l" and "&f&l" and "&8&l|" with "" in {_id}
+			
+				invoke "editMine" from uuid of player and {_id} parsed as a number
+		
+	if {pm.%player%.markingRegion} is true:
+		if clicked item is diamond hoe:
+			cancel event
+
+function isPublic(id: number) :: text:
+	if {pm.%{_id}%.public} is false:
+		return "&fPrivat"
+	else:
+		return "&fOffentlig"
+
+function togglePublic(id: number):
+	if {pm.%{_id}%.public} is false:
+		set {pm.%{_id}%.public} to true
+		execute console command "/rg flag plotmines_%{_id}% block-break -w Plotsverden allow"
+		execute console command "/rg flag plotmines_%{_id}% build -w Plotsverden allow"
+	else:
+		set {pm.%{_id}%.public} to false
+		execute console command "/rg flag plotmines_%{_id}% block-break -w Plotsverden" 
+
+function getBlock(id: number, n: integer) :: item type:
+	if {pm.%{_id}%.block%{_n}%} is set:
+		set {_block} to {pm.%{_id}%.block%{_n}%} parsed as a item type
+	else:
+		set {_block} to 145:0
+	return {_block}
+
+function changeBlock(uuid: object, id: number, n: number):
+	set {_p} to player from {_uuid}
+	wait 3 ticks
+	while {_choosedBlock} isn't set:
+		wait 3 ticks
+		if {_choosedBlock} is set:
+			close {_p}'s inventory
+		else if inventory name of {_p}'s current inventory is "&b&lPLOTMINE &F&LEDIT":
+		
+			format slot 0 of {_p} with white stained glass pane named "&f" to close
+			format slot 1 of {_p} with white stained glass pane named "&f" to close  
+			format slot 2 of {_p} with white stained glass pane named "&f" to close
+			format slot 3 of {_p} with white stained glass pane named "&f" to close
+			format slot 4 of {_p} with white stained glass pane named "&f" to close
+			format slot 5 of {_p} with white stained glass pane named "&f" to close
+			format slot 6 of {_p} with white stained glass pane named "&f" to close
+			format slot 7 of {_p} with white stained glass pane named "&f" to close
+			format slot 8 of {_p} with white stained glass pane named "&f" to close
+		
+			format slot 19 of {_p} with 1 emerald block named "&a&lEMERALD BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "emerald block"]
+			format slot 20 of {_p} with 1 diamond block named "&b&lDIAMOND BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "diamond block"]
+			format slot 21 of {_p} with 1 gold block named "&6&lGOLD BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "gold block"]
+			format slot 22 of {_p} with 1 iron block named "&7&lIRON BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "iron block"]
+			format slot 23 of {_p} with 1 coal block named "&8&lCOAL BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "coal block"]
+			format slot 24 of {_p} with 1 redstone block named "&c&lREDSTONE BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "redstone block"]
+			format slot 25 of {_p} with 1 lapis lazuli block named "&9&lLAPIS BLOCK" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "lapis lazuli block"]
+			
+			format slot 28 of {_p} with 1 emerald ore named "&a&lEMERALD ORE" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "emerald ore"]
+			format slot 29 of {_p} with 1 diamond ore named "&b&lDIAMOND ORE" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "diamond ore"]
+			format slot 30 of {_p} with 1 gold ore named "&6&lGOLD ORE" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "gold ore"]
+			format slot 31 of {_p} with 1 iron ore named "&7&lIRON ORE" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "iron ore"]
+			format slot 32 of {_p} with 1 coal ore named "&8&lCOAL ORE" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to close then run [set {_choosedBlock} to "coal ore"]
+			format slot 33 of {_p} with 1 73 named "&c&lREDSTONE ORE &8&l ( &c&lSLÅET FRA &8&l)" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to be unstealable #to close then run [set {_choosedBlock} to "73"]
+			format slot 34 of {_p} with 1 lapis lazuli ore named "&9&lLAPIS ORE &8&l ( &c&lSLÅET FRA &8&l)" with lore "||&A&LKLIK HER&7 for at vælge||&7den valgte block til plotminen" to be unstealable #to close then run [set {_choosedBlock} to "lapis lazuli ore"]
+			
+			
+			format slot 45 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 46 of {_p} with light blue stained glass pane named "&f" to close  
+			format slot 47 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 48 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 49 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 50 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 51 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 52 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 53 of {_p} with light blue stained glass pane named "&f" to close
+			
+			
+		
+		else:
+			open chest with 6 rows named "&b&lPLOTMINE &F&LEDIT" to {_p}
+	
+	set {_nums::*} to 1, 2, 3 and 4
+	remove {_n} from {_nums::*}
+	loop {_nums::*}:
+		if {_choosedBlock} is {pm.%{_id}%.block%loop-value%}:
+			if {_choosedBlock} is "red sandstone" or "sandstone":
+				add 1 to {_prestige1}
+			else:
+				close {_p}'s inventory
+				send "{@prefix} &7Du kan &c&lkun &7vælge denne block en gang!" to {_p}
+				stop
+		if {pm.%{_id}%.block%loop-value%} parsed as a item is emerald ore or diamond ore or gold ore or iron ore or coal ore or 73 or lapis lazuli ore:
+			add 1 to {_ores}
+	if {_choosedBlock} parsed as a item is emerald ore or diamond ore or gold ore or iron ore or coal ore or 73 or lapis lazuli ore:
+		add 1 to {_ores}
+		
+	if {_ores} is more than 2:
+		close {_p}'s inventory
+		send "{@prefix} &7Minen kan &c&lHØJST &7bestå af &f&l50%% &7ores" to {_p}
+		stop
+	
+	if {_prestige1} is more than 2:
+		close {_p}'s inventory
+		send "{@prefix} &7Du kan &c&lkun &7vælge denne block to gang!" to {_p}
+		stop
+		
+	set {pm.%{_id}%.block%{_n}%} to {_choosedBlock}
+	invoke "editMine" from {_uuid} and {_id}
+
+
+
+sub "editMine":
+	set {_uuid} to parameter-1
+	set {_p} to player from {_uuid}
+	set {_id} to parameter-2
+	wait 3 ticks
+	open chest with 5 rows named "&b&lPLOTMINE &F&LID: %{_id}%" to {_p}
+	while inventory name of {_p}'s current inventory is "&b&lPLOTMINE &F&LID: %{_id}%":
+		wait 3 ticks
+		if inventory name of {_p}'s current inventory is "&b&lPLOTMINE &F&LID: %{_id}%":
+			
+			format slot 0 of {_p} with white stained glass pane named "&f" to close
+			format slot 1 of {_p} with white stained glass pane named "&f" to close  
+			format slot 2 of {_p} with white stained glass pane named "&f" to close
+			format slot 3 of {_p} with white stained glass pane named "&f" to close
+			format slot 4 of {_p} with white stained glass pane named "&f" to close
+			format slot 5 of {_p} with white stained glass pane named "&f" to close
+			format slot 6 of {_p} with white stained glass pane named "&f" to close
+			format slot 7 of {_p} with white stained glass pane named "&f" to close
+			format slot 8 of {_p} with white stained glass pane named "&f" to close
+			
+			format slot 36 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 37 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 38 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 39 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 41 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 42 of {_p} with light blue stained glass pane named "&f" to close 
+			format slot 43 of {_p} with light blue stained glass pane named "&f" to close
+			format slot 44 of {_p} with light blue stained glass pane named "&f" to close
+			
+			
+			format slot 19 of {_p} with getBlock({_id}, 1) named "&b&l&nBLOCK 1" with lore "||&A&LKLIK HER&7 for at skifte||&7blocks på din plotmine||||&7Denne block udgør||&f&l25%%&7 af din plotmine" to close then run [changeBlock({_uuid}, {_id}, 1)]
+			format slot 21 of {_p} with getBlock({_id}, 2) named "&b&l&nBLOCK 2" with lore "||&A&LKLIK HER&7 for at skifte||&7blocks på din plotmine||||&7Denne block udgør||&f&l25%%&7 af din plotmine" to close then run [changeBlock({_uuid}, {_id}, 2)]
+			format slot 23 of {_p} with getBlock({_id}, 3) named "&b&l&nBLOCK 3" with lore "||&A&LKLIK HER&7 for at skifte||&7blocks på din plotmine||||&7Denne block udgør||&f&l25%%&7 af din plotmine" to close then run [changeBlock({_uuid}, {_id}, 3)]
+			format slot 25 of {_p} with getBlock({_id}, 4) named "&b&l&nBLOCK 4" with lore "||&A&LKLIK HER&7 for at skifte||&7blocks på din plotmine||||&7Denne block udgør||&f&l25%%&7 af din plotmine" to close then run [changeBlock({_uuid}, {_id}, 4)]
+			
+			format slot 40 of {_p} with 1 red dye named "&c&lTILBAGE" with lore "||&A&LKLIK HER&7 for at||&7gå til den forrige menu||&9" to close then run [execute {_p} command "/plotminer edit"]
+			
+on chat:
+	if message is "!cancel":
+		if {pm.%player%.markingRegion} is set:
+			cancel event
+			delete {pm.%player%.markingRegion}
+			delete {pm.%player%.pos1}
+			delete {pm.%player%.pos2}
+			delete {pm.%player%.times}
+			set {pm.%player%.canceled} to true
+			send "{@prefix} &7Du har &c&lannulleret &7opsÃ¦tningen af din plotmine..."
+		
+on command:
+	if {pm.%player%.markingRegion} is set:
+		cancel event
+		send "{@prefix} &7Du kan &c&likke &7bruge kommandoer, imens du laver en plotmine!"
+		send "{@prefix} &7Brug &4&l!&c&lcancel&7 for annulere mineplot processen!"
+	
+on drop:
+	if {pm.%player%.markingRegion} is set:
+		cancel event
+		send "{@prefix} &7Du kan &c&likke &7dropppe items, imens du laver en plotmine!"
+		send "{@prefix} &7Brug &4&l!&c&lcancel&7 for annulere mineplot processen!"
+
+on pick up:
+	if {pm.%player%.markingRegion} is set:
+		cancel event
+
+
+command /givemine [<offlineplayer>] [<text>]:
+	permission: *
+	trigger:
+		if arg 1 is set:
+			if arg 2 is "small" or "medium" or "large":
+				add arg 2 to {pm.%uuid of arg 1%.notUsed::*}
+				send "{@prefix} &7Du gav &a&l%arg 1% &7en &a&l%arg 2% &7plotmine!"
+			else:
+				send "{@prefix} &7Du skal angive en stÃ¸rrelse"
+		else:
+			send "{@prefix} &7Du skal angive en spiller"
+
+
+command /removemine [<integer>]:
+	permission: *
+	trigger:
+		if arg 1 is set:
+			remove arg 1 from {mines::*}
+			delete {pm.%arg 1%.owner}
+			delete {pm.%arg 1%.public}
+			delete {pm.%arg 1%.block1}
+			delete {pm.%arg 1%.block2}
+			delete {pm.%arg 1%.block3}
+			delete {pm.%arg 1%.block4}
+			execute console command "/rg delete plotmines_%arg 1% -w Plotsverden"
+			send "{@prefix} &7Du har fjernet plomine &a&l%arg 1%&7!"
+		else:
+			send "{@prefix} &7Du skal angive et &c&lID"
+
+command /removenotusedmine [<offline player>] [<text>]:
+	permission: *
+	trigger:
+		if arg 1 is set:
+			if arg 2 is "small", "medium" or "large":
+				remove "%arg 2%" from {pm.%uuid of arg 1%.notUsed::*}
+				send "{@prefix} &7Du har fjernet en &b%arg 2% &7mine fra &a%arg 1%&7!"
+			else:
+				send "{@prefix} &cAngiv en stÃ¸rrelse.."
+		else:
+			send "{@prefix} &cAngiv en spiller.."
+			
+command /bedrock [<text>]:
+	trigger:
+		if arg 1 isn't set:
+			loop {pm.bedrock::*}:
+				if loop-value is uuid of player:
+					send "{@prefix} &7Du er &c&lallerede &7pÃ¥ ventelisten..."
+					stop
+			add uuid of player to {pm.bedrock::*}
+			send "{@prefix} &a&lSÅDAN! &7Du er blevet tilfÃ¸jet til listen!"
+		else if arg 1 is "list":
+			if player has permission "*":
+				send ""
+				send "&8&m------------&8&l ( &b&l%arg-1% &F&LOVERSIGT &8&L) &8&m-------------" 
+				send ""
+				loop {pm.bedrock::*}:
+					set {_p} to player from loop-value
+					send "&a&l * &8&l- &f%{_p}%"
+				send ""
+				send "&8&m------------&8&l ( &b&l%arg-1% &F&LOVERSIGT &8&L) &8&m-------------" 
+				send ""
+		
+		else if arg 1 parsed as a player is set:
+			if player has permission "*":
+				loop {pm.bedrock::*}:
+					if loop-value is uuid of arg 1 parsed as a player:
+						remove uuid of arg 1 parsed as a player from {pm.bedrock::*} 
+						send "{@prefix} &7Du har fjernet &a&l%arg 1%&7 fra listen!"
+						stop
+				send "{@prefix} &c&l%arg 1% er ikke på ventelisten..."

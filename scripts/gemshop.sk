@@ -1,0 +1,232 @@
+options:
+	prefix: &8&l| &a&lGEMSHOP &8&l|
+
+
+function changeName(uuid: object):
+	set {_p} to player from {_uuid}
+	if {gems.%{_uuid}%} is higher than or equal to 25:
+		if {_p}'s tool isn't air:
+			set {_p} to player from {_uuid}
+			send "{@prefix} &7Skriv din ønskede navn i chatten &8( &fMed color codes &8)" to {_p}
+			set {gemshop.%{_uuid}%.changeName} to true
+			while {gemshop.%{_uuid}%.changeName} is true:
+				wait 3 ticks
+				if {gemshop.%{_uuid}%.changeName} isn't true:
+					if length of {gemshop.%{_uuid}%.changeName} is less than or equal to 30:
+						if {gemshop.%{_uuid}%.changeName} doesn't contain "GEMS" or "LASER" or "key" or "box" or "DRILL" or "CRATE" or "SEASON" or "KEY" or "ex" or "ELITE" or "HERO" or "exPLUS" or "KEYS":
+							set name of {_p}'s tool to "%colored  {gemshop.%{_uuid}%.changeName}%"
+							remove 25 from {gems.%{_uuid}%} 
+							send "{@prefix} &a&lSÅDAN! &7Du har navngivet dit tool til %colored {gemshop.%{_uuid}%.changeName}%" to {_p}
+							delete {gemshop.%{_uuid}%.changeName}
+						else:
+							delete {gemshop.%{_uuid}%.changeName}
+							send "{@prefix} &7Du kan &c&likke &7rename dit item med det navn!" to {_p} 
+					else:
+						set {gemshop.%{_uuid}%.changeName} to true
+						send "{@prefix} &cNavnet må maks være 30 cifre.." to {_p}
+		else: 
+			send "{@prefix} &7Du &c&lSKAL &7holde et tool i hånden!" to {_p}	
+	else:
+		send "{@prefix} &7Du har &C&Likke &7gems nok til købe dette!" to {_p}
+
+on chat:
+	if {gemshop.%uuid of player%.changeName} is true:
+		set {gemshop.%uuid of player%.changeName} to message
+
+command /gemshop [<text>]:
+	trigger:
+		wait 3 ticks
+		if arg 1 isn't set:
+			open chest with 5 rows named "&b&LGEM &F&LSHOP" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&LGEM &F&LSHOP":
+				
+				format slot 19 of player with glowing 368 named "&a&lÆNDRE NAVN" with lore "||&A&LKLIK HER &7for at||&7ændre navnet på||&7det tool du har i hånden|||| &b&l* &b&l&n200 GEMS" to close then run [changeName(uuid of player)]
+				format slot 22 of player with glowing name tag named "&d&lKØB KEYS" with lore "||&a&lKLIK HER &7for at||&7se udvalget af keys" to close then run [execute player command "/gemshop keys"]
+				format slot 25 of player with glowing beacon named "&A&lGLOBAL BOOST" with lore "||&a&lKLIK HER &7for at||&7se udvalget af boosts" to close then run [execute player command "/gemshop globalboost"]
+				
+						
+			
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close 
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+				
+				format slot 36 of player with light blue stained glass pane named "&f" to close
+				format slot 37 of player with light blue stained glass pane named "&f" to close
+				format slot 38 of player with light blue stained glass pane named "&f" to close
+				format slot 39 of player with light blue stained glass pane named "&f" to close
+				format slot 40 of player with glowing 351:1 named "&c&lLuk menuen" to close
+				format slot 41 of player with light blue stained glass pane named "&f" to close
+				format slot 42 of player with light blue stained glass pane named "&f" to close
+				format slot 43 of player with light blue stained glass pane named "&f" to close
+				format slot 44 of player with light blue stained glass pane named "&f" to close
+					
+					
+					
+					
+					
+					
+					
+					
+					
+	
+		else if arg 1 is "globalBoost":
+			play "CLICK" to player at volume 2
+			open chest with 5 rows named "&b&LGEM &F&LSHOP" to player
+			wait 5 tick 
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close 
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+			
+			format slot 36 of player with magenta stained glass pane named "&f" to close
+			format slot 37 of player with magenta stained glass pane named "&f" to close
+			format slot 38 of player with magenta stained glass pane named "&f" to close
+			format slot 39 of player with magenta stained glass pane named "&f" to close
+			format slot 40 of player with magenta stained glass pane named "&f" to close
+			format slot 41 of player with magenta stained glass pane named "&f" to close
+			format slot 42 of player with magenta stained glass pane named "&f" to close
+			format slot 43 of player with magenta stained glass pane named "&f" to close
+			format slot 44 of player with magenta stained glass pane named "&f" to close
+			
+			
+			format slot 19 of player with glowing 263 named "&d&LBOOST &F&L&n1.1x&8&l ( &f&lKØB &8&l)" with lore "||&7Køb en global booster, til hele serveren!|||| &b&l* &n5.000 GEMS" to close then run [execute player command "/gemshop boost05x"]
+			format slot 21 of player with glowing gold ingot named "&d&LBOOST &F&L&n1.3x&8&l ( &f&lKØB &8&l)" with lore "||&7Køb en global booster, til hele serveren!|||| &b&l* &n8.000 GEMS" to close then run [execute player command "/gemshop boost1x"]
+			format slot 23 of player with glowing diamond named "&d&LBOOST &F&L&n1.5&8&l ( &f&lKØB &8&l)" with lore "||&7Køb en global booster, til hele serveren!|||| &b&l* &n12.000 GEMS" to close then run [execute player command "/gemshop boost1.3x"]
+			format slot 25 of player with glowing emerald named "&D&LBOOST &F&L&n2.0x&8&l ( &f&lKØB &8&l)" with lore "||&7Køb en global booster, til hele serveren!|||| &b&l* &n16.000 GEMS" to close then run [execute player command "/gemshop boost2x"]	
+		
+		else if arg 1 is "boost05x":
+			if {gems::%player%} is more than or equal to 5000:
+				if {sellboost.igang} isn't set:
+					remove 5000 from {gems::%player%}
+					execute console command "/setboost 1.1x"
+					broadcast "&8&l| &d&lBOOST &8&l| &a&l%player% &7har &a&lKØBT&7 globalt boost! &8&l( &f&l1.1x &8&l)"
+					
+				else:
+					message "&8&l| &c&lBOOST &8&L| &7Der er allerede en &c&lSELL &F&LBOOST igang!"
+				
+				
+				
+			else:
+				send "&8&l| &c&lBOOST &8&l| &7Du har ikke &c&lGEMS &7nok til købe dette!"
+				
+		else if arg 1 is "boost1x":
+			if {gems::%player%} is more than or equal to 8000:
+				if {sellboost.igang} isn't set:
+					remove 8000 from {gems::%player%}
+					execute console command "/setboost 1.3x"
+					broadcast "&8&l| &d&lBOOST &8&l| &a&l%player% &7har &a&lKØBT&7 globalt boost! &8&l( &f&l1.1x &8&l)"
+					
+				else:
+					message "&8&l| &c&lBOOST &8&L| &7Der er allerede en &c&lSELL &F&LBOOST igang!"
+				
+				
+				
+			else:
+				send "&8&l| &c&lBOOST &8&l| &7Du har ikke &c&lGEMS &7nok til købe dette!"
+				
+		else if arg 1 is "boost1.3x":
+			if {gems::%player%} is more than or equal to 12000:
+				if {sellboost.igang} isn't set:
+					remove 12000 from {gems::%player%}
+					execute console command "/setboost 1.5x"
+					broadcast "&8&l| &d&lBOOST &8&l| &a&l%player% &7har &a&lKØBT&7 globalt boost! &8&l( &f&l1.5x &8&l)"
+					
+				else:
+					message "&8&l| &c&lBOOST &8&L| &7Der er allerede en &c&lSELL &F&LBOOST igang!"
+				
+					
+			else:
+				send "&8&l| &c&lBOOST &8&l| &7Du har ikke &c&lGEMS &7nok til købe dette!"
+				
+				
+		else if arg 1 is "boost2x":
+			if {gems::%player%} is more than or equal to 16000:
+				if {sellboost.igang} isn't set:
+					remove 16000 from {gems::%player%}
+					execute console command "/setboost 2.0x"
+					broadcast "&8&l| &d&lBOOST &8&l| &a&l%player% &7har &a&lKØBT&7 globalt boost! &8&l( &f&l2.0x &8&l)"
+					
+				else:
+					message "&8&l| &c&lBOOST &8&L| &7Der er allerede en &c&lSELL &F&LBOOST igang!"
+				
+				
+			else:
+				send "&8&l| &c&lBOOST &8&l| &7Du har ikke &c&lGEMS &7nok til købe dette!"
+				
+				
+				
+		else if arg 1 is "keys":
+			play "CLICK" to player at volume 2
+			open chest with 5 rows named "&b&LGEM &F&LSHOP" to player
+			wait 5 tick 
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close 
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+			
+			format slot 36 of player with magenta stained glass pane named "&f" to close
+			format slot 37 of player with magenta stained glass pane named "&f" to close
+			format slot 38 of player with magenta stained glass pane named "&f" to close
+			format slot 39 of player with magenta stained glass pane named "&f" to close
+			format slot 40 of player with magenta stained glass pane named "&f" to close
+			format slot 41 of player with magenta stained glass pane named "&f" to close
+			format slot 42 of player with magenta stained glass pane named "&f" to close
+			format slot 43 of player with magenta stained glass pane named "&f" to close
+			format slot 44 of player with magenta stained glass pane named "&f" to close
+			format slot 19 of player with name tag named "&9&lPICKAXE &f&lKEY" with lore "||&7Køb en &9&lPICKAXE&f&l KEY||&7Kan brgues ved &9&lPICKAXE&f&l CRATE&7.|||| &b&l* &n2500 GEMS" to close then run [execute player command "/gemshop pickkey"]
+			format slot 21 of player with name tag named "&c&lREWARD &F&lKEY" with lore "||&7Køb en &c&lREWARD&f&l KEY||&7Kan brgues ved &c&lREWARD&f&l CRATE&7.|||| &b&l* &n1000 GEMS" to close then run [execute player command "/gemshop rewardkey"]
+			format slot 23 of player with name tag named "&e&lDROP &f&lKEY" with lore "||&7Køb en &e&lDROP&f&l KEY||&7Kan brgues ved &e&lDROP&f&l CRATE&7.|||| &b&l* &n5000 GEMS" to close then run [execute player command "/gemshop dropkey"]
+			format slot 25 of player with name tag named "&5&lex&f&lPLUS KEY" with lore "||&7Køb en &5&lex&f&lPLUS KEY||&7Kan brgues ved &5&lex&f&lPLUS CRATE&7.|||| &b&l* &n1000 GEMS" to close then run [execute player command "/gemshop expluskey"]
+		
+		
+		if arg-1 is "pickkey":
+			if {gems::%player%} is more than or equal to 2500:
+				remove 2500 from {gems::%player%}
+				execute console command "/crate give %player% pickaxe"
+				send "&8&l|&b&l BOOST&8&l | &7Du har købt en &9&lPICKAXE&f&l KEY&7!"
+		if arg-1 is "rewardkey":
+			if {gems::%player%} is more than or equal to 1000:
+				remove 1000 from {gems::%player%}
+				execute console command "/crate give %player% reward"
+				send "&8&l|&b&l BOOST&8&l | &7Du har købt en &c&lREWARD&f&l KEY&7!"
+		if arg-1 is "dropkey":
+			if {gems::%player%} is more than or equal to 5000:
+				remove 5000 from {gems::%player%}
+				execute console command "/crate give %player% drop"
+				send "&8&l|&b&l BOOST&8&l | &7Du har købt en &e&lDROP&f&l KEY&7!"
+		if arg-1 is "expluskey":
+			if {gems::%player%} is more than or equal to 1000:
+				remove 1000 from {gems::%player%}
+				execute console command "/crate give %player% explus"
+				send "&8&l|&b&l BOOST&8&l | &7Du har købt en &5&lex&f&lPLUS KEY&7!"
+				
+		
+		
+
+
+on inventory close:
+	if inventory name of player's current inventory is "&b&LGEM &F&LSHOP":
+		wait 0.5 seconds
+		delete {gemshop.%uuid of player%.color}
+		delete {gemshop.%uuid of player%.slot}
+		delete {gemshop.%uuid of player%.10}
+		delete {gemshop.%uuid of player%.19}
+		delete {gemshop.%uuid of player%.28}
+		delete {gemshop.%uuid of player%.37}

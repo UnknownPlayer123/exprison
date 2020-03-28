@@ -1,0 +1,93 @@
+command /chat [<text>]:
+	permission: staff.use
+	trigger:
+		if arg 1 isn't set:
+			open chest with 3 rows named "&c&lCHAT &f&lMENU" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&c&lCHAT &f&lMENU":
+				format slot 11 of player with 1 empty map named "&e&lRYD CHAT" with lore "&7Klik her for at ryde chatten" to close then run [make player execute command "/chat clear"]
+				if {chat.lock} is true:
+					format slot 15 of player with 1 light green clay named "&a&lÅBEN CHAT" with lore "&7Klik her for at åbne chatten" to close then run [make player execute command "/chat lock"]
+					
+					loop 26 times:
+						set {_slot} to loop-value
+						if slot {_slot} of player's current inventory is air:
+							format slot 0 of player with 1 160:5 named " " with lore " " to be unstealable
+							format slot {_slot} of player with 1 160:5 named " " with lore " " to be unstealable
+				else:
+					format slot 15 of player with 1 red clay named "&c&lLÅS CHAT" with lore "&7Klik her for at låse chatten" to close then run [make player execute command "/chat lock"]
+				
+					loop 26 times:
+						set {_slot} to loop-value
+						if slot {_slot} of player's current inventory is air:
+							format slot 0 of player with 1 160:14 named " " with lore " " to be unstealable
+							format slot {_slot} of player with 1 160:14 named " " with lore " " to be unstealable
+		
+		if arg 1 is "clear":
+			loop 100 times:
+				broadcast " "
+			broadcast "&8&L| &c&lCHAT &8&L| &7Chatten er blevet ryddet af &c&l%player%"
+			
+		if arg 1 is "lock":
+			if {chat.lock} is true:
+				delete {chat.lock}
+				broadcast " "
+				broadcast "&8&L| &a&lCHAT &8&L| &7Chatten er nu &a&l&nåben&7 igen"
+				broadcast " "
+			else:
+				set {chat.lock} to true
+				broadcast " "
+				broadcast "&8&L| &c&lCHAT &8&L| &7Chatten er nu midlertidigt &c&l&nlåst!"
+				broadcast " "
+
+on chat:
+	cancel event
+	if {chat.lock} is true:
+		cancel event
+		send "&8&L| &c&lCHAT &8&L| &7Chatten er pt slået &c&l&nFra!"
+		
+			
+	else:
+		if {gemshop.%player%.changeName} is true:
+			cancel event 
+		if {pm.%player%.markingRegion} is set:
+			cancel event 
+
+
+
+		set {_message} to message
+		if {lastmessage.%player%} is message:
+			{lastmessage.%player%.time} was less than 5 seconds ago:
+				add 1 to {writedtimes.%player%}
+				if {writedtimes.%player%} is higher than or equal to 2:
+					send "&8&L| &c&lCHAT &8&L| &c&lIDIOT! &7ikk' spam tak :)"
+				if {writedtimes.%player%} is higher than or equal to 3:
+					make console execute command "/mute %player% 30m Sagde du ikke skulle spamme idiot"
+					delete {writedtimes.%player%}
+		else:
+			set {lastmessage.%player%} to message
+			set {lastmessage.%player%.time} to now
+		
+		
+		
+		if player doesn't have permission "*":
+			if message contains "p o r n o", "p o r n", "porn", "porno", "fuck", "lorte", "fucking", "lort", "m e rrt", "a l t a y", "aitay", "mert altay", "altaay", "altttay", "aaltay", "alltay", "altayy", "altay", "llorte serverr", "llorte server", "lortee server", "lorte serverrr","lorte serverr", "lorte server", "Din fucking", "lag", "lagg", "marit", "mæret", "mertin", "merti", "mert0", "mert00", "mert000", "mertt00", "mert", "mmert", "m e r t", "me r t", "mirt" , "m æ r t", "mært", "mart", "mertt", "merttt", "meeert", "merrrrt", "rispvp", "daily-life", "dailylife", "planetcraft", "spymc", "f r e a k y v i l e", "mmmmeert", "mmert", "mrert", "Mert", "lorte server", "freakyville", "ggpvp", "dragonsplay", "dragonplay", "dragonplays", "dragonsplays", "ggpvps", "freakyvilles", "fv", "superawesome", "daily-life", "daily life", "dailylife", "mecraft", "triergaming", "globus", "mcglobus", "globusmc", "din far døde", "autistme", "autist", "håber du dør din svin", "fucking svin", "fucking idiot", "din mor", "din far", "luder", "luder unge", "neger", "strandet", "strandets", "mariopvp", "darkstar", "creepygame", "creepygames", "knepper", "cancer", "døde mor", "døde far", "død mor", "død far", "mongol", "mongoler", "mongolsk", "sex", "fisse", "pik", "sperm", "orgamse", ".dk", ".net", ".com", ".spil" or ".tk":
+				set {_word} to message
+				#replace all "."  and " " with "" in {_word}
+				replace all "p o r n o", "p o r n", "porn", "porno", "fuck", "lorte", "fucking", "lort", "m e rrt", "a l t a y", "aitay", "mert altay", "altaay", "altttay", "aaltay", "alltay", "altayy", "altay", "llorte serverr", "llorte server", "lortee server", "lorte serverrr","lorte serverr", "lorte server", "Din fucking", "lag", "lagg", "marit", "mæret", "mertin", "merti", "mert0", "mert00", "mert000", "mertt00", "mert", "mmert", "m e r t", "me r t", "mirt" , "m æ r t", "mært", "mart", "mertt", "merttt", "meeert", "merrrrt", "rispvp", "daily-life", "dailylife", "planetcraft", "spymc", "f r e a k y v i l e", "mmmmeert", "mmert", "mrert", "Mert", "lorte server", "freakyville", "ggpvp", "dragonsplay", "dragonplay", "dragonplays", "dragonsplays", "ggpvps", "freakyvilles", "fv", "superawesome", "daily-life", "daily life", "dailylife", "mecraft", "triergaming", "globus", "mcglobus", "globusmc", "din far døde", "autistme", "autist", "håber du dør din svin", "fucking svin", "fucking idiot", "din mor", "din far", "luder", "luder unge", "neger", "strandet", "strandets", "mariopvp", "darkstar", "creepygame", "creepygames", "knepper", "cancer", "døde mor", "døde far", "død mor", "død far", "mongol", "mongoler", "mongolsk", "sex", "fisse", "pik", "sperm", "orgamse", ".dk", ".net", ".com", ".spil" or ".tk" with " *** " in {_word}
+		
+				set {_message} to "%{_word}%"
+		
+		
+		
+
+		set {_prestige} to ""
+		if {rank.prestige::%player%} is set:
+			set {_prestige} to "%{rank.prestige::%player%}% "
+
+		broadcast "%{_prestige}%%{rank::%player%}% %player's display name% &8- &f%{_message}%"
+
+
+
+
+

@@ -1,0 +1,706 @@
+on leftclick on chest:
+	if {pickaxeCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&9&lPICKAXE &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {pickaxeCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with diamond pickaxe of efficiency 10 and unbreaking 10 and fortune 10 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 1 of player with diamond pickaxe of efficiency 13 and unbreaking 10 and fortune 13 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 2 of player with diamond pickaxe of efficiency 20 and unbreaking 10 and fortune 15 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 3 of player with diamond pickaxe of efficiency 20 and unbreaking 20 and fortune 20 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 4 of player with diamond pickaxe of efficiency 35 and unbreaking 35 and fortune 35 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 5 of player with diamond pickaxe of efficiency 40 and unbreaking 40 and fortune 40 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 6 of player with diamond pickaxe of efficiency 60 and unbreaking 60 and fortune 35 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 7 of player with diamond pickaxe of efficiency 75 and unbreaking 100 and fortune 50 named "&9&lCRATE &f&lPICAKXE" to close
+		format slot 8 of player with diamond pickaxe of efficiency 100 and unbreaking 125 and fortune 75 named "&9&lCRATE &f&lPICAKXE" to close
+		
+	if {heroCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&b&lHERO &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {heroCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 351:12 named "&f&l40 &b&lGEMS" to close
+		format slot 1 of player with glowing 351:12 named "&f&l60 &b&lGEMS" to close
+		format slot 2 of player with glowing 351:12 named "&f&l100 &b&lGEMS" to close
+		format slot 3 of player with glowing emerald block named "&a&l3 STACKS &8&l( &2&lEMERALD BLOCK&8&l )" to close
+		format slot 4 of player with glowing diamond block named "&b&l3 STACKS &8&l( &b&lDIAMOND BLOCK&8&l )" to close	
+		format slot 5 of player with glowing 64 384 to close
+		format slot 6 of player with glowing 1 ender pearl named "&c&lMEGA &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 7 of player with diamond pickaxe of efficiency 20 and unbreaking 10 and fortune 15 named "&b&lHERO &f&lPICAKXE" to close	
+		format slot 8 of player with glowing 122 named "&A&lPENGE &f&lBOX" with lore "||&b&lPlacere&7 for at bruge!||||&a&lMONEY &f&lBOX&7 indholder mellem||&c&l500K &8- &a&l1M||||&a&l* NORMAL &f&lBOX" to close
+		
+	
+	if {EXCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&5EX &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {EXCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 351:12 named "&f&l120 &b&lGEMS" to close
+		format slot 1 of player with glowing 351:12 named "&f&l180 &b&lGEMS" to close
+		format slot 2 of player with glowing 351:12 named "&f&l300 &b&lGEMS" to close		
+		format slot 3 of player with glowing beacon to close
+		format slot 4 of player with glowing 5 ender pearl named "&c&lMEGA &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 5 of player with 1 diamond pickaxe of efficiency 45 and unbreaking 30 and fortune 35 named "&5&lEX &f&lPICKAXE" to close
+		format slot 6 of player with glowing emerald block named "&a&lHALV INVENTORY &8&l( &2&lEMERALD BLOCK&8&l )" to close
+		format slot 7 of player with glowing diamond block named "&b&lHALV INVENTORY &8&l( &b&lDIAMOND BLOCK&8&l )" to close
+		format slot 8 of player with 1 diamond helmet of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lHElMET" to close
+		format slot 9 of player with 1 diamond chestplate of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lCHESTPLATE" to close
+		format slot 10 of player with 1 diamond leggings of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lLEGGINGS" to close
+		format slot 11 of player with 1 diamond boots of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lBOOTS" to close		
+
+	if {EXplusCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&5&lEX&f&lPLUS &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {EXplusCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 351:12 named "&f&l200 &b&lGEMS" to close
+		format slot 1 of player with glowing 351:12 named "&f&l350 &b&lGEMS" to close
+		format slot 2 of player with glowing 351:12 named "&f&l500 &b&lGEMS" to close		
+		format slot 3 of player with glowing beacon to close
+		format slot 4 of player with glowing 8 ender pearl named "&c&lMEGA &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 5 of player with 1 diamond pickaxe of efficiency 65 and unbreaking 40 and fortune 45 named "&5&lEX&f&lPLUS PICKAXE" to close
+		format slot 6 of player with glowing emerald block named "&a&lFULD INVENTORY &8&l( &2&lEMERALD BLOCK&8&l )" to close
+		format slot 7 of player with glowing diamond block named "&b&lFULD INVENTORY &8&l( &b&lDIAMOND BLOCK&8&l )" to close
+		format slot 8 of player with 1 diamond helmet of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lHELMET" to close
+		format slot 9 of player with 1 diamond chestplate of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lCHESTPLATE" to close
+		format slot 10 of player with 1 diamond leggings of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lLEGGINGS" to close
+		format slot 11 of player with 1 diamond boots of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lBOOTS" to close	
+		format slot 12 of player with 1 diamond helmet of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lHELMET" to close
+		format slot 13 of player with 1 diamond chestplate of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lCHESTPLATE" to close
+		format slot 14 of player with 1 diamond leggings of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lLEGGINGS" to close
+		format slot 15 of player with 1 diamond boots of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lBOOTS" to close
+		format slot 16 of player with diamond axe of sharpness 30 and unbreaking 10 and fire aspect 1 and efficiency 25 named "&b&lGOD&f&l AXE" to close
+		format slot 17 of player with diamond sword of sharpness 35 and unbreaking 10 and fire aspect 2 named "&b&lGOD&f&l SWORD" to close
+	if {eliteCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&c&lELITE &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {eliteCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 351:12 named "&f&l80 &b&lGEMS" to close
+		format slot 1 of player with glowing 351:12 named "&f&l120 &b&lGEMS" to close
+		format slot 2 of player with glowing 351:12 named "&f&l200 &b&lGEMS" to close		
+		format slot 3 of player with glowing beacon to close
+		format slot 4 of player with glowing 2 ender pearl named "&c&lMEGA &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 5 of player with 1 diamond pickaxe of efficiency 35 and unbreaking 25 and fortune 25 named "&c&lELITE &f&lPICKAXE" to close
+		format slot 6 of player with glowing emerald block named "&a&l10 STACKS &8&l( &2&lEMERALD BLOCK&8&l )" to close
+		format slot 7 of player with glowing diamond block named "&b&l10 STACKS &8&l( &b&lDIAMOND BLOCK&8&l )" to close
+		format slot 8 of player with 1 iron helmet of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lHElMET" to close
+		format slot 9 of player with 1 iron chestplate of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lCHESTPLATE" to close
+		format slot 10 of player with 1 iron leggings of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lLEGGINGS" to close
+		format slot 11 of player with 1 iron boots of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lBOOTS" to close
+	if {dropCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&e&lDROP &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {dropCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 351:12 named "&f&l150 &b&lGEMS" to close
+		format slot 1 of player with glowing 351:12 named "&f&l300&b&l GEMS" to close
+		format slot 2 of player with glowing 351:14 named "&e&l/god" to close
+		format slot 3 of player with glowing 351:1 named "&c&l/fly" to close
+		format slot 4 of player with glowing chest named "&a&lCHESTSELL" to close
+		format slot 5 of player with glowing 122 named "&A&lPENGE &f&lBOX" with lore "||&b&lPlacere&7 for at bruge!||||&a&lMONEY &f&lBOX&7 indholder mellem||&c&l500K &8- &a&l1M||||&a&l* NORMAL &f&lBOX" to close
+		format slot 6 of player with glowing ender pearl named "&c&l/kit &f&lbombe" with lore "||&8&l(&c&l!&8&l) &7Engangs kit &8&l(&c&l!&8&l)||" to close
+		format slot 7 of player with glowing 373:8265 to close
+		format slot 8 of player with glowing beacon to close
+		format slot 9 of player with glowing 130 to close
+		format slot 10 of player with diamond pickaxe of efficiency 35 and unbreaking 25 and fortune 30 named "&e&lDROP &f&lPICKAXE" to close
+		format slot 11 of player with diamond axe of efficiency 25 and sharpness 25 and unbreaking 30 and fortune 25 named "&e&lDROP&f&l AXE" to close
+		format slot 12 of player with diamond sword of sharpness 30 and unbreaking 30 and fire aspect 2 named "&e&lDROP &f&lSWORD" to close
+		
+	
+	if {rewardCrate} is location of block:
+		cancel event
+		wait 2 ticks
+		open chest with 2 rows named "&c&lREWARD &f&lCRATE" to player
+		play "CLICK" to player at volume 2
+		show 8 "HEART" particles at location of {rewardCrate} for player offset by 0.4, 0.5, 0.4
+		format slot 0 of player with glowing 3 ender pearl named "&c&lLILLE &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 1 of player with glowing 3 ender pearl named "&c&lMELLEM &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 2 of player with glowing 2 ender pearl named "&c&lSTOR &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 3 of player with glowing 1 ender pearl named "&c&lMEGA &f&lBOMB" with lore "||&a&l* HØJREKLIK&7 for at bruge!" to close
+		format slot 4 of player with glowing 351:12 named "&f&l75 &b&lGEMS" to close
+		format slot 5 of player with glowing 351:12 named "&f&l150 &b&lGEMS" to close
+		format slot 6 of player with glowing 351:12 named "&f&l300&b&l GEMS" to close
+		format slot 7 of player with glowing 351:9 named "&d&l/event"  to close
+		format slot 8 of player with glowing 351:14 named "&e&l/god" to close
+		format slot 9 of player with glowing 351:1 named "&c&l/fly" to close
+		format slot 10 of player with glowing 351:9 named "&d&l/partikler" to close
+		format slot 11 of player with 64 384 to close
+		format slot 13 of player with glowing emerald block named "&a&lFULD INVENTORY &8&l( &2&lEMERALD BLOCK&8&l )" to close
+		format slot 12 of player with glowing 373:8265 to close
+		format slot 14 of player with glowing 130 to close
+		format slot 15 of player with glowing beacon to close
+		format slot 16 of player with glowing tripwire hook named "&a&l/hat" to close
+		format slot 17 of player with diamond pickaxe of efficiency 80 and unbreaking 25 and fortune 30 named "&c&lREWARD &f&lPICAKXE" to close
+		
+on rightclick on chest:
+	if {pickaxeCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&9&lPICKAXE &f&lKEY":
+			launch flickering ball firework colored blue and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {pickaxeCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&9&lPICKAXE &f&lKEY" from player's inventory
+			chance of 0.01%:
+				give player 1 diamond pickaxe of efficiency 100 and unbreaking 125 and fortune 75 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 0.05%:
+				give player 1 diamond pickaxe of efficiency 75 and unbreaking 100 and fortune 50 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 0.1%:
+				give player 1 diamond pickaxe of efficiency 60 and unbreaking 60 and fortune 35 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 0.2%:
+				give player 1 diamond pickaxe of efficiency 40 and unbreaking 40 and fortune 40 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 2%:
+				give player 1 diamond pickaxe of efficiency 35 and unbreaking 35 and fortune 35 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 20%:
+				give player 1 diamond pickaxe of efficiency 20 and unbreaking 20 and fortune 20 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 40%:
+				give player 1 diamond pickaxe of efficiency 20 and unbreaking 10 and fortune 15 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			chance of 60%:
+				give player 1 diamond pickaxe of efficiency 13 and unbreaking 10 and fortune 13 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+			else:
+				give player 1 diamond pickaxe of efficiency 10 and unbreaking 10 and fortune 10 named "&9&lCRATE &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &9&lCRATE &f&lPICKAXE"
+				stop
+				
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &9&lPICKAXE &f&lKEY"
+	if {dropCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&e&lDROP &f&lKEY":
+			launch flickering ball firework colored yellow and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {dropCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&e&lDROP &f&lKEY" from player's inventory
+			chance of 0.5%:
+				give player 1 diamond sword of sharpness 30 and unbreaking 30 and fire aspect 2 named "&e&lDROP &f&lSWORD"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &e&lDROP &f&lSWORD"
+				stop
+			chance of 1%:
+				give player 1 diamond axe of efficiency 25 and sharpness 25 and unbreaking 30 and fortune 25 named "&e&lDROP&f&l AXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &e&lDROP&f&l AXE"
+				stop
+			chance of 3%:
+				give player 1 diamond pickaxe of efficiency 35 and unbreaking 25 and fortune 30 named "&e&lDROP &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &e&lDROP&f&l PICKAXE"
+				stop
+			chance of 3%:
+				add 1 beacon to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lBEACON"
+				stop
+			chance of 3.5%:
+				EXecute console command "/pEX user %player% add rank.chestsell" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &a&lCHEST &F&lSELL"
+				stop
+			chance of 3.8%:
+				EXecute console command "/pEX user %player% add rank.god" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &e&l/god"
+				stop
+			chance of 7%:
+				EXecute console command "/EXbox penge1 give %player%"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lPENGE&f&l BOX"
+				stop
+			chance of 4.2%:
+				EXecute console command "/pEX user %player% add rank.fly"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &c&l/fly"
+				stop
+			chance of 0%: #15.5%:
+				give player 1 chain helmet of protection 50 and unbreaking 100 and thorns 4 named "&c&lBOMBE &f&lHJELM"
+				EXecute console command "/bomb give %player% lille 8"
+				EXecute console command "/bomb give %player% mellem 5"
+				EXecute console command "/bomb give %player% stor 2"
+				EXecute console command "/bomb give %player% mega 1"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&lkit &c&lbombe&8&l (&7&o Engangs Kit&8&l )"
+				stop
+			chance of 20%:
+				add 300 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l300x &b&lGEMS"
+				stop
+			chance of 25%:
+				add 150 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l150x &b&lGEMS"
+				stop
+			chance of 30%:
+				add 1 373:8265 to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lStreght Potion"
+				stop				
+			else:
+				add 1 130 to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &5&lEnderchest"
+				stop
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &e&lDROP &f&lKEY"
+	if {heroCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&b&lHERO &f&lKEY":
+			launch flickering ball firework colored blue and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {heroCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&b&lHERO &f&lKEY" from player's inventory
+			chance of 0.01%:
+				EXecute console command "/EXbox penge1 give %player%" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lPENGE &f&lBOX"
+				stop
+			chance of 1%:
+				give player 1 diamond pickaxe of efficiency 20 and unbreaking 20 and fortune 20 named "&b&lHERO &f&lPICKAXE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lHERO &f&lPICKAXE"
+				stop
+			chance of 0%:#5:
+				EXecute console command "/bomb give %player% mega 1"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &c&lMEGA BOMB"
+				stop
+			chance of 13%:
+				add 128 384 to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l128x &a&lEXP BOTTLES"
+				stop
+			chance of 25%:
+				add 192 emerald block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l192x &a&lEMERALD BLOCK"
+				stop
+			chance of 37%:
+				add 192 diamond block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l192x &b&lDIAMOND BLOCK"
+				stop
+			chance of 15%:
+				add 100 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l100x &b&lGEMS"
+				stop
+			chance of 20%:
+				add 60 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l60x &b&lGEMS"
+				stop
+			else:
+				add 40 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l40x &b&lGEMS"
+				stop
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &b&lHERO &f&lKEY"
+			
+			
+	if {eliteCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&c&lELITE &f&lKEY":
+			launch flickering ball firework colored red and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {eliteCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&c&lELITE &f&lKEY" from player's inventory
+			chance of 0.1%:
+				EXecute console command "/EXbox penge1 give %player%" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lPENGE &f&lBOX"
+				stop
+			chance of 2%:
+				give player 1 diamond pickaxe of efficiency 35 and unbreaking 25 and fortune 25 named "&c&lELITE &f&lPICKAXE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &c&lELITE &f&lPICKAXE"
+				stop
+			chance of 0%:#8%:
+				EXecute console command "/bomb give %player% mega 2"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l2x &c&lMEGA BOMB"
+				stop
+			chance of 15%:
+				add 256 384 to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l256x &a&lEXP BOTTLES"
+				stop
+			chance of 5%:
+				add 1 beacon to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lBEACON"
+				stop
+			chance of 25.5%:
+				add 640 emerald block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l640x &a&lEMERALD BLOCK"
+				stop
+			chance of 37.5%:
+				add 640 diamond block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l640x &b&lDIAMOND BLOCK"
+				stop
+			chance of 20%:
+				add 200 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l200x &b&lGEMS"
+				stop
+			chance of 25%:
+				add 120 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l120x &b&lGEMS"
+				stop
+			chance of 13%:
+				give player 1 iron helmet of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lHElMET" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lHElMET"
+				stop
+			chance of 13%:
+				give player 1 iron chestplate of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lCHESTPLATE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lCHESTPLATE"
+				stop
+			chance of 13%:
+				give player 1 iron leggings of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lLEGGINGS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lLEGGINGS"
+				stop
+			chance of 13%:
+				give player 1 iron boots of protection 15 and unbreaking 20 and thorns 2 named "&4&lOP &f&lBOOTS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lBOOTS"
+				stop	
+			else:
+				add 80 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l80x &b&lGEMS"
+				stop
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &c&lELITE &f&lKEY"
+	if {EXCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&5&lEX &f&lKEY":
+			launch flickering ball firework colored purple and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {EXCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&5&lEX &f&lKEY" from player's inventory 
+			chance of 2.5%:
+				EXecute console command "/EXbox penge1 give %player%" 
+				EXecute console command "/EXbox penge1 give %player%"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l2x &a&lPENGE &f&lBOX"
+				stop
+			chance of 3%:
+				add 1 beacon to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lBEACON"
+				stop
+			chance of 5%:
+				give player 1 diamond pickaxe of efficiency 45 and unbreaking 30 and fortune 35 named "&5&lEX &f&lPICKAXE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &5&lEX &f&lPICKAXE"
+				stop
+			chance of 0%:#7%:
+				EXecute console command "/bomb give %player% mega 5"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l5x &c&lMEGA BOMB"
+				stop
+			chance of 13%:
+				add 384 384 to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l384x &a&lEXP BOTTLES"
+				stop
+			chance of 25%:
+				add 1152 emerald block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1.152x &a&lEMERALD BLOCK"
+				stop
+			chance of 37%:
+				add 1152 diamond block to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1.152x &b&lDIAMOND BLOCK"
+				stop
+			chance of 25%:
+				add 300 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l300x &b&lGEMS"
+				stop
+			chance of 35%:
+				add 180 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l180x &b&lGEMS"
+				stop
+			chance of 13%:
+				give player 1 diamond helmet of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lHElMET" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lHElMET"
+				stop
+			chance of 13%:
+				give player 1 diamond chestplate of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lCHESTPLATE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lCHESTPLATE"
+				stop
+			chance of 13%:
+				give player 1 diamond leggings of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lLEGGINGS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lLEGGINGS"
+				stop
+			chance of 13%:
+				give player 1 diamond boots of protection 25 and unbreaking 20 and thorns 3 named "&4&lOP &f&lBOOTS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lOP &f&lBOOTS"
+				stop	
+			else:
+				add 120 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l120x &b&lGEMS"
+				stop
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &5&lEX &f&lKEY"
+	if {EXplusCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&5&lEX&f&lPLUS KEY":
+			launch flickering ball firework colored purple and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {EXplusCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&5&lEX&f&lPLUS KEY" from player's inventory
+			chance of 3%:
+				give player 1 diamond sword of sharpness 35 and unbreaking 10 and fire aspect 2 named "&b&lGOD&f&l SWORD"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lGOD&f&l SWORD"
+				stop
+			chance of 3%:
+				give player 1 diamond axe of sharpness 30 and unbreaking 10 and fire aspect 1 and efficiency 25 named "&b&lGOD&f&l AXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lGOD&f&l AXE"
+				stop
+			chance of 5.5%:
+				add 3000 emerald block to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &a&lFULD INVENTORY &8&l( &2&lEMERALD BLOCKS &8&l)"
+				stop
+			chance of 7%:
+				add 3000 diamond block to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &b&lFULD INVENTORY &8&l( &b&lDIAMOND BLOCKS &8&l)"
+				stop
+			chance of 7%:
+				give player 1 diamond pickaxe of efficiency 65 and unbreaking 40 and fortune 45 named "&5&lEX&f&lPLUS PICKAXE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &5&lEX&f&lPLUS PICKAXE"
+				stop
+			chance of 0%:#15%:
+				EXecute console command "/bomb give %player% mega 8"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l8x &c&lMEGA BOMB"
+				stop
+			chance of 30%:
+				add 1 beacon to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &b&lBEACON"
+				stop
+			chance of 25%:
+				add 500 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l500x &b&lGEMS"
+				stop
+			chance of 35%:
+				add 350 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l350x &b&lGEMS"
+				stop
+			chance of 15%:
+				give player 1 diamond helmet of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lHElMET" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lFIFA &f&lHElMET"
+				stop
+			chance of 15%:
+				give player 1 diamond chestplate of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lCHESTPLATE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lFIFA &f&lCHESTPLATE"
+				stop
+			chance of 15%:
+				give player 1 diamond leggings of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lLEGGINGS"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lFIFA &f&lLEGGINGS"
+				stop
+			chance of 15%:
+				give player 1 diamond boots of protection 50 and unbreaking 50 and thorns 5 named "&a&lFIFA &f&lBOOTS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &a&lFIFA &f&lBOOTS"
+				stop
+			chance of 15%:
+				give player 1 diamond helmet of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lHElMET" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lHAZWEY &f&lHElMET"
+				stop
+			chance of 15%:
+				give player 1 diamond chestplate of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lCHESTPLATE" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lHAZWEY &f&lCHESTPLATE"
+				stop
+			chance of 15%:
+				give player 1 diamond leggings of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lLEGGINGS"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lHAZWEY &f&lLEGGINGS"
+				stop
+			chance of 15%:
+				give player 1 diamond boots of protection 50 and unbreaking 50 and thorns 5 named "&4&lHAZWEY &f&lBOOTS" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lHAZWEY &f&lBOOTS"
+				stop				
+			else:
+				add 200 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l200x &b&lGEMS"
+				stop
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &5&lEX&f&lPLUS KEY"
+	if {rewardCrate} is location of block:
+		cancel event
+		if player's held item is glowing name tag named "&c&lREWARD &f&lKEY":
+			launch flickering ball firework colored red and white at location of event-block timed 0
+			show 8 "CLOUD" particles at location of {rewardCrate} for player offset by 0.4, 0.5, 0.4
+			play "CLICK" to player at volume 2
+			remove 1 of glowing name tag named "&c&lREWARD &f&lKEY" from player's inventory 
+			chance of 0.02%:
+				give player 1 diamond pickaxe of efficiency 80 and unbreaking 25 and fortune 30 named "&c&lREWARD &f&lPICKAXE"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &c&lREWARD &f&lPICKAXE"
+				stop
+			chance of 1%:
+				add 1 130 to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &f&l1x &5&lEnderchest"
+				stop
+			chance of 3%:
+				add 1 373:8265 to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &4&lStrenght Potion"
+				stop
+			chance of 0.1%:
+				EXecute console command "/pEX user %player% add playerparticles.style.*" 
+				EXecute console command "/pEX user %player% add playerparticles.effect.*" 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &d&l/partikler"
+				stop
+			chance of 0.01%:
+				EXecute console command "/pEX user %player% add rank.fly"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &c&l/fly"
+				stop
+			chance of 0.01%:
+				EXecute console command "/pEX user %player% add rank.eventstart"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &d&l/event"
+				stop
+			chance of 10%:
+				add 3000 emerald block to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &a&lFULD INVENTORY &8&l(  &2&lEMERALD BLOCKS &8&l)"
+				stop
+			chance of 5%:
+				add 64 384 to player's inventory 
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l64x &a&lEXP BOTTLE"
+				stop
+			chance of 0.01%:
+				EXecute console command "/pEX user %player% add rank.god"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &e&l/god"
+				stop
+			chance of 0.1%:
+				EXecute console command "/pEX user %player% add rank.hat"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &a&l/hat"
+				stop
+			chance of 20%:
+				add 300 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l300x &b&lGEMS"
+				stop
+			chance of 25%:
+				add 150 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l150x &b&lGEMS"
+				stop
+			chance of 25%:
+				add 75 to {gems::%player%}
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l75x &b&lGEMS"
+				stop		
+			chance of 0%: #25:
+				EXecute console command "/bomb give %player% mega 1"	
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &c&lMEGA BOMB"
+				stop					
+			chance of 0%: #25:
+				EXecute console command "/bomb give %player% stor 2"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l2x &c&lSTOR BOMB"
+				stop				
+			chance of 0%: #25:
+				EXecute console command "/bomb give %player% mellem 3"
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l3x &c&lMELLEM BOMB"
+				stop				
+			chance of 0%: #25:
+				EXecute console command "/bomb give %player% lille 3"	
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l3x &c&lLILLE BOMB"
+				stop				
+			chance of 0%: #25
+				EXecute console command "/bomb give %player% lille 3"	
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l3x &c&lLILLE BOMB"
+				stop	
+			else:
+				add 1 beacon to player's inventory
+				send "&8&l| &d&lCRATES &8&l| &7Du vandt&8 - &f&l1x &B&lBEACON"
+				stop
+				
+				
+				
+				
+			
+				
+				
+		else:
+			send "&8&l| &d&lCRATES &8&l| &7Du har ikke en &c&lREWARD &f&lKEY"
+				
+				
+		
+
+command /crate [<tEXt>] [<player>] [<tEXt>]:
+	permission: crate.admin
+	permission message: &8[ &e&lCRATES &8] &7Du har ikke adgang!
+	trigger:
+		if arg-1 is not set:
+			send "&8&m-----------------&8&l ( &d&lCRATE &f&lGIVE &8&L) &8&m------------------"
+			send " "
+			send "&8&l| &d&lCRATES &8&l| &71. &d/crate give (spiller) (key)&8 - &7For at give dig selv en key!"
+			send " "
+			send "&8&m-----------------&8&l ( &d&lCRATE &f&lGIVE &8&L) &8&m------------------"
+		if arg-1 is "give":
+			if arg-2 is not set:
+				send "&8&m-----------------&8&l ( &d&lCRATE &f&lLISTE &8&L) &8&m------------------"
+				send " "
+				send "&8&l| &d&lCRATES &8&l| &71. &9&lPICKAXE &8- &7For at få en &9&lPICKAXE &f&lKEY"
+				send "&8&l| &d&lCRATES &8&l| &72. &b&lHERO &8- &7For at få en &b&lHERO &f&lKEY"
+				send "&8&l| &d&lCRATES &8&l| &73. &c&lELITE &8- &7For at få en &c&lELITE &f&lKEY"
+				send "&8&l| &d&lCRATES &8&l| &74. &5&lEX &8- &7For at få en &5&lEX &f&lKEY"
+				send "&8&l| &d&lCRATES &8&l| &75. &5&lEX&f&lPLUS &8- &7For at få en &5&lEX&f&lPLUS KEY"
+				send "&8&l| &d&lCRATES &8&l| &76. &e&lDROP &8- &7For at få en &e&lDROP &f&lKEY"
+				send "&8&l| &d&lCRATES &8&l| &76. &c&lREWARD &8- &7For at få en &c&lREWARD &f&lKEY"
+				send " "
+				send "&8&m-----------------&8&l ( &d&lCRATE &f&lLISTE &8&L) &8&m------------------"
+				stop
+		if arg-2 is "pickaxe":
+			set {pickaxeCrate} to target block
+			send "&8&l| &d&lCRATES &8&l| &9&lPICKAXE &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "give":
+			if arg-2 is set:
+				if arg-3 is "pickaxe":
+					give arg-2 1 of glowing name tag named "&9&lPICKAXE &f&lKEY"
+		if arg-1 is "give":					
+			if arg-2 is set:
+				if arg-3 is "drop":
+					give arg-2 1 of glowing name tag named "&e&lDROP &f&lKEY"
+		if arg-1 is "give":
+			if arg-2 is set:
+				if arg-3 is "hero":
+					give arg-2 1 of glowing name tag named "&b&lHERO &f&lKEY"
+		if arg-1 is "give":
+			if arg-2 is set:
+				if arg-3 is "elite":
+					give arg-2 1 of glowing name tag named "&c&lELITE &f&lKEY"
+		if arg-1 is "give":
+			if arg-2 is set:
+				if arg-3 is "EX":
+					give arg-2 1 of glowing name tag named "&5&lEX &f&lKEY"
+
+			if arg-2 is set:
+				if arg-3 is "EXplus":
+					give arg-2 1 of glowing name tag named "&5&lEX&f&lPLUS KEY"
+			if arg-2 is set:
+				if arg-3 is "reward":
+					give arg-2 1 of glowing name tag named "&c&lREWARD &f&lKEY"
+command /cratesetup [<tEXt>]:
+	permission: *
+	permission message: &8[ &e&lCRATES &8] &7Du har ikke adgang!
+	trigger:
+		if arg-1 is not set:
+			send "&8&m-----------------&8&l ( &d&lCRATE &f&lSETUP &8&L) &8&m------------------"
+			send " "
+			send "&8&l| &d&lCRATES &8&l| &71. &d/cratesetup (crate)&8 - &7For at setuppe crates!"
+			send "&8&l| &d&lCRATES &8&l| &72. &d/cratesetup DeleteAll&8 - &7For at fjerne alle locationer!"
+			send " "
+			send "&8&m-----------------&8&l ( &d&lCRATE &f&lSETUP &8&L) &8&m------------------"
+			
+		if arg-1 is "pickaxe":
+			set {pickaxeCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &9&lPICKAXE &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "drop":
+			set {dropCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &e&lDROP &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "hero":
+			set {heroCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &b&lHERO &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "elite":
+			set {eliteCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &c&lELITE &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "EX":
+			set {EXCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &5&lEX &F&lCRATE&8 - &7Blev sat!"
+		if arg-1 is "EXplus":
+			set {EXplusCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &5&lEX&F&lPLUS CRATE&8 - &7Blev sat!"
+		if arg-1 is "reward":
+			set {rewardCrate} to location of target block
+			send "&8&l| &d&lCRATES &8&l| &c&lREWARD &f&lCRATE&8 - &7Blev sat!"
+			
+		
+		if arg-1 is "deleteall":
+			delete {pickaxeCrate}
+			delete {dropCrate}
+			delete {heroCrate}
+			delete {eliteCrate}
+			delete {EXCrate}
+			delete {EXplusCrate}
+			delete {rewardCrate}

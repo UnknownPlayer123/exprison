@@ -1,0 +1,45 @@
+options:
+	npcname: &aVeksel Viktor
+
+	key1: &5&lEX&f&lPLUS KEY
+	key2: &5&lEX &f&lKEY
+	key3: &b&lHERO &f&lKEY
+	key4: &c&lELITE &f&lKEY
+	
+
+
+on join:
+	if player is "FuldBot", "minecraftpvpr420", "Oliiiver", "tobiasknage" or "PandaPeter":
+		make console execute command "vanish %player% on"
+
+#on join:
+#	if player is "FuldBot", "minceraftpvpr420" or "Oliiver":
+#		wait 1 second
+#		execute console command "litebans:kick %player% -s"
+
+
+
+on npc right click:
+	if npc is named "{@npcname}":
+		loop all items in player's inventory:
+			if loop-item is name tag named "{@key1}":
+				remove 1 name tag named "{@key1}" from player's inventory
+				give player 1 of glowing name tag named "{@key1}"
+
+			else if loop-item is name tag named "{@key2}":
+				remove 1 name tag named "{@key2}" from player's inventory
+				give player 1 of glowing name tag named "{@key2}"
+
+			else if loop-item is name tag named "{@key3}":
+				remove 1 name tag named "{@key3}" from player's inventory
+				give player 1 of glowing name tag named "{@key3}"
+
+			else if loop-item is name tag named "{@key4}":
+				remove 1 name tag named "{@key4}" from player's inventory
+				give player 1 of glowing name tag named "{@key4}"
+
+			else:
+				send "&8&l| &a&lVeksel Viktor &8&l| &7Hov? Du har vist intet til mig."
+				stop
+
+

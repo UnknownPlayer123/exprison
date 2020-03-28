@@ -1,0 +1,98 @@
+every 2 second:
+	if {koth.start} is false:
+		set {_klokken} to "%now%"
+		if {_klokken} contains "6:30 PM":
+			execute console command "koth start"
+
+	if {koth.start} is true:
+		loop all players:
+			loop-player is in "eventverden"
+			set action bar of loop-player to "&c&lKOTH &fer nu åben &8&l( &c&l%{koth.timer}% Min &8&l)"	
+
+command /tid:
+	permission: *
+	trigger:
+		set {_klokken} to "%now%"
+		message "&8&l| &b&lTID &8&L| &7%{_klokken}%"
+
+on rightclick on chest:
+	player is in "opprison"
+	if "%region at event-block%" contains "bcmine":
+		cancel event
+		set event-block to air
+		wait 3 tick
+		launch flickering ball firework colored blue and white at event-block's location timed 0
+		chance of 35%%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7men fandt intet"
+			stop
+		
+		chance of 2%:
+			add 10000000 to player's balance
+			broadcast ""
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &a&l&n$10.000.000"
+			broadcast ""
+			set event-block to air
+			stop
+
+		chance of 10%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &d&l300x &b&lDIAMOND BLOCK"
+			give player 300 diamond block 
+			set event-block to air
+			stop	
+
+		chance of 10%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &d&l550x &a&lEMERALD BLOCK"
+			give player 550 emerald block 
+			set event-block to air
+			stop
+
+		chance of 20%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &c&lREWARD &F&LKEY"
+			execute console command "/crate give %player% reward"
+			set event-block to air
+			stop
+
+		chance of 20%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &9&lPICKAXE &F&LKEY"
+			execute console command "/crate give %player% pickaxe"
+			set event-block to air
+			stop
+
+		chance of 10%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &a&l5 &7&lGEMS"
+			execute console command "/gems add %player% 5"
+			set event-block to air
+			stop
+
+		chance of 5%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &a&l10 &7&lGEMS"
+			add 10 to {Gems::%player%}
+			set event-block to air
+			stop
+
+		chance of 3%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &a&l15 &7&lGEMS"
+			add 15 to {Gems::%player%}
+			set event-block to air
+			stop
+
+		chance of 5%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &d&l1x &b&lHERO &f&lKEY"
+			execute console command "/crate give %player% hero"
+			set event-block to air
+			stop		
+			
+		chance of 4%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &d&l1x &c&lELITE &f&lKEY"
+			execute console command "/crate give %player% elite"
+			set event-block to air
+			stop
+			
+		chance of 3%:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7og fik &d&l1x &D&Lex &f&lKEY"
+			execute console command "/crate give %player% ex"
+			stop
+		else:
+			broadcast "&8&l| &b&lBC&F&LMINE &8&l| &a&l%player% &7åbnede en &b&lchest &7men fandt intet"
+			stop
+			

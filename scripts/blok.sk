@@ -1,0 +1,101 @@
+command /minecraft:me:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+command /minecraft:gamemode:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+command /minecraft:gm:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+command /minecraft:op:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+command /me:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+command /bukkit:help:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."				command /minecraft:tell:
+	permission: false
+	executable by: players
+	trigger:
+		message "Unknown command. Type ""/help"" for help."
+		
+		
+		
+		
+command /block:
+	permission: rank.blocks
+	permission message: &8&l| &c&LAUTOBLOCK &8&L| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:
+		if player's inventory contains coal or iron ingots or gold ingots or redstone or lapis or diamond or emerald or 406:
+			if player has enough space for coal or iron ingots or gold ingots or redstone or lapis or diamond or emerald or 406:
+
+				while player's inventory contains 9 263:
+					remove 9 263 from player's inventory
+					add 1 coal block to player's inventory
+					wait 0.1 tick 
+
+				while player's inventory contains 9 iron ingots:
+					remove 9 iron ingots from player's inventory
+					add 1 iron block to player's inventory
+					wait 0.1 tick 
+				
+				while player's inventory contains 9 gold ingots:
+					remove 9 gold ingots from player's inventory	
+					add 1 gold block to player's inventory
+					wait 0.1 tick 
+				
+				while player's inventory contains 9 redstone:
+					remove 9 redstone from player's inventory	
+					add 1 redstone block to player's inventory
+					wait 0.1 tick 
+
+
+				while player's inventory contains 9 lapis:
+					remove 9 lapis from player's inventory	
+					add 1 lapis block to player's inventory
+					wait 0.1 tick 
+
+
+				while player's inventory contains 9 diamond:
+					remove 9 diamond from player's inventory	
+					add 1 diamond block to player's inventory
+					wait 0.1 tick 
+
+
+				while player's inventory contains 9 emerald:
+					remove 9 emerald from player's inventory	
+					add 1 emerald block to player's inventory
+					wait 0.1 tick 
+
+
+				while player's inventory contains 4 406:
+					remove 4 406 from player's inventory	
+					add 1 quartz block to player's inventory
+					wait 0.1 tick  
+
+				play "ITEM_PICKUP" to player at volume 1		
+				message "&8&l| &b&LAUTOBLOCK &8&L| &7Du har lavede dine &b&litems &7om til &b&lblocks!"
+					
+				
+
+			else:
+				message "&8&l| &c&LAUTOBLOCK &8&L| &7Kræver mindst &c&l1 slot &7ledig i dit inventory!"
+				
+		
+		else:
+			message "&8&l| &c&LAUTOBLOCK &8&L| &7Du har &c&likke &7nogle items at lave til &c&lblocks!"
+			

@@ -1,0 +1,397 @@
+options:
+	p2:&8&l| &c&lSETTINGS &8&l| &7
+	p: &8&L| &b&lMINER &8&L|
+	
+command /spiller [<text>] [<text>]:
+	trigger:
+		if arg-1 is "til":
+			if arg 2 is set:
+				if player has permission "*":
+					loop all players:
+						set {spiller.%loop-player%} to true
+						reveal all players to loop-player
+					stop
+			set {spiller.%player%} to true
+			message "{@p} &7alle spiller i minerne er &a&lsynlig"
+			reveal all players to player
+		if arg-1 is "fra":
+			if arg 2 is set:
+				if player has permission "*":
+					loop all players:
+						set {spiller.%loop-player%} to false
+					stop
+			set {spiller.%player%} to false
+			message "{@p} &7alle spiller i minerne er &c&lusynlig"
+
+
+variables:
+	{spiller.%player%} = true
+					
+					
+on region enter:
+	if {spiller.%player%} is false:
+		if "%region at player%" contains "a1", "a2", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "bcmine" or "plotmines_":
+			hide all players from player
+		
+on region exit:
+	if {spiller.%player%} is false:
+		if "%region at player%" contains "a1", "a2", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "bcmine" or "plotmines_":
+			reveal all players to player
+	
+
+on disconnect:
+	set {spiller.%player%} to true
+	reveal all players to player
+
+ 
+
+
+
+command /settings:
+	trigger:
+		wait 1 tick
+		open chest with 5 rows named "&c&lSETTINGS &F&lMENU" to player
+		format slot 0 of player with white stained glass pane named "&f" to close
+		format slot 1 of player with white stained glass pane named "&f" to close
+		format slot 2 of player with white stained glass pane named "&f" to close
+		format slot 3 of player with white stained glass pane named "&f" to close
+		format slot 4 of player with white stained glass pane named "&f" to close
+		format slot 5 of player with white stained glass pane named "&f" to close
+		format slot 6 of player with white stained glass pane named "&f" to close
+		format slot 7 of player with white stained glass pane named "&f" to close
+		format slot 8 of player with white stained glass pane named "&f" to close
+	   
+		format slot 36 of player with red stained glass pane named "&f" to close
+		format slot 37 of player with red stained glass pane named "&f" to close
+		format slot 38 of player with red stained glass pane named "&f" to close
+		format slot 39 of player with red stained glass pane named "&f" to close
+		format slot 40 of player with red stained glass pane named "&f" to close
+		format slot 41 of player with red stained glass pane named "&f" to close
+		format slot 42 of player with red stained glass pane named "&f" to close
+		format slot 43 of player with red stained glass pane named "&f" to close
+		format slot 44 of player with red stained glass pane named "&f" to close
+		if {spiller.%player%} is true:
+			format slot 19 of player with shiny skull of ("%player%" parsed as an offline player) named "&c&lSKJUL &F&lSPILLERE" with lore "||&a&lKLIK HER&7 for at vælge||&7denne &c&lCUSTOM&7 setting til og fra." to close then run [make player execute command "/spiller fra"]
+		if {spiller.%player%} is false:
+			format slot 19 of player with shiny skull of ("%player%" parsed as an offline player) named "&c&lSKJUL &F&lSPILLERE" with lore "||&a&lKLIK HER&7 for at vælge||&7denne &c&lCUSTOM&7 setting til og fra." to close then run [make player execute command "/spiller til"]
+		format slot 21 of player with shiny chest named "&b&lCHEST&f&lSHOP" with lore "||&a&lKLIK HER&7 for at vælge||&7denne &c&lCUSTOM&7 setting til og fra." to close then run [make player execute command "/cstoggle"]
+		format slot 23 of player with shiny nether star named "&d&lSCORE&f&lBOARD" with lore "||&a&lKLIK HER&7 for at vælge||&7denne &c&lCUSTOM&7 setting til og fra." to close then run [make player execute command "/fb toggle"]
+		format slot 25 of player with shiny note block named "&c&lCUSTOM &F&lLYD" with lore "||&a&lKLIK HER&7 for at vælge||&7denne &c&lCUSTOM&7 setting til og fra." to close then run [make player execute command "/setlyd"]
+		
+	
+command /setlyd [<text>] [<text>]:
+	trigger:
+		if arg-1 is not set:
+			wait 3 tick
+			open chest with 5 rows named "&c&lSETTINGS &F&lMENU" to player
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+		   
+			format slot 21 of player with command block named "&c&lCOMMAND &f&lLYD" to close then run [execute player command "/setlyd command"]
+			
+			format slot 23 of player with chest named "&c&lMENU &f&lLYD" to close then run [execute player command "/setlyd inv"]
+		   
+			format slot 36 of player with red stained glass pane named "&f" to close
+			format slot 37 of player with red stained glass pane named "&f" to close
+			format slot 38 of player with red stained glass pane named "&f" to close
+			format slot 39 of player with red stained glass pane named "&f" to close
+			format slot 40 of player with red stained glass pane named "&f" to close
+			format slot 41 of player with red stained glass pane named "&f" to close
+			format slot 42 of player with red stained glass pane named "&f" to close
+			format slot 43 of player with red stained glass pane named "&f" to close
+			format slot 44 of player with red stained glass pane named "&f" to close
+		if arg-1 is "inv":
+			wait 3 ticks
+			open chest with 5 rows named "&c&lSETTINGS &F&lMENU" to player
+							
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+		   
+			format slot 21 of player with chest named "&c&lMENU &f&lÅBEN" to close then run [execute player command "/setlyd invopen"]
+			
+			format slot 23 of player with chest named "&c&lMENU &f&lLUK" to close then run [execute player command "/setlyd invclose"]			   
+		   
+			format slot 36 of player with red stained glass pane named "&f" to close
+			format slot 37 of player with red stained glass pane named "&f" to close
+			format slot 38 of player with red stained glass pane named "&f" to close
+			format slot 39 of player with red stained glass pane named "&f" to close
+			format slot 40 of player with red stained glass pane named "&f" to close
+			format slot 41 of player with red stained glass pane named "&f" to close
+			format slot 42 of player with red stained glass pane named "&f" to close
+			format slot 43 of player with red stained glass pane named "&f" to close
+			format slot 44 of player with red stained glass pane named "&f" to close
+		if arg-1 is "command":
+			if arg-2 is not set:
+				wait 3 ticks
+				open chest with 6 rows named "&c&lSETTINGS &F&lMENU" to player
+								
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+			   
+				format slot 19 of player with steak named "&c&lBURP" to close then run [execute player command "/setlyd command burp"]
+				format slot 20 of player with 320 named "&e&lEAT" to close then run [execute player command "/setlyd command eat"]
+				format slot 24 of player with chest named "&6&lCHEST &f&lOPEN" to close then run [execute player command "/setlyd command chest_open"]
+				format slot 25 of player with chest named "&6&lCHEST &f&lCLOSE" to close then run [execute player command "/setlyd command chest_close"]
+				format slot 23 of player with 143 named "&9&lCLICK" to close then run [execute player command "/setlyd command click"]
+				format slot 21 of player with glass named "&f&lGLASS" to close then run [execute player command "/setlyd command glass"]
+				format slot 22 of player with water bucket named "&3&lSPLASH" to close then run [execute player command "/setlyd command splash"]
+				
+				format slot 28 of player with 29 named "&2&lPISTON &f&lEXTEND" to close then run [execute player command "/setlyd command piston_extend"]
+				format slot 34 of player with note block named "&6&lNOTE &F&lPLING" to close then run [execute player command "/setlyd command notepling"]
+				format slot 33 of player with note block named "&6&lNOTE &f&lBASS" to close then run [execute player command "/setlyd command notebass"]
+				format slot 31 of player with arrow named "&c&lARROW &f&lSHOOT" to close then run [execute player command "/setlyd command arrow_shoot"]
+				format slot 30 of player with 384 named "&a&lLEVEL &f&lUP" to close then run [execute player command "/setlyd command lvlup"]
+				format slot 32 of player with arrow named "&c&lARROW &f&lHIT" to close then run [execute player command "/setlyd command arrow_hit"]
+				format slot 29 of player with 369 named "&e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT" to close then run [execute player command "/setlyd command blaze_hit"]	
+				format slot 49 of player with glowing 351:1 named "&c&lCLEAR &f&lLYD" to close then run [execute player command "/setlyd command fjern"]
+			   
+				format slot 45 of player with red stained glass pane named "&f" to close
+				format slot 46 of player with red stained glass pane named "&f" to close
+				format slot 47 of player with red stained glass pane named "&f" to close
+				format slot 48 of player with red stained glass pane named "&f" to close
+				format slot 50 of player with red stained glass pane named "&f" to close
+				format slot 51 of player with red stained glass pane named "&f" to close
+				format slot 52 of player with red stained glass pane named "&f" to close
+				format slot 53 of player with red stained glass pane named "&f" to close
+			if arg-2 is "burp":
+				set {command.lyd::%player%} to "BURP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lBURP&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "eat":
+				set {command.lyd::%player%} to "EAT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lEAT&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "CHEST_OPEN":
+				set {command.lyd::%player%} to "CHEST_OPEN"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lOPEN&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "CHEST_CLOSE":
+				set {command.lyd::%player%} to "CHEST_CLOSE"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lCLOSE&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "click":
+				set {command.lyd::%player%} to "CLICK"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &9&lCLICK&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "glass":
+				set {command.lyd::%player%} to "GLASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &f&lGLASS&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "splash":
+				set {command.lyd::%player%} to "SPLASH"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &3&lSPLASH&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			
+			
+			else if arg-2 is "PISTON_EXTEND":
+				set {command.lyd::%player%} to "PISTON_EXTEND"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &2&LPISTON &f&lEXTEND&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "notepling":
+				set {command.lyd::%player%} to "NOTE_PLING"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lPLING&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "notebass":
+				set {command.lyd::%player%} to "NOTE_BASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lBASS&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "arrow_shoot":
+				set {command.lyd::%player%} to "ARROW_SHOOT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW &F&lSHOOT&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "arrow_hit":
+				set {command.lyd::%player%} to "ARROW_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW&f&l HIT&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "LVLUP":
+				set {command.lyd::%player%} to "LEVEL_UP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &a&lLEVEL &f&lUP&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "blaze_hit":
+				set {command.lyd::%player%} to "BLAZE_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT&7 som din &8&l( &f&lCOMMAND &b&lLYD &8&l)"
+			else if arg-2 is "fjern":
+				delete {command.lyd::%player%}
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lCLEAREDE&7 din lyd. &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+				
+		if arg-1 is "invopen":
+			if arg-2 is not set:
+				wait 3 ticks
+				open chest with 6 rows named "&c&lSETTINGS &F&lMENU" to player
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+			   
+				format slot 19 of player with steak named "&c&lBURP" to close then run [execute player command "/setlyd invopen burp"]
+				format slot 20 of player with 320 named "&e&lEAT" to close then run [execute player command "/setlyd invopen eat"]
+				format slot 24 of player with chest named "&6&lCHEST &f&lOPEN" to close then run [execute player command "/setlyd invopen chest_open"]
+				format slot 25 of player with chest named "&6&lCHEST &f&lCLOSE" to close then run [execute player command "/setlyd invopen chest_close"]
+				format slot 23 of player with 143 named "&9&lCLICK" to close then run [execute player command "/setlyd invopen click"]
+				format slot 21 of player with glass named "&f&lGLASS" to close then run [execute player command "/setlyd invopen glass"]
+				format slot 22 of player with water bucket named "&3&lSPLASH" to close then run [execute player command "/setlyd invopen splash"]
+				
+				format slot 28 of player with 29 named "&2&lPISTON &f&lEXTEND" to close then run [execute player command "/setlyd invopen piston_extend"]
+				format slot 34 of player with note block named "&6&lNOTE &F&lPLING" to close then run [execute player command "/setlyd invopen notepling"]
+				format slot 33 of player with note block named "&6&lNOTE &f&lBASS" to close then run [execute player command "/setlyd invopen notebass"]
+				format slot 31 of player with arrow named "&c&lARROW &f&lSHOOT" to close then run [execute player command "/setlyd invopen arrow_shoot"]
+				format slot 30 of player with 384 named "&a&lLEVEL &f&lUP" to close then run [execute player command "/setlyd invopen lvlup"]
+				format slot 32 of player with arrow named "&c&lARROW &f&lHIT" to close then run [execute player command "/setlyd invopen arrow_hit"]
+				format slot 29 of player with 369 named "&e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT" to close then run [execute player command "/setlyd invopen blaze_hit"]			   
+				format slot 49 of player with glowing 351:1 named "&c&lCLEAR &f&lLYD" to close then run [execute player command "/setlyd invopen fjern"]
+				format slot 45 of player with red stained glass pane named "&f" to close
+				format slot 46 of player with red stained glass pane named "&f" to close
+				format slot 47 of player with red stained glass pane named "&f" to close
+				format slot 48 of player with red stained glass pane named "&f" to close
+				format slot 50 of player with red stained glass pane named "&f" to close
+				format slot 51 of player with red stained glass pane named "&f" to close
+				format slot 52 of player with red stained glass pane named "&f" to close
+				format slot 53 of player with red stained glass pane named "&f" to close
+			if arg-2 is "burp":
+				set {inventoryopen.lyd::%player%} to "BURP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lBURP&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "eat":
+				set {inventoryopen.lyd::%player%} to "EAT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lEAT&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "CHEST_OPEN":
+				set {inventoryopen.lyd::%player%} to "CHEST_OPEN"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lOPEN&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "CHEST_CLOSE":
+				set {inventoryopen.lyd::%player%} to "CHEST_CLOSE"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lCLOSE&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "click":
+				set {inventoryopen.lyd::%player%} to "CLICK"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &9&lCLICK&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "glass":
+				set {inventoryopen.lyd::%player%} to "GLASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &f&lGLASS&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "splash":
+				set {inventoryopen.lyd::%player%} to "SPLASH"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &3&lSPLASH&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			
+			
+			else if arg-2 is "PISTON_EXTEND":
+				set {inventoryopen.lyd::%player%} to "PISTON_EXTEND"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &2&LPISTON &f&lEXTEND&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "notepling":
+				set {inventoryopen.lyd::%player%} to "NOTE_PLING"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lPLING&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "notebass":
+				set {inventoryopen.lyd::%player%} to "NOTE_BASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lBASS&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "arrow_shoot":
+				set {inventoryopen.lyd::%player%} to "ARROW_SHOOT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW &F&lSHOOT&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "arrow_hit":
+				set {inventoryopen.lyd::%player%} to "ARROW_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW&f&l HIT&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "LVLUP":
+				set {inventoryopen.lyd::%player%} to "LEVEL_UP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &a&lLEVEL &f&lUP&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "blaze_hit":
+				set {inventoryopen.lyd::%player%} to "BLAZE_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT&7 som din &8&l( &f&lINVENTORY &a&lOPEN &8&l)"
+			else if arg-2 is "fjern":
+				delete {inventoryopen.lyd::%player%}
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lCLEAREDE&7 din lyd. &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+				
+		if arg-1 is "invclose":
+			if arg-2 is not set: 
+				wait 3 ticks
+				open chest with 6 rows named "&c&lSETTINGS &F&lMENU" to player
+				format slot 0 of player with white stained glass pane named "&f" to close
+				format slot 1 of player with white stained glass pane named "&f" to close
+				format slot 2 of player with white stained glass pane named "&f" to close
+				format slot 3 of player with white stained glass pane named "&f" to close
+				format slot 4 of player with white stained glass pane named "&f" to close
+				format slot 5 of player with white stained glass pane named "&f" to close
+				format slot 6 of player with white stained glass pane named "&f" to close
+				format slot 7 of player with white stained glass pane named "&f" to close
+				format slot 8 of player with white stained glass pane named "&f" to close
+			   
+				format slot 19 of player with steak named "&c&lBURP" to close then run [execute player command "/setlyd invclose burp"]
+				format slot 20 of player with 320 named "&e&lEAT" to close then run [execute player command "/setlyd invclose eat"]
+				format slot 24 of player with chest named "&6&lCHEST &f&lOPEN" to close then run [execute player command "/setlyd invclose chest_open"]
+				format slot 25 of player with chest named "&6&lCHEST &f&lCLOSE" to close then run [execute player command "/setlyd invclose chest_close"]
+				format slot 23 of player with 143 named "&9&lCLICK" to close then run [execute player command "/setlyd invclose click"]
+				format slot 21 of player with glass named "&f&lGLASS" to close then run [execute player command "/setlyd invclose glass"]
+				format slot 22 of player with water bucket named "&3&lSPLASH" to close then run [execute player command "/setlyd invclose splash"]
+				
+				format slot 28 of player with 29 named "&2&lPISTON &f&lEXTEND" to close then run [execute player command "/setlyd invclose piston_extend"]
+				format slot 34 of player with note block named "&6&lNOTE &F&lPLING" to close then run [execute player command "/setlyd invclose notepling"]
+				format slot 33 of player with note block named "&6&lNOTE &f&lBASS" to close then run [execute player command "/setlyd invclose notebass"]
+				format slot 31 of player with arrow named "&c&lARROW &f&lSHOOT" to close then run [execute player command "/setlyd invclose arrow_shoot"]
+				format slot 30 of player with 384 named "&a&lLEVEL &f&lUP" to close then run [execute player command "/setlyd invclose lvlup"]
+				format slot 32 of player with arrow named "&c&lARROW &f&lHIT" to close then run [execute player command "/setlyd invclose arrow_hit"]
+				format slot 29 of player with 369 named "&e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT" to close then run [execute player command "/setlyd invclose blaze_hit"]
+				format slot 49 of player with glowing 351:1 named "&c&lCLEAR &f&lLYD" to close then run [execute player command "/setlyd invclose fjern"]
+			   
+				format slot 45 of player with red stained glass pane named "&f" to close
+				format slot 46 of player with red stained glass pane named "&f" to close
+				format slot 47 of player with red stained glass pane named "&f" to close
+				format slot 48 of player with red stained glass pane named "&f" to close
+				format slot 50 of player with red stained glass pane named "&f" to close
+				format slot 51 of player with red stained glass pane named "&f" to close
+				format slot 52 of player with red stained glass pane named "&f" to close
+				format slot 53 of player with red stained glass pane named "&f" to close
+
+			if arg-2 is "burp":
+				set {inventoryclose.lyd::%player%} to "BURP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lBURP&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "eat":
+				set {inventoryclose.lyd::%player%} to "EAT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lEAT&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "CHEST_OPEN":
+				set {inventoryclose.lyd::%player%} to "CHEST_OPEN"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lOPEN&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "CHEST_CLOSE":
+				set {inventoryclose.lyd::%player%} to "CHEST_CLOSE"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lCHEST &f&lCLOSE&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "click":
+				set {inventoryclose.lyd::%player%} to "CLICK"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &9&lCLICK&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "glass":
+				set {inventoryclose.lyd::%player%} to "GLASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &f&lGLASS&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "splash":
+				set {inventoryclose.lyd::%player%} to "SPLASH"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &3&lSPLASH&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			
+			
+			else if arg-2 is "PISTON_EXTEND":
+				set {inventoryclose.lyd::%player%} to "PISTON_EXTEND"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &2&LPISTON &f&lEXTEND&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "notepling":
+				set {inventoryclose.lyd::%player%} to "NOTE_PLING"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lPLING&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "notebass":
+				set {inventoryclose.lyd::%player%} to "NOTE_BASS"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &6&lNOTE &f&lBASS&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "arrow_shoot":
+				set {inventoryclose.lyd::%player%} to "ARROW_SHOOT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW &F&lSHOOT&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "arrow_hit":
+				set {inventoryclose.lyd::%player%} to "ARROW_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lARROW&f&l HIT&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "LVLUP":
+				set {inventoryclose.lyd::%player%} to "LEVEL_UP"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &a&lLEVEL &f&lUP&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "blaze_hit":
+				set {inventoryclose.lyd::%player%} to "BLAZE_HIT"
+				send "&8&l| &b&lLYD&8&L | &7Du satte &e&lB&6&lL&e&lA&6&lZ&e&lE &f&lHIT&7 som din &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"
+			else if arg-2 is "fjern":
+				delete {inventoryclose.lyd::%player%}
+				send "&8&l| &b&lLYD&8&L | &7Du satte &c&lCLEAREDE&7 din lyd. &8&l( &f&lINVENTORY &c&lCLOSE &8&l)"

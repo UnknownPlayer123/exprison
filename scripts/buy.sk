@@ -1,0 +1,305 @@
+options:
+	prefix: &9&lEXPRISON &8- &f&lBUTIK
+	handelsbetingelser: &c&lKØBSBETINGELSER
+
+	kat1: &c&lRANKS
+	kat2: &c&lCOMMANDS
+	kat3: &c&lNØGLER
+	kat4: &c&lGEMS
+	kat5: &c&lPLOTMINER
+
+	rank1: &b&lHERO
+	rank2: &c&lELITE
+	rank3: &5&lEX
+	rank4: &5&lEX&f&lPLUS
+
+	kit1: &c&lCHESTSELL
+
+	crate1: &8[&9&lPickaxe &f&lKey&8]
+	crate2: &8[&b&lHero &f&lKey&8]
+	crate3: &8[&c&lElite &f&lKey&8]
+	crate4: &8[&5&lEX &f&lKey&8]
+	crate5: &8[&5&lEX&f&lPLUS &f&lKey&8]
+	crate6: &8[&e&lDrop &f&lKey&8]
+
+	gem1: &7✪ &a2500 &7GEMS
+	gem2: &7✪ &a5000 &7GEMS
+	gem3: &7✪ &a10000 &7GEMS
+	gem4: &7✪ &a25000 &7GEMS
+
+	pm1: &7Lille Plotmine
+	pm2: &7Mellem Plotmine
+	pm3: &7Stor Plotmine
+
+function buyMenu(p:player,s:string):
+	set {_uuid} to uuid of {_p}
+	if {_s} = "main":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix}" to {_p}
+		set slot 0 of {_p}'s current inventory to emerald named "{@handelsbetingelser}"
+		set slot 1 of {_p}'s current inventory to enchanted book named "{@kat1}"
+		set slot 2 of {_p}'s current inventory to enchanted book named "{@kat2}"
+		set slot 4 of {_p}'s current inventory to enchanted book named "{@kat3}"
+		set slot 6 of {_p}'s current inventory to enchanted book named "{@kat4}"
+		set slot 7 of {_p}'s current inventory to enchanted book named "{@kat5}"
+		set slot 8 of {_p}'s current inventory to emerald named "{@handelsbetingelser}"
+
+	else if {_s} = "kat1":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix} - {@kat1}" to {_p}
+		set slot 1 of {_p}'s current inventory to dye:1 named "{@rank1}" with lore "&c☕ &bHERO &fKoster&8: &6500||||&8➤ &bHERO &fIndeholder&8:|||| &8● &f2 plots i /warp plot|| &8● &f/eat|| &8● &f/chest (2)|| &8● &f/craft|| &8● &f/kit hero (24 timer)|| &8● &f/kit hero1 (En gangs kit)||"
+		set slot 3 of {_p}'s current inventory to dye:4 named "{@rank2}" with lore "&c☕ &cELITE &fKoster&8: &61000||||&8➤ &cELITE &fIndeholder&8:|||| &8● &f3 plots i /warp plot|| &8● &f/eat|| &8● &f/chest (2)|| &8● &f/craft|| &8● &f/kit elite (24 timer)|| &8● &f/kit elite1 (En gangs kit)||"
+		set slot 5 of {_p}'s current inventory to dye:11 named "{@rank3}" with lore "&c☕ &5EX &fKoster&8: &62000||||&8➤ &5EX &fIndeholder&8:|||| &8● &f4 plots i /warp plot|| &8● &f/eat|| &8● &f/fly|| &8● &f/chest (6)|| &8● &f/craft|| &8● &f/kit ex (24 timer)|| &8● &f/kit ex1 (En gangs kit)||"
+		set slot 7 of {_p}'s current inventory to dye:3 named "{@rank4}" with lore "&c☕ &5EX&fPLUS &fKoster&8: &65000||||&8➤ &5EX&fPLUS &fIndeholder&8:|||| &8● &f6 plots i /warp plot|| &8● &f/eat|| &8● &f/fly|| &8● &f/god|| &8● &f/chest (20)|| &8● &f/craft|| &8● &f/kit explus (24 timer)|| &8● &f/kit explus (En gangs kit)||"
+
+	else if {_s} = "kat2":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix} - {@kat2}" to {_p}
+		set slot 4 of {_p}'s current inventory to dye:11 named "{@kit1}" with lore "&c☕ &8[&3COMMAND&8] &cChestsell &fKoster&8: &61000||||&8➤ &8[&3COMMAND&8] &cChestsell &fIndeholder&8:||||&8● &f/chestsell"
+
+	else if {_s} = "kat3":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix} - {@kat3}" to {_p}
+		set slot 1 of {_p}'s current inventory to shiny mellohi disc named "{@crate1}" with lore "&c☕ &8[&9Pickaxe &fKey&8] &fKoster&8 &6250||||&8➤ &8[&9Piaxke&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+		set slot 2 of {_p}'s current inventory to shiny mellohi disc named "{@crate2}" with lore "&c☕ &8[&bHero &fKey&8] &fKoster&8 &6350||||&8➤ &8[&bHero&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+		set slot 3 of {_p}'s current inventory to shiny mellohi disc named "{@crate3}" with lore "&c☕ &8[&cElite &fKey&8] &fKoster&8 &6500||||&8➤ &8[&8Elite&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+		set slot 5 of {_p}'s current inventory to shiny mellohi disc named "{@crate4}" with lore "&c☕ &8[&5EX &fKey&8] &fKoster&8 &6750||||&8➤ &8[&5EX&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+		set slot 6 of {_p}'s current inventory to shiny mellohi disc named "{@crate5}" with lore "&c☕ &8[&5EXPLUS &fKey&8] &fKoster&8 &6850||||&8➤ &8[&5EXPLUS&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+		set slot 7 of {_p}'s current inventory to shiny mellohi disc named "{@crate6}" with lore "&c☕ &8[&eDrop &fKey&8] &fKoster&8 &61000||||&8➤ &8[&eDrop&f Key&8] &fIndeholder&8:||||&8● &fKan ses i casino!"
+
+	else if {_s} = "kat4":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix} - {@kat4}" to {_p}
+		set slot 1 of {_p}'s current inventory to book named "{@gem1}" with lore "&c☕ &fKoster&8 &6500||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f2500 &7Gems"
+		set slot 3 of {_p}'s current inventory to book named "{@gem2}" with lore "&c☕ &fKoster&8 &61000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f5000 &7Gems"
+		set slot 5 of {_p}'s current inventory to book named "{@gem3}" with lore "&c☕ &fKoster&8 &62000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f10000 &7Gems"
+		set slot 7 of {_p}'s current inventory to book named "{@gem4}" with lore "&c☕ &fKoster&8 &64000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f25000 &7Gems"
+
+	else if {_s} = "kat5":
+		close {_p}'s inventory
+		wait 10 ticks
+		open chest with 1 row named "{@prefix} - {@kat5}" to {_p}
+		set slot 2 of {_p}'s current inventory to book named "{@pm1}" with lore "&c☕ &fKoster&8 &62000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f1x Lille Plotmine"
+		set slot 4 of {_p}'s current inventory to book named "{@pm2}" with lore "&c☕ &fKoster&8 &63000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f1x Mellem Plotmine"
+		set slot 6 of {_p}'s current inventory to book named "{@pm3}" with lore "&c☕ &fKoster&8 &65000||||&8➤ &7Denne pakke &findeholder&8:||||&8● &7✪ &f1x Stor Plotmine"
+		
+
+	else if {_s} = "handelsbetingelser":
+		close {_p}'s inventory
+		open chest with 1 row named "{@prefix} &8- {@handelsbetingelser}" to {_p}
+		set slot 4 of {_p}'s current inventory to emerald named "{@handelsbetingelser}" with lore "&8[&a1.&8] &fIngen refunderinger!||||&8[&a2.&8] &fKun folk med &aE&2M &frank||  &f    tager imod ems!||||&8[&a3.&8] &fTag screenshot||  &f    af betalingen||||&8[&a4.&8]&f Hvis du abuser har||  &f    vi rettighederne til,||  &f    at fjerne dit rank||||&8[&a5.&8] &fDit rank er kun gældende||  &f    på server exprison||||&8[&a5.&8] &fHvis serveren resetter mister du alt||"	
+
+
+command /buy:
+	aliases: /butik, /buycraft, /køb, /Shop
+	trigger:
+		buyMenu(player, "main")
+
+on inventory click:
+	if inventory name of player's current inventory == "{@prefix}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 0 or 8:
+			buyMenu(player,"handelsbetingelser")
+		else if clicked slot = 1:
+			buyMenu(player,"kat1")
+		else if clicked slot = 2:
+			buyMenu(player,"kat2")
+		else if clicked slot = 4:
+			buyMenu(player,"kat3")
+		else if clicked slot = 6:
+			buyMenu(player,"kat4")
+		else if clicked slot = 7:
+			buyMenu(player,"kat5")
+
+	else if inventory name of player's current inventory == "{@prefix} - {@kat1}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 1:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe rank {@rank1}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe rank {@rank1}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 3:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe rank {@rank2}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe rank {@rank2}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 5:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe rank {@rank3}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe rank {@rank3}&f!" to loop-player
+					send "&7" to loop-player
+
+		else if clicked slot = 7:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe rank {@rank4}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe rank {@rank4}&f!" to loop-player
+					send "&7" to loop-player
+
+	else if inventory name of player's current inventory == "{@prefix} - {@kat2}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 4:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@kit1}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@kit1}&f!" to loop-player
+					send "&7" to loop-player
+
+	else if inventory name of player's current inventory == "{@prefix} - {@kat3}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 1:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate1}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate1}!" to loop-player
+					send "&7" to loop-player
+		if clicked slot = 2:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate2}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate2}!" to loop-player
+					send "&7" to loop-player
+		if clicked slot = 3:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate3}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate3}!" to loop-player
+					send "&7" to loop-player
+		if clicked slot = 5:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate4}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate4}!" to loop-player
+					send "&7" to loop-player
+		if clicked slot = 6:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate5}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate5}!" to loop-player
+					send "&7" to loop-player
+		if clicked slot = 7:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@crate6}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@crate6}!" to loop-player
+					send "&7" to loop-player
+
+	else if inventory name of player's current inventory == "{@prefix} - {@kat4}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 1:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@gem1}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@gem1}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 3:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@gem2}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@gem2}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 5:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@gem3}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@gem3}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 7:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@gem4}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@gem4}&f!" to loop-player
+					send "&7" to loop-player
+	else if inventory name of player's current inventory == "{@prefix} - {@kat5}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 2:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@pm1}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@pm1}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 4:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@pm2}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@pm2}&f!" to loop-player
+					send "&7" to loop-player
+		else if clicked slot = 6:
+			close player's inventory
+			send "&8&l[&c&l!&8&l] &fDu har anmodet om at købe {@pm3}"
+			send "&f     Vent venligst indtil en staff kontakter dig"
+			loop all players:
+				if loop-player has permission "ems.adgang":
+					send "&7" to loop-player
+					send "&8[&b&lBUTIK&8] &3%command sender% &fvil gerne købe {@pm3}&f!" to loop-player
+					send "&7" to loop-player
+
+	else if inventory name of player's current inventory == "{@prefix} &8- {@handelsbetingelser}":
+		cancel event
+#		event-inventory != player's inventory
+		if clicked slot = 4:

@@ -1,0 +1,269 @@
+options:
+	prefix: &8&L| &a&lSHOP &8&L|
+
+on drop of sapling:
+	cancel event
+
+on death of player:
+	if attacker is a player:
+		loop drops:
+			if loop-value is sapling:
+				if loop-value isn't enchanted:
+					remove loop-value from drops
+
+function buy(n: item type, pris: number, antal: number, p: player, name: text):
+	set {_price} to {_pris} * {_antal}
+	if {_p}'s balance is greater than or equal to {_price}:
+		remove {_price} from {_p}'s balance
+		loop {_antal} times:
+			add {_n} to {_p}'s inventory 
+		send "{@prefix} &7Du købte &b&l%{_antal}%&7 %{_name}%&8(&7s&8)&7 for &a&l$&f&l%{_price}%..." to {_p}
+	else:
+		send "{@prefix} &7Du har &c&likke penge nok..." to {_p}
+
+function choose(n: item type, pris: number, p: player, name: text):
+	wait 3 ticks
+	open chest with 5 rows named "&8%{_name}%" to {_p}
+	wait 3 ticks
+	if inventory name of {_p}'s current inventory is "&8%{_name}%":	
+		format slot 19 of {_p} with 1 chest named "&f&l1x %{_name}%&8&l(&f&ls&8&l)" with lore "||&a&l » PRIS &8&l: &a&l$&f&l%{_pris}%" to run [buy({_n}, {_pris}, 1, {_p}, "%{_name}%")]
+		format slot 21 of {_p} with 1 chest named "&f&l16x %{_name}%&8&l(&f&ls&8&l)" with lore "||&a&l » PRIS &8&l: &a&l$&f&l%{_pris} * 16%" to run [buy({_n}, {_pris}, 16, {_p}, "%{_name}%")]
+		format slot 23 of {_p} with 1 chest named "&f&l32x %{_name}%&8&l(&f&ls&8&l)" with lore "||&a&l » PRIS &8&l: &a&l$&f&l%{_pris} * 32%" to run [buy({_n}, {_pris}, 32, {_p}, "%{_name}%")]
+		format slot 25 of {_p} with 1 chest named "&f&l64x %{_name}%&8&l(&f&ls&8&l)" with lore "||&a&l » PRIS &8&l: &a&l$&f&l%{_pris} * 64%" to run [buy({_n}, {_pris}, 64, {_p}, "%{_name}%")]
+		
+		format slot 4 of {_p} with 1 ender chest named "&a&l%{_name}%" with lore " " to be unstealable
+		format slot 40 of {_p} with 1 red dye named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make {_p} execute command "/shop"]
+		
+		loop numbers between 0 and 8:
+			set {_slot} to loop-value
+			if slot {_slot} of {_p}'s current inventory is air:
+				format slot {_slot} of {_p} with 1 160:0 named " " with lore " " to be unstealable
+				
+		loop numbers between 36 and 44:
+			set {_slot} to loop-value
+			if slot {_slot} of {_p}'s current inventory is air:
+				format slot {_slot} of {_p} with 1 160:3 named " " with lore " " to be unstealable
+	
+
+command /shop [<text>]:
+	trigger:
+		wait 3 ticks
+		if arg 1 isn't set:
+			open chest with 5 rows named "&b&LSHOP &F&LMENU" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&LSHOP &F&LMENU":
+				format slot 18 of player with 1 oak sapling named "&b&l&nNATUR" with lore "||&a&lKLIK HER &7for at åbne shoppen!" to close then run [make player execute command "/shop natur"]
+				format slot 20 of player with 1 apple named "&b&l&nMAD" with lore "||&a&lKLIK HER &7for at åbne shoppen!" to close then run [make player execute command "/shop mad"]
+				format slot 22 of player with 1 95 named "&b&l&nGLASS" with lore "||&a&lKLIK HER &7for at åbne shoppen!" to close then run [make player execute command "/shop glass"]
+				format slot 24 of player with 1 bonemeal named "&b&l&nDIVERSE" with lore "||&a&lKLIK HER &7for at åbne shoppen!" to close then run [make player execute command "/shop diverse"]
+				format slot 26 of player with 1 stone named "&B&lBLOCKS" with lore "||&a&lKLIK HER &7for at åbne shoppen!" to close then run [make player execute command "/shop blocks "]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 36 and 44:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable
+		
+		if arg 1 is "natur":
+			wait 3 ticks
+			open chest with 6 rows named "&b&lNATUR &F&LMENU" to player
+			wait 3 ticks	
+			if inventory name of player's current inventory is "&b&lNATUR &F&LMENU":
+				format slot 9 of player with 1 oak sapling to close then run [choose(Oak Sapling, 90, player, "Oak Sapling")]
+				format slot 10 of player with 1 spruce sapling to close then run [choose(Spruce Sapling, 90, player, "Spruce Sapling")]
+				format slot 11 of player with 1 birch sapling to close then run [choose(Birch Sapling, 90, player, "Birch Sapling")]
+				format slot 12 of player with 1 jungle sapling to close then run [choose(Jungle Sapling, 90, player, "Jungle Sapling")]
+				format slot 13 of player with 1 acacia sapling to close then run [choose(Acacia Sapling, 90, player, "Acacia Sapling")]
+				format slot 14 of player with 1 dark oak sapling to close then run [choose(Dark Oak Sapling, 90, player, "Dark Oak Sapling")]
+				format slot 15 of player with 1 dandelion to close then run [choose(Dandelion, 90, player, "Dandelion")]
+				format slot 16 of player with 1 poppy to close then run [choose(Poppy, 90, player, "Poppy")]
+				format slot 17 of player with 1 blue orchid to close then run [choose(Blue Orchid, 90, player, "Blue Orchid")]
+				
+				format slot 18 of player with 1 allium to close then run [choose(Allium, 90, player, "Allium")]
+				format slot 19 of player with 1 azure bluet to close then run [choose(Azure Bluet, 90, player, "Azure Bluet")]
+				format slot 20 of player with 1 red tulip to close then run [choose(Red Tulip, 90, player, "Red Tulip")]
+				format slot 21 of player with 1 white tulip to close then run [choose(White Tulip, 90, player, "Ehite Tulip")]
+				format slot 22 of player with 1 orange tulip to close then run [choose(Orange Tulip, 90, player, "Orange Tulip")]
+				format slot 23 of player with 1 pink tulip to close then run [choose(Pink Tulip, 90, player, "Pink Tulip")]
+				format slot 24 of player with 1 oxeye daisy to close then run [choose(Oxeye Daisy, 90, player, "Oxeye Daisy")]
+				format slot 25 of player with 1 cactus to close then run [choose(Cactus, 90, player, "Cactus")]
+				format slot 26 of player with 1 18 to close then run [choose(18, 90, player, "Oak Leaves")]
+				
+				format slot 27 of player with 1 18:1 to close then run [choose(18:1, 5000, player, "Spruce Leaves")]
+				format slot 28 of player with 1 18:2 to close then run [choose(18:2, 5000, player, "Birch Leabes")]
+				format slot 29 of player with 1 18:3 to close then run [choose(18:3, 5000, player, "Jungle Leaves")]
+				format slot 30 of player with 1 161 to close then run [choose(161, 5000, player, "Acacia Leaves")]
+				format slot 31 of player with 1 161:1 to close then run [choose(161:1, 5000, player, "Dark Oak Leaves")]
+				format slot 32 of player with 1 dead bush to close then run [choose(Dead Bush, 40000, player, "Dead Bush")]
+				format slot 33 of player with 1 wheat to close then run [choose(Wheat, 20000, player, "Wheat")]
+				format slot 34 of player with 1 vines to close then run [choose(Vines, 20000, player, "Vines")]
+				
+				format slot 49 of player with 1 nether star named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make player execute command "/shop"]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 45 and 53:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable
+
+
+
+
+		if arg 1 is "blocks":
+			wait 3 ticks
+			open chest with 6 rows named "&b&lBLOCKS &F&LMENU" to player
+			wait 3 ticks
+			
+			if inventory name of player's current inventory is "&b&lBLOCKS &F&LMENU":
+				format slot 9 of player with 1 168:1 to close then run [choose(168:1, 400, player, "Prismarine Bricks")]
+				format slot 10 of player with 1 168:2 to close then run [choose(168:2, 400, player, "Dark Prismarine Bricks")]
+				format slot 11 of player with 1 gravel to close then run [choose(Gravel, 35, player, "Gravel")]
+				format slot 12 of player with 1 sand to close then run [choose(Sand, 35, player, "Sand")]
+				format slot 13 of player with 1 red sand to close then run [choose(Red Sand, 50, player, "Red Sand")]
+				format slot 14 of player with 1 sandstone to close then run [choose(Sandstone, 20, player, "Sandstone")]
+				format slot 15 of player with 1 1:3 to close then run [choose(1:3, 100, player, "Diorite")]
+				format slot 16 of player with 1 1:4 to close then run [choose(1:4, 125, player, "Polished Diorite")]
+				format slot 17 of player with 1 98 to close then run [choose(98, 20, player, "Stone bricks")]
+				
+				format slot 18 of player with 1 3 to close then run [choose(3, 25, player, "Dirt")]
+				format slot 19 of player with 1 3:1 to close then run [choose(3:1, 30, player, "Coarse Dirt")]
+				format slot 20 of player with 1 3:2 to close then run [choose(3:2, 35, player, "Podzol")]
+				format slot 21 of player with 1 grass to close then run [choose(grass, 25, player, "Grass")]
+				format slot 22 of player with 1 45 to close then run [choose(45, 50, player, "Bricks")]
+				format slot 23 of player with 1 bookshelf to close then run [choose(bookshelf, 120, player, "Bookshelf")]
+				format slot 24 of player with 1 169 to close then run [choose(169, 250, player, "Sea Lantern")]
+				format slot 25 of player with 1 170 to close then run [choose(170, 200, player, "Hay Bale")]
+			
+				format slot 49 of player with 1 red dye named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make player execute command "/shop"]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 45 and 53:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable
+
+	
+		if arg 1 is "mad":
+			open chest with 6 rows named "&b&lMAD &F&LMENU" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&lMAD &F&LMENU":
+				format slot 9 of player with 1 apple to close then run [choose(Apple, 80, player, "Apple")]
+				format slot 10 of player with 1 baked potato to close then run [choose(Baked Potato, 80, player, "Baked Potato")]
+				format slot 11 of player with 1 bread to close then run [choose(bread, 80, player, "Bread")]
+				format slot 12 of player with 1 cake to close then run [choose(cake, 80, player, "Cake")]
+				format slot 13 of player with 1 carrot to close then run [choose(carrot, 80, player, "Carrot")]
+				format slot 14 of player with 1 clownfish to close then run [choose(clownfish, 80, player, "Clownfish")]
+				format slot 15 of player with 1 cooked chicken to close then run [choose(cooked chicken, 80, player, "Coocked Chicken")]
+				format slot 16 of player with 1 350 to close then run [choose(350, 80, player, "Coocked Fish")]
+				format slot 17 of player with 1 cooked porkchop to close then run [choose(cooked porkchop, 80, player, "Coocked Porkchop")]
+				
+				format slot 18 of player with 1 350:1 to close then run [choose(350:1, 80, player, "Coocked Salmon")]
+				format slot 19 of player with 1 cookie to close then run [choose(cookie, 80, player, "Cookie")]
+				format slot 20 of player with 1 potato to close then run [choose(potato, 80, player, "Potato")]
+				format slot 21 of player with 1 pufferfish to close then run [choose(pufferfish, 80, player, "Pufferfish")]
+				format slot 22 of player with 1 pumpkin pie to close then run [choose(pumpkin pie, 80, player, "Pumpkin Pie")]
+				format slot 23 of player with 1 raw chicken to close then run [choose(raw chicken, 80, player, "Raw Chicken")]
+				format slot 24 of player with 1 raw fish to close then run [choose(raw fish, 80, player, "Raw Fish")]
+				format slot 25 of player with 1 raw porkchop to close then run [choose(raw porkchop, 80, player, "Raw Porkchop")]
+				format slot 26 of player with 1 raw salmon to close then run [choose(raw salmon, 80, player, "Raw Salmon")]
+				
+				format slot 27 of player with 1 melon slice to close then run [choose(melon slice, 80, player, "Melon Slice")]
+				format slot 28 of player with 1 steak to close then run [choose(Steak, 80, player, "Steak")]
+
+				format slot 49 of player with 1 red dye named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make player execute command "/shop"]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 45 and 53:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable
+		
+		if arg 1 is "glass":
+			wait 3 ticks
+			open chest with 6 rows named "&b&lGLASS &F&LMENU" to player
+			wait 3 ticks
+			
+			if inventory name of player's current inventory is "&b&lGLASS &F&LMENU":
+				format slot 9 of player with 1 Glass to close then run [choose(Glass, 4500, player, "Glass")]
+				format slot 10 of player with 1 95:1 to close then run [choose(95:1, 4500, player, "Orange Stained Glass")]
+				format slot 11 of player with 1 95:2 to close then run [choose(95:2, 4500, player, "Magenta Stained Glass")]
+				format slot 12 of player with 1 95:3 to close then run [choose(95:3, 4500, player, "160:0")]
+				format slot 13 of player with 1 95:4 to close then run [choose(95:4, 4500, player, "Yellow Stained Glass")]
+				format slot 14 of player with 1 95:5 to close then run [choose(95:5, 4500, player, "Lime Stained Glass")]
+				format slot 15 of player with 1 95:6 to close then run [choose(95:6, 4500, player, "Pink Stained Glass")]
+				format slot 16 of player with 1 95:7 to close then run [choose(95:7, 4500, player, "Gray Stained Glass")]
+				format slot 17 of player with 1 95:8 to close then run [choose(95:8, 4500, player, "Light Gray Stained Glass")]
+				
+				format slot 18 of player with 1 95:9 to close then run [choose(95:9, 4500, player, "Cyan Stained Glass")]
+				format slot 19 of player with 1 95:10 to close then run [choose(95:10, 4500, player, "Purple Stained Glass")]
+				format slot 20 of player with 1 95:11 to close then run [choose(95:11, 4500, player, "Blue Stained Glass")]
+				format slot 21 of player with 1 95:12 to close then run [choose(95:12, 4500, player, "Brown Stained Glass")]
+				format slot 22 of player with 1 95:13 to close then run [choose(95:13, 4500, player, "Green Stained Glass")]
+				format slot 23 of player with 1 95:14 to close then run [choose(95:14, 4500, player, "Red Stained Glass")]
+				format slot 24 of player with 1 95:15 to close then run [choose(95:15, 4500, player, "Black Stained Glass")]
+				format slot 25 of player with 1 95:0 to close then run [choose(95:0, 4500, player, "White Stained Glass")]
+			
+				format slot 49 of player with 1 red dye named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make player execute command "/shop"]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 45 and 53:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable
+		
+		if arg 1 is "diverse":
+			open chest with 6 rows named "&b&lDIVERSE &F&LMENU" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "&b&lDIVERSE &F&LMENU":
+				format slot 9 of player with 1 string to close then run [choose(String, 350, player, "String")]
+				format slot 10 of player with 1 nether quartz to close then run [choose(Nether Quartz, 10000000, player, "Nether Quartz")]
+				format slot 11 of player with 1 slimeball to close then run [choose(Slimeball, 350, player, "Slimeball")]
+				format slot 12 of player with 1 bow to close then run [choose(Bow, 350, player, "Bow")]
+				format slot 13 of player with 1 arrow to close then run [choose(Arrow, 350, player, "Arrow")]
+				format slot 14 of player with 1 water bucket to close then run [choose(Water Bucket, 350, player, "Water Bucket")]
+				format slot 15 of player with 1 bone meal to close then run [choose(Bone Meal, 350, player, "Bone Meal")]
+				format slot 16 of player with 1 blaze powder to close then run [choose(Blaze Powder, 350, player, "Blaze Powder")]
+				format slot 17 of player with 1 ink sack to close then run [choose(351, 350, player, "Ink Sack")]
+				
+				format slot 18 of player with 1 saddle to close then run [choose(Saddle, 350, player, "Saddle")]
+				format slot 19 of player with 1 flower pot to close then run [choose(Flower Pot, 350, player, "Flower Pot")]
+				format slot 20 of player with 1 flint to close then run [choose(Flint, 350, player, "Flint")]
+				#format slot 21 of player with 1 leather to close then run [choose(Leather, 350, player, "Leather")]
+				format slot 21 of player with 1 cobweb to close then run [choose(Cobweb, 350, player, "Cobweb")]
+				format slot 22 of player with 1 feather to close then run [choose(Feather, 350, player, "Feather")]
+				format slot 23 of player with 1 17 to close then run [choose(Oak wood, 350, player, "Oak wood")]
+				format slot 24 of player with 1 17:1 to close then run [choose(Spruce wood, 350, player, "Spruce wood")]
+				format slot 25 of player with 1 54 to close then run [choose(Chest, 150, player, "Chest")]
+				format slot 26 of player with 1 146 to close then run [choose(Trapped chest, 130, player, "Trapped chest")]
+			
+				format slot 49 of player with 1 red dye named "&c&lTILBAGE" with lore "&a&LKLIK &7for at gå tilbage" to close then run [make player execute command "/shop"]
+				
+				loop numbers between 0 and 8:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:0 named " " with lore " " to be unstealable
+				
+				loop numbers between 45 and 53:
+					set {_slot} to loop-value
+					if slot {_slot} of player's current inventory is air:
+						format slot {_slot} of player with 1 160:3 named " " with lore " " to be unstealable

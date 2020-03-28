@@ -1,0 +1,29 @@
+command /regler [<text>]:
+	aliases: /rules, /regl
+	trigger:
+		wait 3 ticks 
+		send "" to player
+		send "&8&m-----------------&8&l ( &c&lREGLER &8&L) &8&m------------------" to player
+		send "" to player
+		send "&c&l1. &7Ingen former for hack er &c&ltilladt" 
+		send "&c&l2. &7Auktions hus spam er ikke &c&ltilladt"
+		send "&c&l3. &7Ingen former for upassende sprog eller trusler i chatten"
+		send "&c&l4. &7Smurfing fra ban er ikke &c&ltilladt &8&l( &c&lMedfører ban &8&l)" 
+		send "&c&l5. &7Ingen spawn camp i pvp"
+		send "&c&l6. &7Teleport drab er ikke &c&ltilladt!" 		
+		send "&c&l7. &7Ingen former for reklame, kun reklame for dit plot." 
+		send "&c&l8. &7Ingen former for bug abuse" 
+		send "&c&l9. &7Afk maskine er &a&ltilladt"
+		send "&c&l10. &7Greife andres plot er ikke tilladt &8&l( &c&lMedfører ban &8&l)"
+		send "&c&l11. &7Ingen former for automine!"
+		send "&c&l12. &7Alle former for scam er ikke &c&ltilladt!"
+		send "&c&l13. &7Alle former for tp block er ikke &c&ltilladt!"
+		send "&c&l14. &7Schematic mod er ikke &c&ltilladt &7at bruge!"
+		send "&c&l15. &7Event team + camp er ikke &c&ltilladt!"
+		send "&c&l16. &7Sælge ingame ting for rigtig penge er ikke &c&ltilladt!"
+		send "&c&l17. &7Du er selv ansvarlig for når du selv går ind i en plot"
+		send "&c&l18. &7Brug af Drill pickaxe imens du er banned fra et plot &8&l( &c&lMedfører ban &8&l)"
+		send "&c&l19. &7Portal trap er &c&lIKKE &7tilladt. &8&l( &c&lMedfører ban &8&l)"
+		send "" to player
+		send "&8&m-----------------&8&l ( &c&lREGLER &8&L) &8&m------------------" to player
+		send "" to player	

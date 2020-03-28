@@ -1,0 +1,46 @@
+command /xpconverttilgems:
+	trigger:
+		if player's level is greater than or equal to 100:
+			execute console command "Gems add %player% 20"
+			remove 100 from player's level
+			launch flickering ball firework colored green at player's location timed 0
+		
+		else:
+			message "&8&l| &a&LLEVEL &8&l| &C&LHov! &7Du skal mindst have &c&l100 XP!"
+command /xp:
+	aliases: convertgems, fågems, fåxp, xpconvert, level
+	trigger:
+		wait 1 tick
+		open chest with 5 rows named "&a&lLEVEL &F&LHANDLER" to player 
+		wait 3 tick
+		
+		format slot 0 of player with white stained glass pane named "&f" to close
+		format slot 1 of player with white stained glass pane named "&f" to close  
+		format slot 2 of player with white stained glass pane named "&f" to close
+		format slot 3 of player with white stained glass pane named "&f" to close
+		format slot 4 of player with white stained glass pane named "&f" to close
+		format slot 5 of player with white stained glass pane named "&f" to close
+		format slot 6 of player with white stained glass pane named "&f" to close
+		format slot 7 of player with white stained glass pane named "&f" to close
+		format slot 8 of player with white stained glass pane named "&f" to close
+		
+		format slot 36 of player with light blue stained glass pane named "&f" to close
+		format slot 37 of player with light blue stained glass pane named "&f" to close
+		format slot 38 of player with light blue stained glass pane named "&f" to close
+		format slot 39 of player with light blue stained glass pane named "&f" to close
+		format slot 40 of player with light blue stained glass pane named "&f" to close
+		format slot 41 of player with light blue stained glass pane named "&f" to close
+		format slot 42 of player with light blue stained glass pane named "&f" to close
+		format slot 43 of player with light blue stained glass pane named "&f" to close
+		format slot 44 of player with light blue stained glass pane named "&f" to close
+		 
+		format slot 22 of player with glowing xp bottle named "&a&lLEVEL &F&LHANDLER" with lore "||&a&lKLIK HER &7for at byt||&7dine &A&lXP &7om til &b&LGEMS||||&F&L* &a&l&N100&A&L XP &f&l= &b&l&n20 GEMS" to close then run [execute player command "xpconverttilgems"]
+		
+		format slot 20 of player with glowing 166 named "&c&LFÅ GEMS AF XP!" to close
+		format slot 19 of player with glowing 166 named "&c&LFÅ GEMS AF XP!" to close
+		
+		format slot 24 of player with glowing 166 named "&c&LFÅ GEMS AF XP!" to close
+		format slot 25 of player with glowing 166 named "&c&LFÅ GEMS AF XP!" to close
+		
+		
+	

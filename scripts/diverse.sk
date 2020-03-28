@@ -1,0 +1,724 @@
+options:
+	prefix: &8&l| &b&lSTAFF CHAT &8&l|
+
+
+command /hub:
+	trigger:
+		bungeecord connect player to "hub"
+
+
+command /enchant:
+	trigger:
+		teleport player to {enchant.warpplace}
+		wait 1 tick 
+		play raw sound "random.levelup" at player with pitch 1 volume 0.3	
+		
+
+on craft:
+	if event-item is golden apple:
+		cancel event
+		Message "&8&l| &c&lTEST &8&L| &7Du kan &c&lIKKE &7crafte dette item!"
+
+
+command /dg:
+	permission: *
+	trigger:
+		give player 3 of glowing 122 named "&C&LKOTH &f&lARMOR"
+		 
+on damage:
+	if victim is in "Plotsverden":
+		cancel event 
+	
+
+		 
+on any move:
+	player is in "Plotsverden"
+	if y coordinate of player is less than -5:
+		teleport player to {spawn}
+		
+on command "greatkits:kit bombe":
+	wait 0.1 tick
+	if player's inventory contains 8 bedrock named "&7Lillebombe":
+		remove 8 bedrock named "&7Lillebombe" from player's inventory
+		make console execute command "/bomb give %player% lille 8"
+		
+	if player's inventory contains 5 bedrock named "&7Mellembombe":
+		remove 5 bedrock named "&7Mellembombe" from player's inventory
+		make console execute command "/bomb give %player% mellem 5"
+
+	if player's inventory contains 2 bedrock named "&7Storbombe":
+		remove 2 bedrock named "&7Storbombe" from player's inventory
+		make console execute command "/bomb give %player% stor 2"
+		
+	if player's inventory contains 1 bedrock named "&7Megabombe":
+		remove 1 bedrock named "&7Megabombe" from player's inventory
+		make console execute command "/bomb give %player% mega 1"
+
+		
+command /giveitem [<text>] [<item>] [<number>]:
+	permission: *
+	trigger:
+		if arg-1 is "all":
+			if arg-2 is set:
+				if arg-3 is set:
+					loop all players:
+						give arg-3 of arg-2 to loop-player 
+
+
+on command "clan setbase":
+	if player is not in "plotsverden":
+		cancel event
+		message "&8&l| &C&lTEAMS &8&l| &7Du kan &c&lKUN &7sætte team base i &c&lPLOTVERDEN!"
+
+
+
+
+command /restarter [<text>]:
+	permission: *
+	permission message: &8&l| &c&lRESTART &8&l| &CDu har ikke adgang til dette!
+	trigger:
+		if arg-1 is not set:
+			set {restarter.check} to true
+			send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fvil genstarte om &b&l1 min" for 5 seconds 
+			wait 30 seconds
+			
+			if {restarter.check} is true:
+				send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fvil genstarte om &b&l30 sek" for 5 seconds 		
+				wait 27 seconds
+			
+				if {restarter.check} is true:
+					send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fvil genstarte om &b&l3 sek" for 5 seconds 			
+					wait 1 seconds
+			
+			
+					if {restarter.check} is true:
+						send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fvil genstarte om &b&l2 sek" for 5 seconds
+						wait 1 seconds
+						
+						if {restarter.check} is true:
+							delete {restarter.check} 
+							send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fvil genstarte om &b&l1 sek" for 5 seconds	
+							wait a tick 
+							execute console command "/restart"
+							
+			
+		if arg-1 is "cancel":
+			if {restarter.check} is true:
+				delete {restarter.check}
+				send all players title "&c&lRESTART!" with subtitle "&b&lServeren &fgenstarter &c&likke!" for 5 seconds	
+				
+			else if {restarter.check} isn't set:
+				send player title "&c&lRESTART!" with subtitle "&b&lServeren &f er ikke igang med at &c&lgenstarte!" for 5 seconds	
+			
+				
+	
+on rightclick on 166:
+	if player is in "spawn":
+	
+		if {holo.pvparena.%Block%} is set:
+			execute player command "warp pvp"
+
+
+		if {holo.warpmenu.%Block%} is set:
+			execute player command "warp"
+
+
+		if {holo.plotmenu.%Block%} is set:
+			execute player command "plot"
+
+
+		if {holo.eventmenu.%Block%} is set:
+			execute player command "event"
+
+		if {holo.kitmenu.%Block%} is set:
+			execute player command "kit"
+
+		if {holo.gemshopmenu.%Block%} is set:
+			execute player command "gemshop"			
+			
+on break:
+	if {holo.pvparena.%Block%} or {holo.warpmenu.%Block%} or {holo.plotmenu.%Block%} or {holo.eventmenu.%Block%} is set:
+		cancel event
+		message "&8&l| &c&LBREAK &8&L| &7Du kan &c&likke &7smadre denne &c&lblock!"
+	
+
+on break:
+	if event-block is bedrock:
+		cancel event
+		message "&8&l| &c&LBREAK &8&L| &7Du kan &c&likke &7smadre denne &c&lblock!"
+	
+				
+
+
+on command:
+	if inventory name of player's inventory is "&C&lADMIN &F&LMENU" or "&b&lTEAM &F&LMENU" or "&c&lCHAT &f&lMENU" or "&9&lPICKAXE &f&lCRATE" or "&b&lHERO &f&lCRATE" or "&5&lex &f&lCRATE" or "&5&lex&f&lPLUS &f&lCRATE" or "&c&lELITE &f&lCRATE" or "&e&lDROP &f&lCRATE" or "&c&lREWARD &f&lCRATE" or "&b&lEVENT &f&lMENU" or "&b&LGEM &F&LSHOP" or "&a&lKIT &f&lMENU" or "&B&lSPECIAL &f&lKITS" or "&4&Lex &F&LBOX!" or "&d&lPARTICLE &f&lMAND" or "&d&lPARTICLE &f&lMENU" or "&d&lPARTICLE &f&lDESIGNS" or "&b&lPLOT &F&LMENU" or "&b&lPLOTMINE &F&LMENU" or "&b&lPLOTMINE &F&LOVERSIGT" or "&b&lPLOTMINE &F&LOPRET" or "&b&lPLOTMINE &F&LEDIT" or "&b&lPLOTMINE &F&LID:" or "&d&lREWARD &F&LITEMS" or "&d&lBOOST &F&LMENU" or "&c&lSETTINGS &F&LMENU" or "&a&lWARP &F&LMENU": 
+		if command is "pv" or "eec" or "ec" or "chest" or "/playervaults:pv" or "/playervaults:chest" or "/playervaults:vault":
+			cancel event 
+
+
+on inventory click:
+	if inventory name of player's current inventory is "&C&lADMIN &F&LMENU" or "&b&lTEAM &F&LMENU" or "&c&lCHAT &f&lMENU" or "&9&lPICKAXE &f&lCRATE" or "&b&lHERO &f&lCRATE" or "&5&lex &f&lCRATE" or "&5&lex&f&lPLUS &f&lCRATE" or "&c&lELITE &f&lCRATE" or "&e&lDROP &f&lCRATE" or "&c&lREWARD &f&lCRATE" or "&b&lEVENT &f&lMENU" or "&b&LGEM &F&LSHOP" or "&a&lKIT &f&lMENU" or "&B&lSPECIAL &f&lKITS" or "&4&Lex &F&LBOX!" or "&d&lPARTICLE &f&lMAND" or "&d&lPARTICLE &f&lMENU" or "&d&lPARTICLE &f&lDESIGNS" or "&b&lPLOT &F&LMENU" or "&b&lPLOTMINE &F&LMENU" or "&b&lPLOTMINE &F&LOVERSIGT" or "&b&lPLOTMINE &F&LOPRET" or "&b&lPLOTMINE &F&LEDIT" or "&b&lPLOTMINE &F&LID:" or "&d&lREWARD &F&LITEMS" or "&d&lBOOST &F&LMENU" or "&c&lSETTINGS &F&LMENU" or "&a&lWARP &F&LMENU": 
+		cancel event 
+
+
+on death of player:	
+	force respawn victim 
+	wait 3 tick
+	teleport victim to {spawn}
+	
+command /bal [<offline player>]:
+	aliases: /balance, /ebal, /penge, /money
+	trigger:
+		
+		if arg-1 is not set:
+		
+			if player's balance is less than 1000:
+				set {_getbalance} to "%player's balance%"
+				
+			else if player's balance is between 1000 and 999999:
+				set {_getbalance} to "%player's balance / 1000% K"
+
+			else if player's balance is between 1000000 and 999999999:
+				set {_getbalance} to "%player's balance / 1000000% MIL"
+			 
+			else if player's balance is between 1000000000 and 999999999999:
+				set {_getbalance} to "%player's balance / 1000000000% MIA"	
+				
+			else if player's balance is more than 999999999999:
+				set {_getbalance} to "%player's balance / 1000000000000% TRIL"
+					
+				
+			message "&8&l| &a&lPENGE &8&l| &7%player% &8&l- &a&l%{_getbalance}%"
+			stop 
+			
+		else if arg-1 is set:
+
+			if balance of arg-1 is less than 1000:
+				set {_getbalance} to "%balance of arg-1%"
+				
+				
+			else if balance of arg-1 is between 1000 and 999999:
+				set {_getbalance2} to "%arg-1's balance / 1000% K"
+
+			else if balance of arg-1 is between 1000000 and 999999999:
+				set {_getbalance2} to "%arg-1's balance / 1000000% MIL"
+			 
+			else if balance of arg-1 is between 1000000000 and 999999999999:
+				set {_getbalance2} to "%arg-1's balance / 1000000000% MIA"	
+				
+			else if balance of arg-1 is more than 999999999999:
+				set {_getbalance2} to "%arg-1's balance / 1000000000000% TRIL"
+					
+					
+			send "&8&l| &a&lPENGE &8&l| &7%arg-1% &8&l- &a&l%{_getbalance2}%" to player
+			stop 
+
+
+
+		
+command /pay [<offline player>] [<number>]:
+	trigger:
+		if arg-1 is set:
+			if arg-2 is more than 0:
+				if player's balance is more than or equal to arg 2:
+					subtract arg-2 from player's balance
+					add arg-2 to balance of arg-1
+					
+					send "&8&l| &a&lPENGE &8&l| &7Du gav &c&l&n$%arg-2%&7 til &c&l&n%arg-1%!" to player
+					send "&8&l| &a&lPENGE &8&l| &7Du har &c&l&n%balance of player%&7 tilbage!" to player
+					send "&8&l| &a&lPENGE &8&l| &7Du modtog &a&l&n$%arg-2%&7 fra &a&l&n%player%!" to arg-1
+			
+				else:
+					send "&8&l| &a&lPENGE &8&l| &7Du har &c&likke &7nok penge til at sende &c&l&n$%arg-2%!" to player
+					
+			else:
+				send "&8&l| &a&lPENGE &8&l| &7Du kan &c&likke &7sende mindre end &c&l&n$0" to player			
+	
+			
+command /hat:
+	permission: rank.hat
+	permission message: &8&l| &d&lHAT &8&l| &7Du har &c&likke &7tilladelse til den &c&lkommando.
+	trigger:
+		if player's held item is not air:	
+			if player's held item is not glowing bucket named "&a&lISLAND MENU!":
+			
+				set helmet of player to player's held item
+				remove player's held item from player's inventory 
+				message "&8&l| &e&lHAT &8&l| &a&lSådan! &7du har fået dig en flot &e&lhat!"
+
+			else:
+				message "&8&l| &e&lHAT &8&l| &7Du kan &c&likke &7bruge denne &c&litem &7som &e&lhat"
+				
+		else:
+			message "&8&l| &e&lHATS &8&l| &7Du &c&lskal &7have &7et item i &c&lhånden!"
+				
+				
+			
+			
+			
+command /exbox [<text>] [<text>] [<text>]:
+	permission: *
+	permission message: &8&l| &d&lexBOX &8&l| &cDu har ikke tilladelse til den kommando.
+	trigger:
+		if arg-1 is not set:
+			message "&8&m--------------------&8&l ( &d&LexBOX &8&L) &8&m---------------------" 
+			message ""
+			message "&8&l| &d&lexBOX &8&l| &71. &d/exbox give (spiller) &8- &7For at give exbox!"
+			message "&8&l| &d&lexBOX &8&l| &71. &d/exbox penge(1-3) give (spiller) &8- &7For at give exbox!"
+			message ""
+			message "&8&m--------------------&8&l ( &d&LexBOX &8&L) &8&m---------------------" 
+			
+		if arg-1 is "give":
+			if arg-2 is set:
+				execute console command "/exbox:exbox give %arg-2% exbox"
+				stop 
+		
+		if arg-1 is "penge1":
+			if arg-2 is "give":
+				if arg-3 is set:
+					execute console command "/exbox:exbox pouch give %arg-3% Penge1"
+					stop 
+			
+		if arg-1 is "penge2":
+			if arg-2 is "give":
+				if arg-3 is set:
+					execute console command "/exbox:exbox pouch give %arg-3% Penge2"
+					stop 
+				
+		if arg-1 is "penge3":
+			if arg-2 is "give":
+				if arg-3 is set:
+					execute console command "/exbox:exbox pouch give %arg-3% Penge3"
+					stop 
+				
+				
+command /item:
+	permission: rank.itemset
+	trigger:
+		if player's held item is not air:	
+			broadcast "%player's display name% &8» &8&l『 %name of player's held item% &8&l』"
+
+		else:
+			message "&8&l| &e&lITEM &8&l| &7Du &c&lskal &7have &7et item i &c&lhånden!"
+
+
+
+	
+on right click on sign:
+	if line 2 is "&d&lDISCORD":
+
+		send "&8&l| &d&lDISCORD &8&l| &7Join discorden på &D&lprison.cyrstaldev.co" to player
+		
+	if line 2 is "&b&lHJEMMESIDE":
+		send "&8&l| &b&LHJEMMESIDE &8&l| &7Besøg hjemmesiden på &b&lKommer snart" to player
+	
+	if line 2 is "&a&LBUYCRAFT":
+		send "&8&l| &a&LBUYCRAFT &8&l| &7Tjek buycraften ud på &A&l/buy" to player
+
+on rightclick on ender chest:
+	player is in "spawn"
+	cancel event
+	play "CHEST_OPEN" to player at volume 5
+	execute player command "/ec"
+
+
+on command "restart":
+	if player has permission "*":
+		loop all players:
+			execute loop-player command "hub"
+		
+	else:	
+		message "&8&l| &C&LEX-Prison &8&l| &7Du har &c&Likke &7adgang til denne kommando!"
+	
+on command "tpall":
+	if player has permission "*":
+		cancel event
+		execute player command "essentials:tpall"
+		message "&8&l| &e&LTELEPORT &8&l| &7Du &e&ltp'ede &7alle hen til &a&ldig"
+	else:	
+		message "&8&l| &C&LEX-Prison &8&l| &7Du har &c&Likke &7adgang til denne kommando!"
+	
+	
+	
+on rightclick holding a ender pearl:
+	set {_waited} to difference between {enderpearlcooldown::%player%} and now
+	if {_waited} is less than or equal to 8 seconds :
+		message "&8&l| &c&lENDERPEARL &8&l| &7du skal vente &c&l%difference between 8 seconds and {_waited}%!"
+		cancel the event
+	else:
+		set {enderpearlcooldown::%player%} to now
+		
+				
+#----------------------------- 		STAFF CHAT 		-----------------------------#		
+
+command /sc [<text>]:
+	aliases: staffchat
+	permission: exstaff.chat
+	permission message: {@prefix} &cDu har ikke tilladelse til den kommando.
+	trigger:
+		if arg 1 is not set:
+			message "{@prefix} &cBrug: /sc (besked) - For at skrive en besked."		
+			stop
+		else:
+			loop all players:
+				if loop-player has permission "exstaff.chat":
+					send "{@prefix} &7%player's name% &8» &f%arg text%" to loop-player
+
+
+#----------------------------- 		STAFF CHAT 		-----------------------------#		
+
+#----------------------------- 		coinflip 		-----------------------------#	
+
+command /coinflip [<text>] [<number>] [<text>]:
+	aliases: cf
+	trigger:
+		if arg-1 is not set:
+			
+			message "&8&l&m------------------"
+			message " "
+			message " &71. &8&l| &c&lCOINFLIP &8&l| &c/coinflip opret (pris) (heads/tails) &8- &7For at oprette en coinflip"
+			message " &72. &8&l| &c&lCOINFLIP &8&l| &c/coinflip menu &8- &7For at åbne menuen"
+			message " "
+			message "&8&l&m------------------"		
+			
+		if arg-1 is "menu":
+			if arg-2 is not set:
+				if arg-3 is not set:
+					execute player command "/coinflip:cf"
+					stop
+					
+		if arg-1 is "opret":
+			if arg-2 is a number:
+				if arg-3 is "heads":
+					execute player command "/coinflip:cf create %arg-2% heads"
+					stop
+				
+				if arg-3 is "tails":
+					execute player command "/coinflip:cf create %arg-2% tails"
+					stop 
+				
+
+#----------------------------- 		coinflip 		-----------------------------#	
+
+
+command /starhub:
+	permission: *
+	trigger:
+		loop all players:
+			if loop-player doesn't have permission "*":
+				execute loop-player command "hub"
+				wait 0.1 tick 
+				
+				
+on weather change:
+	cancel event
+	
+on hunger meter change:
+
+	if {godmode.%player%} is set:
+		cancel event		
+
+on login:
+	if player is op:
+		set player's gamemode to creative
+	else:
+		set player's gamemode to survival 
+		
+
+command /restoreinv2:
+	permission: ole
+	trigger:
+		
+		set {_slot} to 0
+		loop 36 times:
+			set slot {_slot} of player to {event.%player%.inventory::%loop-value-2%} 
+			add 1 to {_slot}
+			
+		set player's helmet slot to {event.%player%.inventory::37} 
+		set player's chestplate slot to {event.%player%.inventory::38} 
+		set player's leggings slot to {event.%player%.inventory::39} 
+		set player's boots slot to {event.%player%.inventory::40}
+
+ 
+command /restoreinv:
+	permission: event.gentag
+	trigger:
+		heal player 
+		
+		set {_count} to 0
+		loop 36 times:
+			set slot {_count} of player's inventory to {inv.%{_count}%.%player%}
+			clear {inv.%{_count}%.%player%}
+			add 1 to {_count}
+			
+			
+		set the helmet of player to {inv.helmet.%player%}
+		set the chestplate of player to {inv.chest.%player%}
+		set the boots of player to {inv.feet.%player%}
+		set the leggings of player to {inv.legs.%player%}
+				
+				
+					
+		teleport player to {spawn}
+				
+		
+#----------------------------- 		flymode checker 		-----------------------------#	
+
+		
+on any move:
+	if player is in "spawn":
+		if player's fly mode is false:
+			set player's flight mode to true	
+				
+
+			
+	else if player is not in "spawn":
+		if player does not have permission "rank.fly":
+			if player's fly mode is true:
+				set player's flight mode to false
+
+
+		
+#----------------------------- 		flymode checker 		-----------------------------#	
+
+
+
+#----------------------------- 		flymode checker 		-----------------------------#	
+
+
+
+#----------------------------- 		iron golem dropper + join besked 		-----------------------------#	
+
+
+	
+	
+on join:
+	wait 4 tick 
+	if player is op:
+		execute player command "/autoblock toggle"
+	
+	execute player command "pp reset"
+	loop 300 times:
+		send "&4" to player
+
+	wait 2 tick
+	send "&8&l&m------------&8&l( &b&lex&f&lPrison &8&l)&8&l&m-------------"
+	send ""
+	send "                &7Velkommen til &b&lex&f&lPrison"
+	send "         &7Brug &D&l/buy &7for at købe ranks."
+	send "      &7Brug &b&l/discord &7og join vores Discord"
+	send "       &7Brug &c&l/team opret &7for oprette et team"
+	# send "     &a&lDer er nu op til 50%% rabat! &d&l/buy"
+	send ""
+	send "&8&l&m------------&8&l( &b&lex&f&lPrison &8&l)&8&l&m-------------"
+	send "&4" to player
+		
+
+ 
+#----------------------------- 		iron golem dropper + join besked 		-----------------------------#	
+
+
+		
+	
+#----------------------------- 		clearlag 		-----------------------------#	
+
+command /clearlag:
+	aliases: /cl
+	permission: *
+	permission message: &8&l| &c&lCLEARLAG &8&l| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:
+		set {_count} to 0
+		loop all dropped items:
+			add 1 to {_count}
+			clear loop-value
+		broadcast "&8&l| &c&lCLEARLAG &8&l| &a&l%player% &7fjernede &e&l%{_count}%&7 items fra jorden"
+			
+#----------------------------- 		clearlag 		-----------------------------#	
+			
+	
+
+ 
+#----------------------------- 		diverse commands 		-----------------------------#	
+
+	
+Command /fly:
+	Executable by: players
+	Permission: rank.fly
+	Permission message: &8&l| &c&lFLY &8&l| &7Du har &c&likke &7adgang til denne kommando!
+	Trigger:
+		if player's fly mode is false:
+			Send "&8&l| &a&lFLY &8&l| &7Dit flymode blev slået &a&lTIL!" to player
+			set player's flight mode to true
+		else:
+			Send "&8&l| &c&lFLY &8&l| &7Dit flymode blev slået &c&lFRA!" to player
+			set player's flight mode to false
+
+			
+command /eat:
+	Executable by: players
+	Permission: rank.eat
+	Permission message: &8&l| &a&lEAT &8&l| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:	
+		set food level of player to 5000
+		message "&8&l| &a&lEAT &8&l| &7Du har fået mætted &a&lAPPETITEN!"
+		
+command /heal:
+	Executable by: players
+	Permission: rank.heal
+	Permission message: &8&l| &A&LHEAL &8&l| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:	
+		heal player 
+		message "&8&l| &a&lHEAL &8&l| &7Du er blev &a&lHEALED"
+	
+	
+command /god:
+	aliases: godmode
+	permission: rank.god
+	permission message: &8&l| &c&lGODMODE &8&l| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:	
+		if {godmode.%player%} is set:
+			message "&8&l| &e&lGODMODE &8&l| &7Du har slået godmode &c&lFRA"
+			wait 1 tick
+			delete {godmode.%player%} 
+			stop
+		if {godmode.%player%} is not set:
+			message "&8&l| &e&lGODMODE &8&l| &7Du har slået godmode &a&lTIL"
+			wait 1 tick
+			set {godmode.%player%} to true
+			stop
+	
+command /gm [<text>] [<player>]:
+	permission: *
+	trigger:
+		if arg-1 is set:
+			if arg-2 is not set:
+				if arg-1 is "1":
+					set gamemode of player to creative
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har taget creative &7mode &a&LTIL!"
+				
+				else if arg-1 is "0":
+					set gamemode of player to survival
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har taget survival &7mode &a&LTIL!"
+				
+				else if arg-1 is "2":
+					set gamemode of player to adventure 
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har taget adventure &7mode &a&LTIL!"			
+					
+				else if arg-1 is "3":
+					set gamemode of player to spectator 
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har taget spectator &7mode &a&LTIL!"			
+					
+			else if arg-2 is set:
+				if arg-1 is "1":
+					set gamemode of arg-2 to creative
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har givet creative &7mode til &a&l%arg-2%!"
+					send "&8&l| &c&lGAMEMODE &8&l| &7Du har fået creative &7mode af &a&l%player%" to arg-2	
+				
+				else if arg-1 is "0":
+					set gamemode of arg-2 to survival
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har givet survival &7mode til &a&l%arg-2%!"
+					send "&8&l| &c&lGAMEMODE &8&l| &7Du har fået survival &7mode af &a&l%player%" to arg-2	
+				
+				else if arg-1 is "2":
+					set gamemode of arg-2 to adventure
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har givet adventure &7mode til &a&l%arg-2%!"
+					send "&8&l| &c&lGAMEMODE &8&l| &7Du har fået adventure &7mode af &a&l%player%" to arg-2	
+					
+				else if arg-1 is "3":
+					set gamemode of arg-2 to spectator
+					message "&8&l| &c&lGAMEMODE &8&l| &7Du har givet spectator &7mode til &a&l%arg-2%!"	
+					send "&8&l| &c&lGAMEMODE &8&l| &7Du har fået spectator &7mode af &a&l%player%" to arg-2	
+				
+				
+				
+
+		
+		
+on quit:
+	if {gmode.%player%} is true:
+		delete {gmode.%player%}		
+			
+on damage:
+	if {godmode.%victim%} is set:
+		message "&8&l| &e&lGODMODE &8&l| &7Spilleren har godmode &a&lTIL"
+		cancel event
+		
+	
+	if damage cause is burning:
+		if {combattag.%victim%} isn't set:
+			cancel event
+			
+command /setspawn:
+	permission: *
+	trigger:
+		set {spawn} to location of player
+		send "&8&l| &a&lSPAWNPOINT &8&l| &7Du har sat &a&lSPAWNPOINT &7til spillerne" to player
+
+
+command /forum:
+	aliases: hjemmeside, web, browser, website, hjemmesiden
+	trigger:
+		wait 4 tick 
+		send "&8&l| &b&lFORUM &8&l| &7Besøg forumet på &b&lKommer snart" to player
+		
+command /discord:
+	aliases: ts, teamspeak, ts3
+	trigger:
+		wait 4 tick 
+		send "&8&l| &d&lDISCORD &8&l| &7Join discorden på prison.crystaldev.co" to player
+
+
+#----------------------------- 		diverse commands 		-----------------------------#	
+
+
+
+
+
+	
+
+
+command /suicide:
+	trigger:
+		kill player
+		wait 3 tick
+		message "&8&l| &c&lSUICIDE &8&l| &7Du drabte dig selv!"
+	
+command /spawn:
+	trigger:
+		teleport the player to {spawn}
+		wait 1 tick 
+		play raw sound "random.levelup" at player with pitch 1 volume 0.3	
+		drawComplexCircle particle "redstone", RGB 50, 255, 255, center player, id "%player%", rainbowMode true, randomRotation true, radius .8, density 20, start 0, visibleRange 100, xRotation 23, yRotation 120, zRotation 0
+		wait 1 second
+		stopEffect "%player%"
+
+			
+		
+		
+	
+
+		
+command /tps:
+	trigger:
+		set {_tps} to tps
+		if {_tps}  is more than 18:
+			send "&8&l| &b&lTPS&8 &8&l| &a&l%tps%"
+			stop 
+			
+		else if {_tps}  is less than 18:
+			send "&8&l| &b&lTPS&8 &8&l| &e&l%tps%"
+
+		else if {_tps}  is less than 17:
+			send "&8&l| &b&lTPS&8 &8&l| &c&l%tps%"
+
+		else if {_tps}  is less than 16:
+			send "&8&l| &b&lTPS&8 &8&l| &4&l%tps%"
+
+
+
+
+
+
+
+
+		

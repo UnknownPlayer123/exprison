@@ -1,0 +1,272 @@
+on region enter:
+
+	if "%event-region%" contains "dmineregion":
+		if player doesn't have permission "essentials.warps.dmine":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn} 
+			
+	else if "%event-region%" contains "regionb":
+		if player doesn't have permission "essentials.warps.b":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+
+	else if "%event-region%" contains "regionc":
+		if player doesn't have permission "essentials.warps.c":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regiond":
+		if player doesn't have permission "essentials.warps.d":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regione":
+		if player doesn't have permission "essentials.warps.e":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionf":
+		if player doesn't have permission "essentials.warps.f":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regiong":
+		if player doesn't have permission "essentials.warps.g":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionh":
+		if player doesn't have permission "essentials.warps.h":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regioni":
+		if player doesn't have permission "essentials.warps.i":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionj":
+		if player doesn't have permission "essentials.warps.j":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionk":
+		if player doesn't have permission "essentials.warps.k":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionl":
+		if player doesn't have permission "essentials.warps.l":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionm":
+		if player doesn't have permission "essentials.warps.m":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionn":
+		if player doesn't have permission "essentials.warps.n":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regiono":
+		if player doesn't have permission "essentials.warps.o":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionp":
+		if player doesn't have permission "essentials.warps.p":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionq":
+		if player doesn't have permission "essentials.warps.q":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionr":
+		if player doesn't have permission "essentials.warps.r":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regions":
+		if player doesn't have permission "essentials.warps.s":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regiont":
+		if player doesn't have permission "essentials.warps.t":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionu":
+		if player doesn't have permission "essentials.warps.u":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionv":
+		if player doesn't have permission "essentials.warps.v":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionw":
+		if player doesn't have permission "essentials.warps.w":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionx":
+		if player doesn't have permission "essentials.warps.x":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regiony":
+		if player doesn't have permission "essentials.warps.y":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if "%event-region%" contains "regionz":
+		if player doesn't have permission "essentials.warps.z":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+			
+on any move:
+
+	if region at player contains "dmineregion":
+		if player doesn't have permission "essentials.warps.dmine":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn} 
+			
+	else if region at player contains "regionb":
+		if player doesn't have permission "essentials.warps.b":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+
+	else if region at player contains "regionc":
+		if player doesn't have permission "essentials.warps.c":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regiond":
+		if player doesn't have permission "essentials.warps.d":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regione":
+		if player doesn't have permission "essentials.warps.e":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionf":
+		if player doesn't have permission "essentials.warps.f":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regiong":
+		if player doesn't have permission "essentials.warps.g":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionh":
+		if player doesn't have permission "essentials.warps.h":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regioni":
+		if player doesn't have permission "essentials.warps.i":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionj":
+		if player doesn't have permission "essentials.warps.j":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionk":
+		if player doesn't have permission "essentials.warps.k":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionl":
+		if player doesn't have permission "essentials.warps.l":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionm":
+		if player doesn't have permission "essentials.warps.m":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionn":
+		if player doesn't have permission "essentials.warps.n":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regiono":
+		if player doesn't have permission "essentials.warps.o":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionp":
+		if player doesn't have permission "essentials.warps.p":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionq":
+		if player doesn't have permission "essentials.warps.q":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionr":
+		if player doesn't have permission "essentials.warps.r":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regions":
+		if player doesn't have permission "essentials.warps.s":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regiont":
+		if player doesn't have permission "essentials.warps.t":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionu":
+		if player doesn't have permission "essentials.warps.u":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionv":
+		if player doesn't have permission "essentials.warps.v":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionw":
+		if player doesn't have permission "essentials.warps.w":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionx":
+		if player doesn't have permission "essentials.warps.x":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regiony":
+		if player doesn't have permission "essentials.warps.y":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+	else if region at player contains "regionz":
+		if player doesn't have permission "essentials.warps.z":
+			cancel event 
+			message "&8&l| &c&lMINER &8&L| &7Du har &c&lIKKE &7adgang til at være i denne mine!"
+			teleport player to {spawn}
+			
+			
+			

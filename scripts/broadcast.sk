@@ -1,0 +1,65 @@
+options:
+	prefix1: &8&l| &b&lTIPS &8&L|
+
+every 100 seconds:
+	if {broadcast.1} isn't set: 
+		broadcast ""
+		broadcast "{@prefix1} &fHusk at &d&ljoine &fvores discord: &d&lPrison.crystaldev.co"
+		broadcast ""
+		set {broadcast.1} to true
+	else if {broadcast.2} isn't set:
+		broadcast ""
+		broadcast "                &d&lBUYCRAFT &F&LREKLAME"
+		broadcast "     &7Vidste du at alle ranks har adgang til"
+		broadcast "     &7b√•de donater perks og 24h cooldown kits"
+		broadcast ""
+		broadcast "            &7Brug &D&L/BUY &7for at komme til"
+		broadcast "                &7vores shop buycraft"
+#		broadcast "      &7op til &b&l&n50%% rabat!&7 p√• &a&lBUYCRAFT"
+		broadcast ""
+		set {broadcast.2} to true
+	else if {broadcast.3} isn't set:
+		broadcast ""
+		broadcast "                &d&lBUYCRAFT &F&LREKLAME"
+		broadcast "     &7Vidste du at alle ranks har adgang til"
+		broadcast "     &7b√•de donater perks og 24h cooldown kits"
+		broadcast ""
+		broadcast "            &7Brug &D&L/BUY &7for at komme til"
+		broadcast "                &7vores shop buycraft"
+#		broadcast "      &7op til &b&l&n50%% rabat!&7 pÂ &a&lBUYCRAFT"
+		broadcast ""
+		set {broadcast.3} to true
+	else if {broadcast.4} isn't set:
+		broadcast ""
+		broadcast "{@prefix1} &fHusk at &d&ltjekke &fvores forum ud: &d&lkommet snart"
+		broadcast ""
+		set {broadcast.4} to true
+	else if {broadcast.5} isn't set:
+		broadcast ""
+		broadcast "{@prefix1} &fHusk at lÊse serverens &c&l/regler"
+		broadcast ""
+		set {broadcast.5} to true
+	else if {broadcast.6} isn't set:
+		broadcast ""
+		broadcast "                &d&lBUYCRAFT &F&LREKLAME"
+		broadcast "     &7Vidste du at alle ranks har adgang til"
+		broadcast "     &7b√•de donater perks og 24h cooldown kits"
+		broadcast ""
+		broadcast "            &7Brug &D&L/BUY &7for at komme til"
+		broadcast "                &7vores shop buycraft"
+#		broadcast "      &7op til &b&l&n50%% rabat!&7 pÂ &a&lBUYCRAFT"
+		broadcast ""
+		set {broadcast.6} to true
+	else if {broadcast.7} isn't set:
+		broadcast ""
+		broadcast "{@prefix1} &fHusk at &d&ljoine &fvores discord: &d&lprison.crystaldev.co"
+		broadcast ""
+		set {broadcast.7} to true
+		wait 3 tick 
+		delete {broadcast.1}
+		delete {broadcast.2}
+		delete {broadcast.3}
+		delete {broadcast.4}
+		delete {broadcast.5}
+		delete {broadcast.6}
+		delete {broadcast.7}

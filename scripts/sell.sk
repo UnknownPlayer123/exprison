@@ -1,0 +1,535 @@
+# --------------------------------- ( SELL PRICE + VARIABLE ) --------------------------------- #	
+command /reloadpris:
+	permission: *
+	permission message: &8&L| &c&LEX&f&lMC &8&L| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:
+		
+		set {sell.pris.clay} to 1
+		set {sell.pris.wood} to 5
+		set {sell.pris.leaves} to 1	
+		set {sell.pris.stone} to 2	
+		set {sell.pris.endstone} to 8	
+		set {sell.pris.cobblestone} to 0.1
+		set {sell.pris.redsandstone} to 12
+		set {sell.pris.quartzblock} to 20
+		set {sell.pris.redstonesand} to 0.1
+		
+		set {sell.pris.coal} to 10
+		set {sell.pris.coalblock} to 90
+		
+		set {sell.pris.iron} to 11
+		set {sell.pris.ironblock} to 99
+		
+		set {sell.pris.gold} to 13
+		set {sell.pris.goldblock} to 117
+		
+		set {sell.pris.redstone} to 17
+		set {sell.pris.redstoneblock} to 153
+		
+		set {sell.pris.lapis} to 20
+		set {sell.pris.lapisblock} to 180
+		
+		set {sell.pris.diamond} to 40
+		set {sell.pris.diamondblock} to 360
+
+		set {sell.pris.emerald} to 70
+		set {sell.pris.emeraldblock} to 630
+		
+	
+# --------------------------------- ( SELL PRICE + VARIABLE ) --------------------------------- #			
+	
+	
+	
+	
+	
+command /autosell:
+	trigger:
+		if {autosell::%player%} isn't set: 
+			set {autosell::%player%} to true
+			message "&8&l| &a&lAUTOSELL &8&L| &7Du har slået &a&lAUTOSELL &7til!"
+			stop
+			
+		else if {autosell::%player%} is true:
+			delete {autosell::%player%} 
+			message "&8&l| &c&lAUTOSELL &8&L| &7Du har slået &c&lAUTOSELL &7fra!"
+			stop
+	
+	
+	
+	
+	
+	
+	
+# --------------------------------- ( SELL SYSTEM ) --------------------------------- #							
+					
+command /sell:
+#	permission: *
+#	permission message: &8&L| &c&lSELL &8&L| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:
+		if player's inventory contains 159 or 17 or 18 or 1 or 121 or 4 or 24 or 155 or 263 or 173 or 265 or 42 or 266 or 41 or 351:4 or 22 or 331 or 152 or 264 or 57 or 388 or 133 or 4 or 179:0:  
+			
+			loop all items in player's inventory:
+				
+				if loop-item is red sandstone:
+											
+					set {_redsandstoneitem} to amount of loop-item
+					add {_redsandstoneitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.redsandstone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_redsandstoneitem} to {_sellpris}
+					wait 0.1 tick 	
+				
+				if loop-item is stained clay:
+											
+					set {_clayitem} to amount of loop-item
+					add {_clayitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.clay} * {sellmore.spiller::%player%} * {sell.server.boost} * {_clayitem} to {_sellpris}
+					wait 0.1 tick 	
+					
+				if loop-item is log:
+											
+					set {_wooditem} to amount of loop-item 
+					add {_wooditem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.wood} * {sellmore.spiller::%player%} * {sell.server.boost} * {_wooditem} to {_sellpris}
+					wait 0.1 tick 	
+					
+				if loop-item is leaves:
+											
+					set {_leavesitem} to amount of loop-item 
+					add {_leavesitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.leaves} * {sellmore.spiller::%player%} * {sell.server.boost} * {_leavesitem} to {_sellpris}
+					wait 0.1 tick 	
+								
+				if loop-item is stone:
+											
+					set {_stoneitem} to amount of loop-item 
+					add {_stoneitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.stone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_stoneitem} to {_sellpris}
+					wait 0.1 tick 	
+					
+				if loop-item is end stone:
+											
+					set {_endstoneitem} to amount of loop-item 
+					add {_endstoneitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.endstone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_endstoneitem} to {_sellpris}
+					wait 0.1 tick 	
+					
+					
+				if loop-item is cobble stone:
+											
+					set {_cobblestoneitem} to amount of loop-item 
+					add {_cobblestoneitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.cobblestone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_cobblestoneitem} to {_sellpris}
+					wait 0.1 tick 	
+					
+				if loop-item is sandstone:
+											
+					set {_sandstoneitem} to amount of loop-item 
+					add {_sandstoneitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.redsandstone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_sandstoneitem} to {_sellpris}
+					wait 0.1 tick 	
+
+				if loop-item is quartz block:
+											
+					set {_quartzblockitem} to amount of loop-item 
+					add {_quartzblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.quartzblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_quartzblockitem} to {_sellpris}
+					wait 0.1 tick 	
+					
+					
+					
+					
+				if loop-item is coal:
+											
+					set {_coalitem} to amount of loop-item 
+					add {_coalitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.coal} * {sellmore.spiller::%player%} * {sell.server.boost} * {_coalitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is coal block:
+											
+					set {_coalblockitem} to amount of loop-item 
+					add {_coalblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.coalblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_coalblockitem} to {_sellpris}
+					wait 0.1 tick 
+					
+				if loop-item is iron ingot:
+											
+					set {_ironitem} to amount of loop-item 
+					add {_ironitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.iron} * {sellmore.spiller::%player%} * {sell.server.boost} * {_ironitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is iron block:
+											
+					set {_ironblockitem} to amount of loop-item 
+					add {_ironblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.ironblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_ironblockitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is gold ingot:
+											
+					set {_golditem} to amount of loop-item 
+					add {_golditem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.gold} * {sellmore.spiller::%player%} * {sell.server.boost} * {_golditem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is gold block:
+											
+					set {_goldblockitem} to amount of loop-item 
+					add {_goldblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.goldblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_goldblockitem} to {_sellpris}
+					wait 0.1 tick 
+	
+				if loop-item is redstone dust:
+											
+					set {_redstonedustitem} to amount of loop-item 
+					add {_redstonedustitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.redstone} * {sellmore.spiller::%player%} * {sell.server.boost} * {_redstonedustitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is redstone block:
+											
+					set {_redstoneblockitem} to amount of loop-item 
+					add {_redstoneblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.redstoneblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_redstoneblockitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is lapis:
+											
+					set {_lapisitem} to amount of loop-item 
+					add {_lapisitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.lapis} * {sellmore.spiller::%player%} * {sell.server.boost} * {_lapisitem} to {_sellpris}
+					wait 0.1 tick 
+
+				if loop-item is lapis block:
+											
+					set {_lapisblockitem} to amount of loop-item 
+					add {_lapisblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.lapisblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_lapisblockitem} to {_sellpris}
+					wait 0.1 tick 
+
+					
+				if loop-item is diamond blocks:
+											
+					set {_diamondblockitem} to amount of loop-item 
+					add {_diamondblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.diamondblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_diamondblockitem} to {_sellpris}
+					wait 0.1 tick 
+	
+	
+				if loop-item is diamond:
+											
+					set {_diamonditem} to amount of loop-item 
+					add {_diamonditem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.diamond} * {sellmore.spiller::%player%} * {sell.server.boost} * {_diamonditem} to {_sellpris}
+					wait 0.1 tick 
+	 
+				if loop-item is emerald blocks:
+											
+					set {_emeraldblockitem} to amount of loop-item 
+					add {_emeraldblockitem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.emeraldblock} * {sellmore.spiller::%player%} * {sell.server.boost} * {_emeraldblockitem} to {_sellpris}
+					wait 0.1 tick 
+	 
+	
+				if loop-item is emerald:
+											
+					set {_emeralditem} to amount of loop-item 
+					add {_emeralditem} to {_itemamount}
+					remove loop-item from player's inventory
+					add {sell.pris.emerald} * {sellmore.spiller::%player%} * {sell.server.boost} * {_emeralditem} to {_sellpris}
+					wait 0.1 tick 	
+				
+		
+	 
+
+			
+			
+			send ""
+			send "&8&m                 &7&8&L( &a&lSELL &8&L)&8&m                 "
+			send ""
+			send "&r              &b&lITEMS &8&l( &e&l%{_itemamount}% &8&l)"
+			
+			if {sell.server.boost} is more than 1:
+				send "&r              &d&lBOOST &8&l( &d&l%{sell.server.boost}%x &8&l)"
+			else:
+				send "&r              &d&lBOOST &8&l( &f&l0x &8&l)"
+				
+			
+
+
+
+			if player has permission "sell.elite":
+		
+				set {_sellpris} to {_sellpris} * 1.1
+				
+				
+			else if player has permission "sell.cube":
+		
+				set {_sellpris} to {_sellpris} * 1.3
+				
+			else if player has permission "sell.cubeplus":
+		
+				set {_sellpris} to {_sellpris} * 1.5	
+				
+				
+				
+			if lore of player's tool contains "&f&l* ENCHANT &8&l( &b&lDOUBLE &8&l)":
+				set {_rdsell} to a random integer between 1 and 100
+				if {_rdsell} is between 1 and 25:
+					set {_sellpris} to {_sellpris} * 2
+					add {_sellpris} to player's balance
+
+				else:	
+			
+					add {_sellpris} to player's balance 
+
+				
+			else:	
+			
+				add {_sellpris} to player's balance 		
+			
+
+
+			
+			if {_sellpris} is between 1000 and 999999:
+				set {_sellpris} to "%{_sellpris} / 1000% K"
+	
+			else if {_sellpris} is between 1000000 and 999999999:
+				set {_sellpris} to "%{_sellpris} / 1000000% MIL"
+			 
+			else if {_sellpris} is between 1000000000 and 999999999999:
+				set {_sellpris} to "%{_sellpris} / 1000000000% MIA"	
+				
+			else if {_sellpris} is more than 999999999999:
+				set {_sellpris} to "%{_sellpris} / 1000000000000% BIL"
+		 
+		 
+
+			if {_rdsell} is between 1 and 25:
+				send "&r              &a&lPRIS &8&l( &a&l$&f&l%{_sellpris}% &7+ &d&l2x &8&l)"
+				
+			else:
+				send "&r              &a&lPRIS &8&l( &a&l$&f&l%{_sellpris}% &8&l)"
+			send ""
+			send "&8&m                 &7&8&L( &a&lSELL &8&L)&8&m                 "
+			send ""
+		
+			play "ITEM_PICKUP" to player at volume 0.3		
+
+		
+		else:
+			message "&8&L| &c&lSELL &8&L| &7Du har &c&lIKKE &7nogle items at &c&LSÆLGE!"
+			
+			
+			
+# --------------------------------- ( SELL SYSTEM ) --------------------------------- #			
+			
+
+
+ 
+
+			
+	
+			
+# --------------------------------- ( SELL BOOST ) --------------------------------- #
+		
+command /setboost [<text>]:
+	aliases: /boost
+	permission: *
+	trigger:
+		if arg-1 is not set:
+			wait 1 tick
+			open chest with 5 rows named "&d&lBOOST &F&LMENU" to player 
+			wait 4 tick 
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close 
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+			
+			format slot 36 of player with magenta stained glass pane named "&f" to close
+			format slot 37 of player with magenta stained glass pane named "&f" to close
+			format slot 38 of player with magenta stained glass pane named "&f" to close
+			format slot 39 of player with magenta stained glass pane named "&f" to close
+			format slot 40 of player with glowing 351:1 named "&c&lSTOP &F&LBOOST!" to close then run [execute player command "/boost stop"]
+			format slot 41 of player with magenta stained glass pane named "&f" to close
+			format slot 42 of player with magenta stained glass pane named "&f" to close
+			format slot 43 of player with magenta stained glass pane named "&f" to close
+			format slot 44 of player with magenta stained glass pane named "&f" to close
+			
+			
+			format slot 19 of player with glowing 263 named "&d&LBOOST &F&L&n0.5x&8&l ( &f&lSÆT &8&l)" to close then run [execute player command "/setboost 1.1x"]
+			format slot 21 of player with glowing gold ingot named "&d&LBOOST &F&L&n1.0x&8&l ( &f&lSÆT &8&l)" to close then run [execute player command "/setboost 1.3x"]
+			format slot 23 of player with glowing diamond named "&d&LBOOST &F&L&n1.3&8&l ( &f&lSÆT &8&l)" to close then run [execute player command "/setboost 1.5x"]
+			format slot 25 of player with glowing emerald named "&D&LBOOST &F&L&n2.0x&8&l ( &f&lSÆT &8&l)" to close then run [execute player command "/setboost 2.0x"]
+
+
+		if arg-1 is "1.1x":
+			set {sell.server.boost} to 1.1
+			set {sellboost.igang} to true
+			
+			message "&8&L| &d&lBOOST &8&L| &7Du satte &7sell &d&lBOOST &7til &f&l%arg-1%"
+			send all players title "&d&lSELL &F&LBOOST!" with subtitle "&d&lSELL &F&LBOOST &7er sat til &A&l%arg-1%" for 5 seconds 
+
+			
+			set {sellboost.timer} to "&c&l5 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l4 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l3 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l2 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l1 MIN"
+			wait 30 seconds
+			set {sellboost.timer} to "&c&l30 SEK"
+			wait 27 seconds
+			set {sellboost.timer} to "&c&l3 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l2 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l1 SEK"
+			
+			execute console command "/setboost stop"
+			delete {sellboost.igang} 
+			stop 
+			
+		if arg-1 is "1.3x":
+			set {sell.server.boost} to 1.3
+			set {sellboost.igang} to true
+
+			message "&8&L| &d&lBOOST &8&L| &7Du satte &7sell &d&lBOOST &7til &f&l%arg-1%"
+			send all players title "&d&lSELL &F&LBOOST!" with subtitle "&d&lSELL &F&LBOOST &7er sat til &a&l%arg-1%" for 5 seconds 
+
+			
+			set {sellboost.timer} to "&c&l5 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l4 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l3 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l2 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l1 MIN"
+			wait 30 seconds
+			set {sellboost.timer} to "&c&l30 SEK"
+			wait 27 seconds
+			set {sellboost.timer} to "&c&l3 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l2 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l1 SEK"
+			
+			execute console command "/setboost stop"
+			delete {sellboost.igang} 
+			
+			
+			stop 
+			
+		if arg-1 is "1.5x":
+			set {sell.server.boost} to 1.5
+			set {sellboost.igang} to true
+			
+			
+			message "&8&L| &d&lBOOST &8&L| &7Du satte &7sell &d&lBOOST &7til &f&l%arg-1%"
+			send all players title "&d&lSELL &F&LBOOST!" with subtitle "&d&lSELL &F&LBOOST &7er sat til &a&l%arg-1%" for 5 seconds 
+			
+			set {sellboost.timer} to "&c&l5 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l4 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l3 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l2 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l1 MIN"
+			wait 30 seconds
+			set {sellboost.timer} to "&c&l30 SEK"
+			wait 27 seconds
+			set {sellboost.timer} to "&c&l3 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l2 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l1 SEK"
+			
+			execute console command "/setboost stop"
+			delete {sellboost.igang} 
+			
+			
+			stop 
+			
+		if arg-1 is "2.0x":
+			set {sell.server.boost} to 2.0
+			set {sellboost.igang} to true
+	
+			
+			message "&8&L| &d&lBOOST &8&L| &7Du satte &7sell &d&lBOOST &7til &f&l%arg-1%"
+			send all players title "&d&lSELL &F&LBOOST!" with subtitle "&d&lSELL &F&LBOOST &7er sat til &a&l%arg-1%" for 5 seconds 
+			
+			set {sellboost.timer} to "&c&l5 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l4 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l3 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l2 MIN"
+			wait 1 minute 
+			set {sellboost.timer} to "&c&l1 MIN"
+			wait 30 seconds
+			set {sellboost.timer} to "&c&l30 SEK"
+			wait 27 seconds
+			set {sellboost.timer} to "&c&l3 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l2 SEK"
+			wait 1 seconds
+			set {sellboost.timer} to "&c&l1 SEK"
+			
+			execute console command "/setboost stop"
+			delete {sellboost.igang} 
+			
+			
+
+			stop 
+			
+		if arg-1 is "stop":
+			set {sell.server.boost} to 1
+			delete {sellboost.igang} 
+			
+			message "&8&L| &c&lBOOST &8&L| &7Du resatte sell &c&lBOOST"
+			send all players title "&c&lSELL &F&LBOOST!" with subtitle "&c&LSELL BOOST &7er nu &c&lSLUT!" for 5 seconds 
+			stop 
+			
+			
+# --------------------------------- ( SELL BOOST ) --------------------------------- #
+
+
+command /delcol:
+	permission: *
+	trigger:
+		delete {laserpickaxecooldown::*}

@@ -1,0 +1,58 @@
+command /speed [<number>]:
+
+	trigger:
+		if arg 1 is not set:
+			send "&8&m-----------------&8&l ( &D&LFLY &8&L) &8&m------------------" 
+			message ""
+			message "&8&l| &d&lFLY &8&l| &72. &d/Speed (hastihed) &8- &7For at ændre dit fly speed!"
+			message ""
+			message "&8&m-----------------&8&l ( &D&LFLY &8&L) &8&m------------------" 
+
+		if arg 1 is 1:
+			set the player's fly speed to 0.1
+			message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n1"
+		
+			
+		if arg 1 is 2:
+			set the player's fly speed to 0.2
+			message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n2"
+			
+		if arg 1 is 3:
+			if player has permission "rank.fly":
+				set the player's fly speed to 0.3
+				message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n3"
+			
+			else:
+				message "&8&l| &d&lFLY &8&l| &7Du har &c&likke &7adgang til dette fly speed!"
+		if arg 1 is 4:
+			if player has permission "rank.fly":
+				set the player's fly speed to 0.4
+				message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n4"
+				
+			else:
+				message "&8&l| &d&lFLY &8&l| &7Du har &c&likke &7adgang til dette fly speed!"
+				
+		if arg 1 is 5:
+			if player has permission "rank.fly":
+				set the player's fly speed to 0.5
+				message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n5"
+				
+			else:
+				message "&8&l| &d&lFLY &8&l| &7Du har &c&likke &7adgang til dette fly speed!"
+				
+		if arg 1 is more than 5:
+			if player has permission "*":
+				set the player's fly speed to arg-1
+				message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n%arg-1%"
+				
+			else:
+				message "&8&l| &d&lFLY &8&l| &7Du har &c&likke &7adgang til dette fly speed!"
+		
+	
+		if arg 1 is less than 1:
+			if player has permission "*":
+				set the player's fly speed to arg-1
+				message "&8&l| &d&lFLY &8&l| &7Dit &d&l&nFLY&7 speed er sat til &a&l&n%arg-1%"
+				
+			else:
+				message "&8&l| &d&lFLY &8&l| &7Du har &c&likke &7adgang til dette fly speed!"

@@ -1,0 +1,97 @@
+on join:
+	if player has permission "*":
+		if {afk.%player%} is set:
+			delete {afk.%player%} 
+
+command /afk:
+	permission: *
+	trigger:
+	
+		if {afk.%player%} isn't set:
+			set {afk.%player%} to true
+			message "&8&l| &c&lAFK &8&L| &7Du er gået &c&lAFK! "
+			execute console command "nte player %player% prefix &E&LAFK &f"
+			create holo object "ItemStack:BARRIER;&8&L『 &C&LAFK &8&l』" with id "afk.%player%" at location 3.5 meters above player
+			stop
+			
+		if {afk.%player%} is true:
+			delete {afk.%player%} 
+			delete holo object "afk.%player%"
+			execute console command "nte player %player% clear"
+			message "&8&l| &c&lAFK &8&L| &7Du er gået ud af &a&lAFK!"
+			stop 
+						
+
+on any movement:
+	if {afk.%player%} is true:
+		delete {afk.%player%} 
+		delete holo object "afk.%player%"
+		execute console command "nte player %player% prefix &4&lH-ADMIN &f"
+		message "&8&l| &c&lAFK &8&L| &7Du er gået ud af &a&lAFK!"
+		stop 
+		
+		 
+on rightclick:
+	if name of player's held item contains "GEMS":
+		set {_amount::*} to name of the player's held item split at " "
+		replace all "&b&l&n" with "" in {_amount::1}
+	
+		execute console command "gems add %player% %{_amount::1}%"
+		remove 1 of held item from player
+	
+	
+command /randomvinder:
+	permission: *
+	trigger:
+		loop all players:
+			add loop-player	 to {vinder::*}		
+			
+
+		set {randomvindertake} to random player out of {vinder::*}	
+		execute console command "gems add %{randomvindertake}% 200"
+		broadcast "&8&L| &d&lRANDOM &f&lPRÆMIE &8&L| &A&l%{randomvindertake}% &7vandt en random &d&lPRÆMIE!"
+		wait 2 tick 
+		
+		wait 2 tick
+		clear {randomvindertake}
+		clear {vinder}	
+		
+	
+command /randomvinder2:
+	permission: *
+	trigger:
+		loop all players:
+			add loop-player	 to {vinder::*}		
+			
+
+		set {randomvindertake} to random player out of {vinder::*}	
+		set {_getmoneyreward} to random integer between 5000000 and 50000000
+		
+		
+
+		execute console command "eco give %{randomvindertake}% %{_getmoneyreward}%"
+		
+		
+		if {_getmoneyreward} is between 1000 and 999999:
+			set {_getmoneyreward} to "%{_getmoneyreward} / 1000% K"
+
+		else if {_getmoneyreward} is between 1000000 and 999999999:
+			set {_getmoneyreward} to "%{_getmoneyreward} / 1000000% MIL"
+		 
+		else if {_getmoneyreward} is between 1000000000 and 999999999999:
+			set {_getmoneyreward} to "%{_getmoneyreward} / 1000000000% MIA"	
+			
+		else if {_getmoneyreward} is more than 999999999999:
+			set {_getmoneyreward} to "%{_getmoneyreward} / 1000000000000% BIL"
+	 
+	 
+		 
+		 
+		 
+		broadcast "&8&L| &d&lRANDOM &f&lPRÆMIE &8&L| &A&l%{randomvindertake}% &7vandt &d&l%{_getmoneyreward}%!"
+		wait 2 tick 
+		
+		wait 2 tick
+		clear {randomvindertake}
+		clear {vinder}	
+		

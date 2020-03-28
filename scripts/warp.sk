@@ -1,0 +1,291 @@
+#CubeMC | Op-Prison  Warp-Menu
+options:
+	prefix: &a&lWARP &F&LMENU
+	
+	prestige: &4&lKOMMER..
+	dmine1: &720%% Prismarine|| &8- &720%% Prismarine bricks|| &8- &720%% Dark Prismarine|| &8- &710%% Redstone block|| &8- &710%% Emerald block|| &8- &710%% Diamond block 
+	dmine2: &710%% Emerald block|| &8- &710%% Redstoneblock|| &8- &720%% Cyan clay|| &8- &710%% Coalblock|| &8- &720%% Emerald ore|| &8- &720%% Diamond ore
+	
+	A:  &8- &720%% Iron Ore|| &8- &720%% Coal Ore|| &8- &760%% Grøn Clay
+	B:  &8- &71%% Diamond Ore|| &8- &710%% Gold Ore|| &8- &720%% Iron Ore|| &8- &720%% Coal ore|| &8- &749%% Rød Clay
+	C:  &8- &78%% Diamond Ore|| &8- &714%% Gold Ore|| &8- &716%% Iron Ore|| &8- &760%% Lilla Clay|| &8- &72%% wood
+	D:  &8- &75%% Iron Blocks|| &8- &71%% Emerald Ore|| &8- &71%% Diamond Ore|| &8- &718%% Gold Ore|| &8- &710%% Iron Ore|| &8- &762%% Stone|| &8- &72%% Leaves
+	E:  &8- &710%% Iron Blocks|| &8- &710%% Diamond Ore|| &8- &710%% Gold Ore|| &8- &75%% Iron Ore|| &8- &75%% Lapis Ore|| &8- &760%% Lilla Clay
+	F:  &8- &710%% Iron Blocks|| &8- &710%% Coal Blocks|| &8- &710%% Diamond Ore|| &8- &720%% Gold Ore|| &8- &750%% Stone
+	G:  &8- &76%% Diamond Blocks|| &8- &710%% Gold Ore|| &8- &710%% Diamond Ore|| &8- &710%% Gold Ore|| &8- &74%% Lapis Ore|| &8- &760%% Lilla Clay
+	H:  &8- &78%% Diamond Blocks|| &8- &710%% Gold Blocks|| &8- &710%% Iron Blocks|| &8- &712%% Emerald Ore|| &8- &735%% Sandstone|| &8- &725%% Endstone
+	I:  &8- &710%% Diamond Blocks|| &8- &710%% Gold Blocks|| &8- &710%% Iron Blocks|| &8- &710%% Coal Blocks|| &8- &710%% Emerald Ore|| &8- &710%% Diamond Ore|| &8- &710%% Iron Ore|| &8- &730%% Andesite
+	J:  &8- &715%% Diamond Blocks|| &8- &715%% Gold Blocks|| &8- &715%% Iron Blocks|| &8- &710%% Emerald Ore|| &8- &710%% Diamond Ore|| &8- &75%% Redstone Ore|| &8- &730%% Magenta Clay
+	K:  &8- &715%% Diamond Blocks|| &8- &715%% Gold Blocks|| &8- &710%% Iron Blocks|| &8- &75%% Redstone Blocks|| &8- &710%% Emerald Ore|| &8- &710%% Diamond Ore|| &8- &715%% Redstone Ore|| &8- &720%% Red Clay
+	L:  &8- &710%% Redstone Blocks|| &8- &710%% Lapis Blocks|| &8- &710%% Emerald Ore|| &8- &75%% Diamond Ore|| &8- &75%% Redstone Ore|| &8- &710%% Lapis Ore|| &8- &720%% Red Clay
+	M:  &8- &715%% Emerald Blocks|| &8- &710%% Diamond Blocks|| &8- &710%% Lapis Blocks|| &8- &710%% Emerald Ore|| &8- &715%% Diamond Ore|| &8- &74%% Redstone Ore|| &8- &730%% stone|| &8- &71%% Glowstone
+	N:  &8- &710%% Gold Ore|| &8- &75%% Coal Ore|| &8- &710%% Clay|| &8- &730%% Red Clay|| &8- &730%% Grøn Clay
+	O:  &8- &715%% Emerald Blocks|| &8- &710%% Diamond Blocks|| &8- &710%% Emerald Ore|| &8- &715%% Diamond Ore|| &8- &720%% Gul Clay|| &8- &720%% Lilla Clay
+	P:  &8- &710%% Emerald Blocks|| &8- &710%% Diamond Blocks|| &8- &75%% Gold Blocks||&8- &75%% Lapis Blocks|| &8- &75%% Diamond Ore|| &8- &75%% Gold Ore|| &8- &710%% Redstone Ore|| &8- &720%% Quartz Block|| &8- &730%% Quartz Ore
+	Q:  &8- &720%% Diamond Block|| &8- &720%% Gold Block|| &8- &720%% Iron Block|| &8- &710%% Lapis Block||&8- &720%% Emerald Ore|| &8- &710%% Iron Ore
+	R:  &8- &750%% Coal Blocks|| &8- &750%% Coal Ore
+	S:  &8- &750%% Iron Blocks|| &8- &750%% Iron Ore
+	T:  &8- &750%% Gold Blocks|| &8- &750%% Gold Ore
+	U:  &8- &750%% Redstone Blocks|| &8- &750%% Redstone Ore
+	V:  &8- &750%% Lapis Blocks|| &8- &750%% Lapis Ore
+	W:  &8- &750%% Diamond Blocks|| &8- &750%% Diamond Ore
+	X:  &8- &750%% Emerald Blocks|| &8- &750%% Emerald Ore
+	Y:  &8- &7100%% Diamond Blocks
+	Z:  &8- &7100%% Emerald Blocks
+	P1: &8- &720%% mere i /sell|| &8- &712%% ekstra for finde rewards|| &8- &750%% flere gems i reward|| &8- &710%% for sælge double automatisk|| &8- &720%% for finde bedre items i lootverden|| &8- &710%% chance for finde bedre items i crates||&4
+
+
+
+				
+
+on load:
+	set {mines.prestige.lore} to "{@prestige}"
+	set {mines.dmine1.lore} to "{@dmine1}"
+	set {mines.dmine2.lore} to "{@dmine2}"
+	
+	set {mines.A.lore} to "{@A}"
+	set {mines.B.lore} to "{@B}"
+	set {mines.C.lore} to "{@C}"
+	set {mines.D.lore} to "{@D}"
+	set {mines.E.lore} to "{@E}"
+	set {mines.F.lore} to "{@F}"
+	set {mines.G.lore} to "{@G}"
+	set {mines.H.lore} to "{@H}"
+	set {mines.I.lore} to "{@I}"
+	set {mines.J.lore} to "{@J}"
+	set {mines.K.lore} to "{@K}"
+	set {mines.L.lore} to "{@L}"
+	set {mines.M.lore} to "{@M}"
+	set {mines.N.lore} to "{@N}"
+	set {mines.O.lore} to "{@O}"
+	set {mines.P.lore} to "{@P}"
+	set {mines.Q.lore} to "{@Q}"
+	set {mines.R.lore} to "{@R}"
+	set {mines.S.lore} to "{@S}"
+	set {mines.T.lore} to "{@T}"
+	set {mines.U.lore} to "{@U}"
+	set {mines.V.lore} to "{@V}"
+	set {mines.W.lore} to "{@W}"
+	set {mines.X.lore} to "{@X}"
+	set {mines.Y.lore} to "{@Y}"
+	set {mines.Z.lore} to "{@Z}"
+	set {mines.P1.lore} to "{@P1}"
+
+			
+command /warp [<text>]:
+	aliases: /warps, /ewarp
+	trigger:
+			
+		if arg 1 isn't set:
+			open chest with 6 rows named "{@prefix}" to player
+			wait 3 ticks
+			if inventory name of player's current inventory is "{@prefix}":
+			
+				format slot 0 of player with glowing 160:5 named "&a&lA1" with lore "||&b&lKLIK HER &7for at tp til mine &a&lA1 || &6 ||&a&l * Minen indeholder |||| %{mines.A.lore}% "  to close then run [ execute player command "warp a1"]
+				format slot 1 of player with glowing 160:5 named "&a&lA2" with lore "||&b&lKLIK HER &7for at tp til mine &a&lA2 || &6 ||&a&l * Minen indeholder |||| %{mines.A.lore}% "  to close then run [ execute player command "warp a2"]
+				
+		
+				if player has permission "essentials.warps.B":
+					format slot 2 of player with glowing 160:5 named "&a&lB" with lore "||&b&lKLIK HER &7for at tp til mine &a&lB || &6 ||&a&l * Minen indeholder |||| %{mines.B.lore}%" to close then run [ execute player command "warp b"]
+				else:
+					format slot 2 of player with 160:13 named "&c&lB" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+				
+				if player has permission "essentials.warps.C":
+					format slot 3 of player with glowing 160:5 named "&a&lC" with lore "||&b&lKLIK HER &7for at tp til mine &a&lC || &6 ||&a&l * Minen indeholder |||| %{mines.C.lore}%" to close then run [ execute player command "warp c"]
+				else:
+					format slot 3 of player with 160:13 named "&c&lC" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									
+				if player has permission "essentials.warps.D":
+					format slot 4 of player with glowing 160:5 named "&a&lD" with lore "||&b&lKLIK HER &7for at tp til mine &a&lD || &6 ||&a&l * Minen indeholder |||| %{mines.D.lore}%" to close then run [ execute player command "warp d"]
+				else:
+					format slot 4 of player with 160:13 named "&c&lD" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.E":
+					format slot 5 of player with glowing 160:5 named "&a&lE" with lore "||&b&lKLIK HER &7for at tp til mine &a&lE || &6 ||&a&l * Minen indeholder |||| %{mines.E.lore}%" to close then run [ execute player command "warp e"]
+				else:
+					format slot 5 of player with 160:13 named "&c&lD" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+				
+				
+				if player has permission "essentials.warps.F":
+					format slot 6 of player with glowing 160:5 named "&a&lF" with lore "||&b&lKLIK HER &7for at tp til mine &a&lF || &6 ||&a&l * Minen indeholder |||| %{mines.F.lore}%" to close then run [ execute player command "warp f"]
+				else:
+					format slot 6 of player with 160:13 named "&c&lF" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+				
+				if player has permission "essentials.warps.G":
+					format slot 7 of player with glowing 160:5 named "&a&lG" with lore "||&b&lKLIK HER &7for at tp til mine &a&lG || &6 ||&a&l * Minen indeholder |||| %{mines.G.lore}%" to close then run [ execute player command "warp g"]
+				else: 
+					format slot 7 of player with 160:13 named "&c&lG" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									
+				if player has permission "essentials.warps.H":
+					format slot 8 of player with glowing 160:5 named "&a&lH" with lore "||&b&lKLIK HER &7for at tp til mine &a&lH || &6 ||&a&l * Minen indeholder |||| %{mines.H.lore}%" to close then run [ execute player command "warp h"]
+				else:
+					format slot 8 of player with 160:13 named "&c&lH" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.I":
+					format slot 9 of player with glowing 160:5 named "&a&lI" with lore "||&b&lKLIK HER &7for at tp til mine &a&lI || &6 ||&a&l * Minen indeholder |||| %{mines.I.lore}%" to close then run [ execute player command "warp i"]
+				else:
+					format slot 9 of player with 160:13 named "&c&lI" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+						
+				if player has permission "essentials.warps.J":
+					format slot 10 of player with glowing 160:5 named "&a&lJ" with lore "||&b&lKLIK HER &7for at tp til mine &a&lJ || &6 ||&a&l * Minen indeholder |||| %{mines.J.lore}%" to close then run [ execute player command "warp j"]
+				else:
+					format slot 10 of player with 160:13 named "&c&lJ" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.K":
+					format slot 11 of player with glowing 160:5 named "&a&lK" with lore "||&b&lKLIK HER &7for at tp til mine &a&lK || &6 ||&a&l * Minen indeholder |||| %{mines.K.lore}%" to close then run [ execute player command "warp k"]
+				else:
+					format slot 11 of player with 160:13 named "&c&lK" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+				
+								
+				
+				if player has permission "essentials.warps.L":
+					format slot 12 of player with glowing 160:5 named "&a&lL" with lore "||&b&lKLIK HER &7for at tp til mine &a&lL || &6 ||&a&l * Minen indeholder |||| %{mines.L.lore}%" to close then run [ execute player command "warp l"]
+				else:
+					format slot 12 of player with 160:13 named "&c&lL" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+				
+				if player has permission "essentials.warps.M":
+					format slot 13 of player with glowing 160:5 named "&a&lM" with lore "||&b&lKLIK HER &7for at tp til mine &a&lM || &6 ||&a&l * Minen indeholder |||| %{mines.M.lore}%" to close then run [ execute player command "warp m"]
+				else:
+					format slot 13 of player with 160:13 named "&c&lM" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									
+				if player has permission "essentials.warps.N":
+					format slot 14 of player with glowing 160:5 named "&a&lN" with lore "||&b&lKLIK HER &7for at tp til mine &a&lN || &6 ||&a&l * Minen indeholder |||| %{mines.N.lore}%" to close then run [ execute player command "warp n"]
+				else:
+					format slot 14 of player with 160:13 named "&c&lN" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.O":
+					format slot 15 of player with glowing 160:5 named "&a&lO" with lore "||&b&lKLIK HER &7for at tp til mine &a&lO || &6 ||&a&l * Minen indeholder |||| %{mines.O.lore}%" to close then run [ execute player command "warp o"]
+				else:
+					format slot 15 of player with 160:13 named "&c&lO" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+						
+				if player has permission "essentials.warps.P":
+					format slot 16 of player with glowing 160:5 named "&a&lP" with lore "||&b&lKLIK HER &7for at tp til mine &a&lP || &6 ||&a&l * Minen indeholder |||| %{mines.P.lore}%" to close then run [ execute player command "warp p"]
+				else:
+					format slot 16 of player with 160:13 named "&c&lP" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.Q":
+					format slot 17 of player with glowing 160:5 named "&a&lQ" with lore "||&b&lKLIK HER &7for at tp til mine &a&lQ || &6 ||&a&l * Minen indeholder |||| %{mines.Q.lore}%" to close then run [ execute player command "warp q"]
+				else:
+					format slot 17 of player with 160:13 named "&c&lQ" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+				
+																
+				if player has permission "essentials.warps.R":
+					format slot 18 of player with glowing 160:5 named "&a&lR" with lore "||&b&lKLIK HER &7for at tp til mine &a&lR || &6 ||&a&l * Minen indeholder |||| %{mines.R.lore}%" to close then run [ execute player command "warp r"]
+				else:
+					format slot 18 of player with 160:13 named "&c&lR" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+				
+				if player has permission "essentials.warps.S":
+					format slot 19 of player with glowing 160:5 named "&a&lS" with lore "||&b&lKLIK HER &7for at tp til mine &a&lS || &6 ||&a&l * Minen indeholder |||| %{mines.S.lore}%" to close then run [ execute player command "warp s"]
+				else:
+					format slot 19 of player with 160:13 named "&c&lS" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									
+				if player has permission "essentials.warps.T":
+					format slot 20 of player with glowing 160:5 named "&a&lT" with lore "||&b&lKLIK HER &7for at tp til mine &a&lT || &6 ||&a&l * Minen indeholder |||| %{mines.T.lore}%" to close then run [ execute player command "warp t"]
+				else:
+					format slot 20 of player with 160:13 named "&c&lT" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.U":
+					format slot 21 of player with glowing 160:5 named "&a&lU" with lore "||&b&lKLIK HER &7for at tp til mine &a&lU || &6 ||&a&l * Minen indeholder |||| %{mines.U.lore}%" to close then run [ execute player command "warp u"]
+				else:
+					format slot 21 of player with 160:13 named "&c&lU" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+						
+				if player has permission "essentials.warps.V":
+					format slot 22 of player with glowing 160:5 named "&a&lV" with lore "||&b&lKLIK HER &7for at tp til mine &a&lV || &6 ||&a&l * Minen indeholder |||| %{mines.V.lore}%" to close then run [ execute player command "warp v"]
+				else:
+					format slot 22 of player with 160:13 named "&c&lV" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.W":
+					format slot 23 of player with glowing 160:5 named "&a&lW" with lore "||&b&lKLIK HER &7for at tp til mine &a&lW || &6 ||&a&l * Minen indeholder |||| %{mines.W.lore}%" to close then run [ execute player command "warp w"]
+				else:
+					format slot 23 of player with 160:13 named "&c&lW" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+				
+															
+				if player has permission "essentials.warps.X":
+					format slot 24 of player with glowing 160:5 named "&a&lX" with lore "||&b&lKLIK HER &7for at tp til mine &a&lX || &6 ||&a&l * Minen indeholder |||| %{mines.X.lore}%" to close then run [ execute player command "warp x"]
+				else:
+					format slot 24 of player with 160:13 named "&c&lX" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+						
+				if player has permission "essentials.warps.Y":
+					format slot 25 of player with glowing 160:5 named "&a&lY" with lore "||&b&lKLIK HER &7for at tp til mine &a&lY || &6 ||&a&l * Minen indeholder |||| %{mines.Y.lore}%" to close then run [ execute player command "warp y"]
+				else:
+					format slot 25 of player with 160:13 named "&c&lY" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable
+									 
+				if player has permission "essentials.warps.Z":
+					format slot 26 of player with glowing 160:5 named "&a&lZ" with lore "||&b&lKLIK HER &7for at tp til mine &a&lZ || &6 ||&a&l * Minen indeholder |||| %{mines.Z.lore}%" to close then run [ execute player command "warp z"]
+				else:
+					format slot 26 of player with 160:13 named "&c&lZ" with lore "||&c&l* &7Du har &c&likke &7adgang til Minen.||&4" to be unstealable									
+				
+															
+				
+								
+				 
+				 
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if {rank.prestige.antal::%player%} is higher than or equal to 1:
+					format slot 46 of player with glowing coal block named "&A&lPRESTIGE 1" with lore "||&b&lLÆS HER &7for at se fordele til &b&lP&f&l1|| &6 ||&a&l * Prestige fordele |||| %{mines.P1.lore}%" to close
+				else:
+					format slot 46 of player with glowing beacon named "&c&lPRESTIGE 1" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 2:
+					format slot 47 of player with oak plank named "&c&lPRESTIGE 2" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close
+				else:
+					format slot 47 of player with glowing beacon named "&c&lPRESTIGE 2" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 3:
+					format slot 48 of player with iron block named "&c&lPRESTIGE 3" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close
+				else:
+					format slot 48 of player with glowing beacon named "&c&lPRESTIGE 3" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 4:
+					format slot 49 of player with gold block named "&c&lPRESTIGE 4" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close
+				else:
+					format slot 49 of player with glowing beacon named "&c&lPRESTIGE 4" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 5:
+					format slot 50 of player with diamond block named "&c&lPRESTIGE 5" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close 
+				else:
+					format slot 50 of player with glowing beacon named "&c&lPRESTIGE 5" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close 
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 6:
+					format slot 51 of player with emerald block named "&c&lPRESTIGE 6" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close 
+				else:
+					format slot 51 of player with glowing beacon named "&c&lPRESTIGE 6" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close 
+					
+				if {rank.prestige.antal::%player%} is higher than or equal to 7:
+					format slot 52 of player with bedrock named "&c&lPRESTIGE 7" with lore "||&a&l* &7Du har &a&ladgang &7til dette.||&4" to close
+				else:
+					format slot 52 of player with glowing beacon named "&c&lPRESTIGE 7" with lore "||&c&l* &7Du har &c&likke &7adgang til dette.||&4" to close 
+				
+				
+				format slot 27 of player with anvil:0 named "&a&LPLOT" to close then run [ execute console command "essentials:warp plot %player%" ]
+				format slot 35 of player with anvil:0 named "&a&lPLOT" to close then run [ execute console command "essentials:warp plot %player%" ]
+				
+				format slot 30 of player with light blue dye named "&b&LBUYCRAFT MINE" to close then run [ execute console command "essentials:warp bcmine %player%" ]
+				format slot 32 of player with light blue dye named "&b&lBUYCRAFT MINE" to close then run [ execute console command "essentials:warp bcmine %player%" ]
+				
+				format slot 31 of player with 2264 named "&D&LDONATOR MINE" to close then run [ execute player command "essentials:warp dmine" ]
+				
+		else:
+			execute player command "ewarp %arg-1%"
+			
+		
+		
+		
+		
+		
+		
+		
+		

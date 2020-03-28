@@ -1,0 +1,44 @@
+options:
+	msgFra: &8&l| &c&lBESKED &8&l| &c&l%player% &8&l- &c%{_besked}% &8&l( &c&l%{_modtager}% &8&l)
+	msgTil: &8&l| &a&lBESKED &8&l| &a&l%player% &8&l- &a%{_besked}%
+
+command /msg <player> <text>:
+	aliases: m, w, whisper, t, tell
+	trigger:
+		if arg-1 is not set:
+			send "&8&l| &c&lBESKED &8&l| &7Brug &8&l/&f&lmsg &8&l( &f&lSPILLER &8&L) &8&L( &F&LBESKED &8&L)" to player
+		if arg-1 is set:
+			if arg-1 isn't "%player%":
+				if arg-2 is set:
+					set {_besked} to arg-2
+					set {_modtager} to arg-1
+					set {chat1.private.reply.%player%} to arg 1
+					set {chat1.private.reply.%arg-1%} to player
+					send "{@msgFra}" to player
+					send "{@msgTil}" to arg 1
+					play "NOTE_PLING" to arg-1 at volume 5
+				else:
+					send "&8&l| &c&lBESKED &8&l| &7Brug &8&l/&f&lmsg &8&l( &f&lSPILLER &8&L) &8&L( &F&LBESKED &8&L)" to player
+			else:
+				send "&8&l| &c&lBESKED &8&l| &7Du kan &c&likke &7msg dig selv!" to player
+
+command /r <text>:
+	aliases: reply
+	trigger:
+		if arg-1 is not set:
+			send "&8&l| &c&lBESKED &8&l| &7Brug &8&l/&f&lmsg &8&l( &f&lSPILLER &8&L) &8&L( &F&LBESKED &8&L)" to player
+		if arg-1 is set:
+			if {chat1.private.reply.%player%} is set:
+				if {chat1.private.reply.%player%} is online:
+					set {_besked} to arg-1
+					set {_modtager} to {chat1.private.reply.%player%}
+					send "{@msgFra}" to player
+					send "{@msgTil}" to {chat1.private.reply.%player%}
+					play "NOTE_PLING" to {chat1.private.reply.%player%} at volume 5
+				else:
+					send "&8&l| &6&lBESKED &8&l| &cDu har ingen at skrive til"
+			else:
+				send "&8&l| &6&lBESKED &8&l| &cDu har ingen at skrive til"
+
+on quit:
+	delete {chat.private.reply.%player%}

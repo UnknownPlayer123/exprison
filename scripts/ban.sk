@@ -1,0 +1,157 @@
+command /straf [<text>] [<text>]:
+	Aliases: /straf, /kick , /punish, /b
+	Permission: staff.use
+	permission message: &8&l| &c&lSTAFF SYSTEM &8&l| &cDu har ikke adgang til dette!
+	trigger:
+		if arg-1 is not set:
+			message "&8&l| &c&lIDIOT :) &8&l| &7Brug /ban (spiller)"
+			 
+		if arg-1 is set:
+			if arg-2 is not set:
+					
+				wait 1 tick
+				
+				open chest with 5 rows named "&C&LSTRAF &f&lMENU" to player 
+				wait 4 tick
+				format slot 0 of player with black stained glass pane named "&f" to close
+				format slot 1 of player with black stained glass pane named "&f" to close
+				format slot 2 of player with black stained glass pane named "&f" to close
+				format slot 3 of player with black stained glass pane named "&f" to close
+				format slot 4 of player with skull of ("%arg-1%" parsed as an offline player) named "&a&l%arg-1% &8&l( &f&lVÆLG STRAF &8&l)" to close 
+				format slot 5 of player with black stained glass pane named "&f" to close
+				format slot 6 of player with black stained glass pane named "&f" to close
+				format slot 7 of player with black stained glass pane named "&f" to close
+				format slot 8 of player with black stained glass pane named "&f" to close
+				
+				format slot 36 of player with black stained glass pane named "&f" to close
+				format slot 37 of player with black stained glass pane named "&f" to close
+				format slot 38 of player with black stained glass pane named "&f" to close
+				format slot 39 of player with black stained glass pane named "&f" to close
+				format slot 40 of player with compass named "&c&lHusk at brug menuen" to close
+				format slot 41 of player with black stained glass pane named "&f" to close
+				format slot 42 of player with black stained glass pane named "&f" to close
+				format slot 43 of player with black stained glass pane named "&f" to close
+				format slot 44 of player with black stained glass pane named "&f" to close
+				
+				
+				format slot 19 of player with glowing diamond helmet named "&4&lBAN SPILLER" to run [execute player command "/b %arg-1% ban"]
+				format slot 22 of player with glowing bucket named "&b&lMUTE SPILLER" to run [execute player command "/b %arg-1% mute"]
+				format slot 25 of player with glowing 323 named "&E&lKICK SPILLER" to run [execute player command "/b %arg-1% kick"]
+			
+			
+			
+		if arg-1 is set:
+			wait 3 tick
+			if arg-2 is "ban":
+			
+				wait 1 ticks
+				
+				open chest with 5 rows named "&4&LBAN &f&lMENU" to player 
+				wait 4 tick
+			
+				format slot 0 of player with black stained glass pane named "&f" to close
+				format slot 1 of player with black stained glass pane named "&f" to close
+				format slot 2 of player with black stained glass pane named "&f" to close
+				format slot 3 of player with black stained glass pane named "&f" to close
+				format slot 4 of player with skull of ("%arg-1%" parsed as an offline player) named "&a&l%arg-1% &8&l( &f&lVÆLG STRAF &8&l)" to close 
+				format slot 5 of player with black stained glass pane named "&f" to close
+				format slot 6 of player with black stained glass pane named "&f" to close
+				format slot 7 of player with black stained glass pane named "&f" to close
+				format slot 8 of player with black stained glass pane named "&f" to close
+				
+				format slot 36 of player with black stained glass pane named "&f" to close
+				format slot 37 of player with black stained glass pane named "&f" to close
+				format slot 38 of player with black stained glass pane named "&f" to close
+				format slot 39 of player with black stained glass pane named "&f" to close
+				format slot 40 of player with compass named "&c&lHusk at brug menuen" to close
+				format slot 41 of player with black stained glass pane named "&f" to close
+				format slot 42 of player with black stained glass pane named "&f" to close
+				format slot 43 of player with black stained glass pane named "&f" to close
+				format slot 44 of player with black stained glass pane named "&f" to close
+				
+				format slot 19 of player with glowing 116 named "&c&lHACK &8&L( &F&L4 DAGE &8&L)" with lore "||&a&l * Ban %arg-1% i 7 dage!" to close then run [execute player command "/litebans:ban %arg-1% 4d Hack"]
+				format slot 20 of player with glowing bedrock named "&e&lAUTOMINE &8&L( &F&L4 DAGE &8&L)" with lore "||&a&l * Ban %arg-1% i 4 dage!" to close then run [execute player command "/litebans:ban %arg-1% 4d Automine"]
+				
+				format slot 22 of player with glowing 328 named "&b&lSPROG &8&L( &F&L2 DAGE &8&L)" with lore "||&a&l * Ban %arg-1% i 2 dage!" to close then run [execute player command "/litebans:ban %arg-1% 2d Sprog"]
+				
+				format slot 24 of player with glowing anvil named "&d&lREKLAME &8&L( &F&L2 DAGE &8&L)" with lore "||&a&l * Ban %arg-1% i 2 dage!" to close then run [execute player command "/litebans:ban %arg-1% 4d Reklame"]
+				format slot 25 of player with glowing 328 named "&a&lBUG &8&L( &F&L5 DAGE &8&L)" with lore "||&a&l * Ban %arg-1% i 5 dage!" to close then run [execute player command "/litebans:ban %arg-1% 2d Bug abuse"]
+				
+				
+				
+		if arg-1 is set:
+			wait 3 tick
+			if arg-2 is "mute":
+				wait 1 ticks
+				
+				open chest with 5 rows named "&4&LMUTE &f&lMENU" to player 
+				wait 4 tick
+		
+				format slot 0 of player with black stained glass pane named "&f" to close
+				format slot 1 of player with black stained glass pane named "&f" to close
+				format slot 2 of player with black stained glass pane named "&f" to close
+				format slot 3 of player with black stained glass pane named "&f" to close
+				format slot 4 of player with skull of ("%arg-1%" parsed as an offline player) named "&a&l%arg-1% &8&l( &f&lVÆLG STRAF &8&l)" to close 
+				format slot 5 of player with black stained glass pane named "&f" to close
+				format slot 6 of player with black stained glass pane named "&f" to close
+				format slot 7 of player with black stained glass pane named "&f" to close
+				format slot 8 of player with black stained glass pane named "&f" to close
+				
+				format slot 36 of player with black stained glass pane named "&f" to close
+				format slot 37 of player with black stained glass pane named "&f" to close
+				format slot 38 of player with black stained glass pane named "&f" to close
+				format slot 39 of player with black stained glass pane named "&f" to close
+				format slot 40 of player with compass named "&c&lHusk at brug menuen" to close
+				format slot 41 of player with black stained glass pane named "&f" to close
+				format slot 42 of player with black stained glass pane named "&f" to close
+				format slot 43 of player with black stained glass pane named "&f" to close
+				format slot 44 of player with black stained glass pane named "&f" to close
+				
+				format slot 19 of player with glowing 288 named "&c&lSPROG &8&L(&F&L 1 time min &8&L)" with lore "||&a&l * Mute %arg-1% i 1 time!" to close then run [execute player command "/litebans:tempmute %arg-1% 30m Sprog"]
+				format slot 20 of player with glowing 76 named "&4&lGROFT SPROG &8&L( &F&L5 timer &8&L)" with lore "||&a&l * Mute %arg-1% i 5 timer!" to close then run [execute player command "/litebans:tempmute %arg-1% 3h Groft sprog"]
+				
+				format slot 22 of player with glowing beacon named "&d&lFLABET &8&L( &F&L20 min &8&L)" with lore "||&a&l * Mute %arg-1% i 20 min!" to close then run [execute player command "/litebans:tempmute %arg-1% 20m Flabet"]
+				
+				format slot 24 of player with glowing 355 named "&e&lSPAM &8&L( &F&L30 min &8&L)" with lore "||&a&l * Mute %arg-1% i 30 min!" to close then run [execute player command "/litebans:tempmute %arg-1% 30m Spam"]
+				format slot 25 of player with glowing 368 named "&A&LOPFORDRING TIL SPAM &8&L( &F&L1 time &8&L)" with lore "||&a&l * Mute %arg-1% i 1 time!" to close then run [execute player command "/litebans:tempmute %arg-1% 2h Opfordring til spam"]				
+			
+			
+
+		if arg-1 is set:
+			wait 3 tick
+			if arg-2 is "kick":
+			
+				wait 1 ticks 
+				
+				open chest with 5 rows named "&a&LKICK &f&lMENU" to player 
+			
+				wait 4 tick
+				format slot 0 of player with black stained glass pane named "&f" to close
+				format slot 1 of player with black stained glass pane named "&f" to close
+				format slot 2 of player with black stained glass pane named "&f" to close
+				format slot 3 of player with black stained glass pane named "&f" to close
+				format slot 4 of player with skull of ("%arg-1%" parsed as an offline player) named "&a&l%arg-1% &8&l( &f&lVÆLG STRAF &8&l)" to close 
+				format slot 5 of player with black stained glass pane named "&f" to close
+				format slot 6 of player with black stained glass pane named "&f" to close
+				format slot 7 of player with black stained glass pane named "&f" to close
+				format slot 8 of player with black stained glass pane named "&f" to close
+				
+				format slot 36 of player with black stained glass pane named "&f" to close
+				format slot 37 of player with black stained glass pane named "&f" to close
+				format slot 38 of player with black stained glass pane named "&f" to close
+				format slot 39 of player with black stained glass pane named "&f" to close
+				format slot 40 of player with compass named "&c&lHusk at brug menuen" to close
+				format slot 41 of player with black stained glass pane named "&f" to close
+				format slot 42 of player with black stained glass pane named "&f" to close
+				format slot 43 of player with black stained glass pane named "&f" to close
+				format slot 44 of player with black stained glass pane named "&f" to close
+				
+				format slot 19 of player with glowing 288 named "&c&lSPROG &8&L( &F&L KICK SPILLER &8&L)" with lore "||&a&l * Mute %arg-1% i 1 time!" to close then run [execute player command "/litebans:kick %arg-1% Sprog"]
+				format slot 20 of player with glowing 76 named "&4&lGROFT SPROG &8&L( &F&L5 KICK SPILLER &8&L)" with lore "||&a&l * Mute %arg-1% i 5 timer!" to close then run [execute player command "/litebans:kick %arg-1% Groft sprog"]
+				
+				format slot 22 of player with glowing beacon named "&d&lREKLAME&8&L( &F&L7 KICK SPILLER &8&L)" with lore "||&a&l * Mute %arg-1% i 7 dage!" to close then run [execute player command "/litebans:kick %arg-1% Reklame"]
+				
+				format slot 24 of player with glowing 355 named "&e&lSPAM &8&L( &F&LKICK SPILLER &8&L)" with lore "||&a&l * Mute %arg-1% i 30 min!" to close then run [execute player command "/litebans:kick %arg-1% Spam"]
+				format slot 25 of player with glowing 368 named "&A&LOPFORDRING TIL SPAM &8&L( &F&LKICK SPILLER &8&L)" with lore "||&a&l * Mute %arg-1% i 1 time!" to close then run [execute player command "/litebans:kick %arg-1% Opfordring til spam"]				
+					
+			

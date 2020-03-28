@@ -1,0 +1,80 @@
+options:
+	prefix: &8&L| &d&lREWARDS &8&L|
+
+command /rewards:
+	aliases: /reward
+	trigger:
+		wait 3 ticks
+		open chest with 6 rows named "&d&lREWARD &F&LITEMS" to player
+		wait 3 ticks
+		if inventory name of player's current inventory is "&d&lREWARD &F&LITEMS":
+			set {_slot} to 0
+			loop {rewards.%player%::*}:
+				set slot {_slot} of player's current inventory to loop-value
+				add 1 to {_slot}
+			
+			loop numbers between 36 and 44:
+				set {_slot} to loop-value
+				format slot {_slot} of player with 1 white glass pane named " " with lore " " to be unstealable
+			
+			format slot 46 of player with 1 bottle of enchanting named "&d&lPARTIKLER" with lore "&8&m-------------------||&7Hvad er partikler?||&7partikler er &e&leffekter &7der||&7vises rundt om din bruger.||&d&lPartikler &7er meget sjældent at få||&7og har en stor &a&lpris &7til sælge||&8&m-------------------" to be unstealable
+			format slot 49 of player with 1 book named "&c&lHJÆLP?" with lore "&8&m-------------------||&7Mangler du hjælp?||&7så kontakt en &c&ladmin+||&7på teamspeaken||  &7- &a&lkommer snart||&8&m-------------------" to be unstealable
+			format slot 52 of player with 1 emerald named "&a&l/COMMANDS" with lore "&8&m-------------------||&7commands til reward?||&e&l/reward &7for komme til menuen||||&7kontakt en staff for||&7for mere &e&linformation||&8&m-------------------" to be unstealable
+			
+			
+			
+on inventory click:
+	if inventory name of player's current inventory is "&d&lREWARD &F&LITEMS":
+		cancel event
+		if clicked slot is between 0 and 35:
+			if clicked item isn't air:
+				loop {rewards.%player%::*}:
+					if loop-value is clicked item:
+						close player's inventory
+						if player doesn't have enough space for clicked item:
+							send "{@prefix} &7Du har &c&likke &7plads i dit inventory"
+							stop
+						else:
+							remove 1 of clicked item from {rewards.%player%::*}
+							give player 1 of clicked item
+							execute player command "/rewards"
+				stop
+
+
+
+
+
+
+
+
+on break:
+	If player's gamemode is survival:	
+			
+		chance of 0.1%:
+			send player title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n10&f gems" for 2 seconds
+			add 10 to {gems::%player%}
+			stop
+		chance of 0.02%:
+			send player title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n25&f gems" for 2 seconds
+			add 25 to {gems::%player%}
+			stop
+		chance of 0.0010%:
+			send player title "&b&lGEMS" with subtitle "&a&lTillykke &fDu fandt &b&l&n50&f gems" for 2 seconds
+			add 50 to {gems::%player%}
+			stop
+			
+			
+		chance of 0.01%:
+			add glowing name tag named "&9&lPICKAXE &f&lKEY" to {rewards.%player%::*}
+			send player title "&9&LPICKAXE &f&lKEY" with subtitle "&7Du har fået en &9&LPICKAXE &f&lKEY" for 2 seconds
+			wait 1 seconds
+			send player title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+			stop 
+
+			
+		chance of 0.01%:
+			add glowing name tag named "&c&lREWARD &f&lKEY" to {rewards.%player%::*}
+			send player title "&c&lREWARD &f&lKEY" with subtitle "&7Du har fået en &c&lREWARD &f&lKEY" for 2 seconds
+			wait 1 seconds
+			send player title "&d&l/REWARDS" with subtitle "&7For at få dine rewards!" for 2 seconds
+			stop 

@@ -1,0 +1,352 @@
+options:
+	prefix: &8&l| &a&lENCHANT &8&l|
+	prefix2: &8&l| &c&lENCHANT &8&l|
+	
+	prisbombe: 10000
+	prislaser: 7500
+	prisefficiency: 200
+	prisdouble: 17500
+	prisfortune: 250
+	prisnodrop: 2500
+	
+ 
+
+command /clearenchantholo:
+	permission: *
+	trigger:
+		delete {test1}
+		delete {test2}
+		delete {test3}
+		delete {test4}
+		delete {test5}
+		delete {test6}
+		delete {test7}
+		
+command /købbombe:
+	trigger:
+		if lore of player's tool contains "bombe":
+			message "{@prefix2} &7Du har allerede &a&l&nupgradet&7 din &b&lpickaxe&7!"
+			stop
+		else:	
+			if {gems::%player%} is less than {@prisbombe}:
+				message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+				stop
+			if {gems::%player%} is higher than or equal to {@prisbombe}:
+				if lore of player's tool does not contain "bombe":
+					set {_lore.%player%} to lore of player's tool
+					set lore of player's tool to "%{_lore.%player%}%||&f&l* ENCHANT &8&l( &b&lBOMBE &8&l)"
+					subtract {@prisbombe} from {gems::%player%}
+					message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+					play "SUCCESSFUL_HIT" to player at volume 1
+
+command /køblaser:
+	trigger:
+		if lore of player's tool contains "laser":
+			message "{@prefix2} &7Du har allerede &a&l&nupgradet&7 din &b&lpickaxe&7!"
+			stop
+		else:	
+			if {gems::%player%} is less than {@prislaser}:
+				message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+				stop
+			if {gems::%player%} is higher than or equal to {@prislaser}:
+				if lore of player's tool does not contain "laser":
+					set {_lore.%player%} to lore of player's tool
+					set lore of player's tool to "%{_lore.%player%}%||&f&l* ENCHANT &8&l( &B&lLASER &8&l)"
+					subtract {@prislaser} from {gems::%player%}
+					message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+					play "SUCCESSFUL_HIT" to player at volume 1
+
+command /købnodrop:
+	trigger:
+		if lore of player's tool contains "nodrop":
+			message "{@prefix2} &7Du har allerede &a&l&nupgradet&7 din &b&lpickaxe&7!"
+			stop
+		else:	
+			if {gems::%player%} is less than {@prisnodrop}:
+				message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+				stop
+			if {gems::%player%} is higher than or equal to {@prisnodrop}:
+				if lore of player's tool does not contain "nodrop":
+					set {_lore.%player%} to lore of player's tool
+					set lore of player's tool to "%{_lore.%player%}%||&f&l* ENCHANT &8&l( &b&lNODROP &8&l)"
+					subtract {@prisnodrop} from {gems::%player%}
+					message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+					play "SUCCESSFUL_HIT" to player at volume 1
+
+command /købefficiency:
+	trigger:
+		if {gems::%player%} is less than {@prisefficiency}:
+			message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+			stop
+		if {gems::%player%} is higher than or equal to {@prisefficiency}:
+			subtract {@prisefficiency} from {gems::%player%}
+			set {_efficiency.%player%} to level of efficiency of the player's tool
+			add 2 to {_efficiency.%player%}
+			enchant player's tool with "efficiency %{_efficiency.%player%}%" parsed as enchantment type
+			message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+			play "SUCCESSFUL_HIT" to player at volume 1
+
+command /købfortune:
+	trigger:
+		if {gems::%player%} is less than {@prisfortune}:
+			message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+			stop
+		if {gems::%player%} is higher than or equal to {@prisfortune}:
+			subtract {@prisfortune} from {gems::%player%}
+			set {_fortune.%player%} to level of fortune of the player's tool
+			add 2 to {_fortune.%player%}
+			enchant player's tool with "fortune %{_fortune.%player%}%" parsed as enchantment type
+			message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+			play "SUCCESSFUL_HIT" to player at volume 1
+
+command /købdouble:
+	trigger:
+		if lore of player's tool contains "double":
+			message "{@prefix2} &7Du har allerede &a&l&nupgradet&7 din &b&lpickaxe&7!"
+			stop
+		else:	
+			if {gems::%player%} is less than {@prisdouble}:
+				message "{@prefix2} &7Du har &c&likke &7nok gems &7til at upgrade din &c&lpickaxe"
+				stop
+			if {gems::%player%} is higher than or equal to {@prisdouble}:
+				if lore of player's tool does not contain "double":
+					set {_lore.%player%} to lore of player's tool
+					set lore of player's tool to "%{_lore.%player%}%||&f&l* ENCHANT &8&l( &b&lDOUBLE &8&l)"
+					subtract {@prisdouble} from {gems::%player%}
+					message "{@prefix} &7Du har &a&lupgradet&7 din &b&lpickaxe&7!"
+					play "SUCCESSFUL_HIT" to player at volume 1
+
+command /£123låfk,sdopfksdælamsdaldmasæl:
+	trigger:
+		if {enchant} is false:
+			if player's held item is diamond pickaxe:
+				set {enchant} to true
+				set {enchantigang.%player%} to true 
+				create holo object ";ItemStack:diamond pickaxe;" with id "holo.7" at {test7}
+				send "&8&l| &a&lENCHANT &8&l| &7Loader alle enchants!"
+				if {enchantigang.%player%} is true:
+					create holo object "&a&lDOUBLE &f&lENCHANT;;&a&lKLIK&7 her for at købe;&7upgraden &a&lDOUBLE &f&lENCHANT;;&b&l&n17.500 GEMS" with id "holo.1" at block above above {test1}
+					play "ENDERDRAGON_WINGS" to player at volume 1
+					show 8 "LAVA" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+					wait 0.5 second
+					if {enchantigang.%player%} is true:
+						play "ENDERDRAGON_WINGS" to player at volume 1
+						create holo object "&d&lFORTUNE &f&lENCHANT;;&d&lKLIK&7 her for at købe;&7upgraden &d&lFORTUNE &f&lENCHANT;;&b&l&n1.000 GEMS" with id "holo.2" at block above above {test2}
+						show 8 "LAVA" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+						wait 0.5 second
+						if {enchantigang.%player%} is true:
+							play "ENDERDRAGON_WINGS" to player at volume 1
+							create holo object "&e&lEFFICIENCY &f&lENCHANT;;&e&lKLIK&7 her for at købe;&7upgraden &e&lEFFICIENCY &f&lENCHANT;;&b&l&n750 GEMS" with id "holo.3" at block above above {test3}
+							show 8 "LAVA" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+							wait 0.5 second
+							if {enchantigang.%player%} is true:
+								play "ENDERDRAGON_WINGS" to player at volume 1
+								create holo object "&b&lNODROP &f&lENCHANT;;&b&lKLIK&7 her for at købe;&7upgraden &b&lNODROP &f&lENCHANT;;&b&l&n2.500 GEMS" with id "holo.4" at block above above {test4}
+								show 8 "LAVA" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+								wait 0.5 second
+								if {enchantigang.%player%} is true:
+									play "ENDERDRAGON_WINGS" to player at volume 1
+									create holo object "&4&LLASER &f&lENCHANT;;&4&lKLIK&7 her for at købe;&7upgraden &4&LLASER &f&lENCHANT;;&b&l&n7.500 GEMS" with id "holo.5" at block above above {test5}
+									show 8 "LAVA" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+									wait 0.5 second
+									if {enchantigang.%player%} is true:
+										play "ENDERDRAGON_WINGS" to player at volume 1
+										create holo object "&c&lBOMBE &f&lENCHANT;;&c&lKLIK&7 her for at købe;&7upgraden &c&lBOMBE &f&lENCHANT;;&b&l&n10.000 GEMS" with id "holo.6" at block above above {test6}
+										show 8 "LAVA" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+										wait 2 tick
+										if {enchantigang.%player%} is true:
+											send "&8&l| &a&lENCHANT &8&l| &7Du har &a&l15 sek. &7til vælge et &A&LENCHANT!"
+											wait 5 seconds
+											if {enchantigang.%player%} is true:
+												send "&8&l| &a&lENCHANT &8&l| &7Du har &a&l10 sek. &7til vælge et &A&LENCHANT!"
+												wait 5 seconds
+												if {enchantigang.%player%} is true:
+													send "&8&l| &a&lENCHANT &8&l| &7Du har &a&l5 sek. &7til vælge et &A&LENCHANT!"
+													wait 4 seconds
+													if {enchantigang.%player%} is true:
+														send "&8&l| &a&lENCHANT &8&l| &7Du har &a&l1 sek. &7til vælge et &A&LENCHANT!"
+														wait 1 seconds
+														if {enchantigang.%player%} is true:
+															play "BAT_HURT" to player at volume 1
+															delete holo object "holo.1"
+															show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.2"
+															show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.3"
+															show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.4"
+															show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.5"
+															show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.6"
+															show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+															delete holo object "holo.7"
+															send "&8&l| &a&lENCHANT &8&l| &7Du løb ud af &c&lTID &7for at enchante!"
+															set {enchant} to false 
+															delete {enchantigang.%player%} 
+															stop
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+		else:
+			send "&8&l| &c&lENCHANT &8&l| &7Der er &c&lallerede &7en person igang med at &c&lENCHANTE"
+ 
+on hologram touch:
+	if event-string is "holo.1":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "købdouble"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+				
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+			
+			
+on hologram touch:
+	if event-string is "holo.2":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "købfortune"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+				
+on hologram touch:
+	if event-string is "holo.3":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "købefficiency"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+			
+on hologram touch:
+	if event-string is "holo.4":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "købnodrop"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+			
+on hologram touch:
+	if event-string is "holo.5":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "køblaser"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+			
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+			
+on hologram touch:
+	if event-string is "holo.6":
+		if {enchantigang.%player%} is set:
+			if player's held item is a pickaxe:
+				execute player command "købbombe"
+				play "BAT_HURT" to player at volume 1
+				delete holo object "holo.1"
+				show 8 "SPELL" particles at location of {test1} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.2"
+				show 8 "SPELL" particles at location of {test2} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.3"
+				show 8 "SPELL" particles at location of {test3} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.4"
+				show 8 "SPELL" particles at location of {test4} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.5"
+				show 8 "SPELL" particles at location of {test5} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.6"
+				show 8 "SPELL" particles at location of {test6} for player offset by 0.4, 0.5, 0.4
+				delete holo object "holo.7"
+				delete {enchantigang.%player%} 
+				set {enchant} to false 
+
+			else:
+				send "&8&l| &c&lENCHANT &8&l| &7Du &c&lskal &7holde en pickaxe i hånden!"	
+		
+on script load:
+	set {enchant} to false
+
+
+
+
+
+
+	

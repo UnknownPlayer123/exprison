@@ -1,0 +1,10 @@
+on pickup:	
+	if player doesn't have enough space for event-item:	
+		send player title "&c&lFuld inventory!" with subtitle "&7Tøm dit inventory!" for 3 seconds	
+on break:
+	if player doesn't have enough space for event-block:
+		if {autosell::%player%} is true:
+			execute player command "sell"
+			stop 
+		else:			
+			send player title "&c&lFuld inventory!" with subtitle "&7Tøm dit inventory!" for 3 seconds				

@@ -1,0 +1,143 @@
+options:
+	prefix: &8&l| &b&lGEMS &8&l|
+
+command /Gems [<text>] [<offline player>] [<number>]:
+	aliases: /gem
+	trigger:
+		if arg-1 is not set:
+			if player has permission "*":
+				send "&8&m-----------------&8&l ( &b&lGEMS &8&L) &8&m------------------" to player
+				message ""
+				message "{@prefix} &71. &b/Gems tjek (spiller/all) &8- &7For at tjekke hvor mange Gems en spiller har!"
+				message "{@prefix} &72. &b/Gems reset (spiller) &8- &7For at ressete en spillers Gems!"
+				message "{@prefix} &72. &b/Gems reset (alle) &8- &7For at ressete alles Gems!"
+				message "{@prefix} &73. &b/Gems add (spiller) (antal) &8- &7For at tilføje til en spillers Gems konto!"
+				message ""
+				message "{@prefix} &73. &b/Gems send (spiller) (antal) &8- &7For at sende gems til andre!"
+				message ""
+				send "&8&m-----------------&8&l ( &b&lGEMS &8&L) &8&m------------------" to player
+				
+			else:
+				send "&8&m-----------------&8&l ( &b&lGEMS &8&L) &8&m------------------" to player
+				message ""
+				message "{@prefix} &71. &b/Gems tjek (spiller) &8- &7For en spillers gems!"
+				message "{@prefix} &73. &b/Gems send (spiller) (antal) &8- &7For at sende gems til andre!"
+				message ""
+				send "&8&m-----------------&8&l ( &b&lGEMS &8&L) &8&m------------------" to player
+			
+			
+			
+			
+		if arg-1 is "tjek":
+			if arg-2 is not set:
+				message "{@prefix} &7Du har &b&l%{Gems::%player%}% &7Gems."
+				
+			if arg-2 is set:
+				message "{@prefix} &7Spilleren &b&l%{Gems::%arg-2%}% &7har &7Gems."
+				
+		if arg-1 is "tjekall":	
+			if command sender has permission "*":
+				loop all players:
+					send "{@prefix} &b%loop-player% &7har &b&l%{Gems::%loop-player%}% &7Gems." to player
+			
+			else:
+				send "{@prefix} &7Du har &c&likke &7adgang til denne kommando!" to player
+					
+					
+		if arg-1 is "reset":
+			if command sender has permission "*":
+				if arg-2 is not set:
+					message "{@prefix} &7Dine Gems er blevet resat til &b0&7!"
+					wait 1 tick
+				
+					set {Gems::%player%} to 0
+				if arg-2 is a player:
+					message "{@prefix} &7Du har resat &b&l%arg-2%&7's Gems."
+					wait 3 ticks
+					set {Gems::%arg-2%} to 0
+					
+			else:
+				send "{@prefix} &7Du har &c&likke &7adgang til denne kommando!" to player
+					
+				
+		
+		if arg-1 is "send":
+			if arg-2 is set:
+				if arg-3 is set:
+					if arg-3 is more than 0:
+						if {Gems::%player%} is more than or equal to arg-3:
+							remove arg-3 from {Gems::%player%}
+							add arg-3 to {Gems::%arg-2%}
+							send "{@prefix} &7Du gav &b&l&n%arg-3%&7 Gem(s) til &b&l&n%arg-2%!" to player
+							send "{@prefix} &7Du modtog &b&l&n%arg-3%&7 Gem(s) fra &b&l&n%player%!" to arg-2
+							
+						else:
+							send "{@prefix} &7Du har &c&likke &7nok gems til at sende &c&l&n%arg-3%!" to player
+					else:
+						send "{@prefix} &7Du kan &c&likke &7sende &c&l0 &7gems" to player
+							
+							
+		if arg-1 is "add":
+			if command sender has permission "*":
+				if arg-2 is not set:
+					message "{@prefix} &7Du skal skrive en spiller du vil adde Gems til. Brug: &b/Gems add (spiller) (antal)&7!"
+				if arg-2 is set:
+					if arg-3 is not set:
+						message "{@prefix} &7Du skal skrive et det antal Gems du vil adde til spilleren. Brug: &b/Gems add (spiller) (antal)&7!"
+					if arg-3 is set:
+						message "{@prefix} &7Du addede &b%arg-3% &7Gems til &b%arg-2%&7!"
+						send "{@prefix} &a&lTillykke! &7Du fik &b&l&n%arg-3%&7 &b&l&nGems" to arg-2
+						wait 1 tick
+						add arg-3 to {Gems::%arg-2%}
+						wait 3 ticks
+						set {Gems::%arg-2%} to "%rounded {Gems::%arg-2%}%" parsed as number
+						
+			else:
+				send "{@prefix} &7Du har &c&likke &7adgang til denne kommando!" to player
+					
+				
+
+						
+on join:
+	if {Gems::%player%} is not set:
+		set {Gems::%player%} to 0
+	
+
+
+
+
+Command /topgems:
+	permission: *
+	trigger:
+		loop {Gems::*}:
+			add 1 to {_size}
+			if {_low.to.high.list::%loop-value%} is not set:
+				set {_low.to.high.list::%loop-value%} to loop-index
+			else:
+				set {_n} to 0
+				loop {_size} times:
+					set {_n} to {_n}+1
+					{_low.to.high.list::%loop-value-1%.%{_n}%} is not set
+					set {_low.to.high.list::%loop-value-1%.%{_n}%} to loop-index
+					stop loop
+					
+					
+		wait 1 tick
+		set {_n} to size of {_low.to.high.list::*}
+		loop {_low.to.high.list::*}:
+			set {_high.to.low.list::%{_n}%} to loop-value
+			set {_n} to {_n}-1
+			
+			
+		message "&8&m-------------------&8&l ( &b&lGEMS &8&L) &8&m--------------------" 
+		message " "	
+
+		loop {_high.to.low.list::*}:
+			add 1 to {_result}
+			 
+			send " &8&l| &a&l%{_result}% &8&l| &a&l%loop-value% &8&l- &b&l%{Gems::%loop-value%}% GEMS" to player
+			if {_result} is 10:
+				stop 
+		
+		message " "
+		message "&8&m-------------------&8&l ( &b&lGEMS &8&L) &8&m--------------------" 

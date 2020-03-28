@@ -1,0 +1,89 @@
+command /plot [<text>] [<text>]:
+	trigger:
+	
+		if arg-1 is not set:
+			wait 1 tick
+			open chest with 5 rows named "&b&lPLOT &F&LMENU" to player 
+			wait 4 tick 
+			format slot 0 of player with white stained glass pane named "&f" to close
+			format slot 1 of player with white stained glass pane named "&f" to close 
+			format slot 2 of player with white stained glass pane named "&f" to close
+			format slot 3 of player with white stained glass pane named "&f" to close
+			format slot 4 of player with white stained glass pane named "&f" to close
+			format slot 5 of player with white stained glass pane named "&f" to close
+			format slot 6 of player with white stained glass pane named "&f" to close
+			format slot 7 of player with white stained glass pane named "&f" to close
+			format slot 8 of player with white stained glass pane named "&f" to close
+			
+			format slot 36 of player with light blue stained glass pane named "&f" to close
+			format slot 37 of player with light blue stained glass pane named "&f" to close
+			format slot 38 of player with light blue stained glass pane named "&f" to close
+			format slot 39 of player with light blue stained glass pane named "&f" to close
+			format slot 40 of player with glowing 351:1 named "&c&lLuk menuen" to close
+			format slot 41 of player with light blue stained glass pane named "&f" to close
+			format slot 42 of player with light blue stained glass pane named "&f" to close
+			format slot 43 of player with light blue stained glass pane named "&f" to close
+			format slot 44 of player with light blue stained glass pane named "&f" to close
+			
+			
+			format slot 19 of player with glowing minecart named "&b&lTELEPORT &8&l( &f&lKLIK &8&l)" to close then run [execute player command "/plotme h"]
+			format slot 20 of player with glowing dye:10 named "&e&lTILFØJ SPILLER &8&l( &f&lKLIK &8&l)" to close then run [execute player command "/plotme trust"]
+			
+			format slot 22 of player with glowing compass named "&c&lRANDOM PLOT &8&l( &f&lCLAIM &8&l)" to close then run [execute player command "/plotme auto"]
+			
+			format slot 24 of player with glowing dye:1 named "&e&lBAN SPILLER &8&l( &f&lKLIK &8&l)" to close then run [execute player command "/plotme deny"]
+			format slot 25 of player with glowing lava bucket named "&e&lLÅS PLOT &8&l( &f&lKLIK &8&l)" to close then run [execute player command "/plotme deny *"]
+			
+		if arg-1 is "claim":
+			execute player command "plotme claim"
+			
+		if arg-1 is "auto":
+			execute player command "plotme auto"
+
+		if arg-1 is "delete":
+			execute player command "plotme delete"
+			
+		if arg-1 is "add":
+			if arg-2 is set:
+				execute player command "plotme add %arg-2%"			
+			
+		if arg-1 is "trust":
+			if arg-2 is set:
+				execute player command "plotme trust %arg-2%"						
+	
+		if arg-1 is "untrust":
+			if arg-2 is set:
+				execute player command "plotme untrust %arg-2%"		
+
+			
+		if arg-1 is "remove":
+			if arg-2 is set:
+				execute player command "plotme remove %arg-2%"					
+			
+		if arg-1 is "kick":
+			if arg-2 is set:
+				execute player command "plotme kick %arg-2%"				
+			
+		if arg-1 is "ban":
+			if arg-2 is set:
+				execute player command "plotme ban %arg-2%"				
+			
+		if arg-1 is "deny":
+			if arg-2 is set:
+				execute player command "plotme deny %arg-2%"					
+			
+		if arg-1 is "merge":
+			execute player command "plotme merge"					
+						
+		if arg-1 is "go":
+			execute player command "plotme h"				
+			
+		if arg-1 is "h":
+			execute player command "plotme h"				
+						
+		if arg-1 is "sethome":
+			execute player command "plotme sethome"				
+	
+						
+		if arg-1 is "confirm":
+			execute player command "plotme confirm"		

@@ -1,0 +1,354 @@
+options:
+	prefix: &b&lBUTIK
+
+
+	
+command /bckøb [<offlineplayer>] [<text>]:
+	permission: *
+	trigger:
+		if arg 1 is not set:
+			send "{@prefix} &c&lFormat: /bck�b [spiller / list] [item]"
+			stop
+		if arg 1 is "list":
+			send "{@prefix}&6&l�V�lg en af f�lgende ting!"
+			send "{@prefix}&a&l Hero"
+			send "{@prefix}&a&l Elite"
+			send "{@prefix}&a&l EX"
+			send "{@prefix}&a&l EXplus"
+			send "{@prefix}&a&l hero-elite"
+			send "{@prefix}&a&l elite-ex"
+			send "{@prefix}&a&l ex-explus"
+			send "{@prefix}&a&l gems2500"
+			send "{@prefix}&a&l gems5000"
+			send "{@prefix}&a&l gems10000"
+			send "{@prefix}&a&l gems25000"
+			send "{@prefix}&a&l lillemine"
+			send "{@prefix}&a&l mellemmine"
+			send "{@prefix}&a&l stormine"
+			send "{@prefix}&a&l boost1.1x"
+			send "{@prefix}&a&l boost1.5x"
+			send "{@prefix}&a&l boost2.0x"
+			send "{@prefix}&a&l chestsell"
+			send "{@prefix}&a&l pickaxekey"
+			send "{@prefix}&a&l herokey"
+			send "{@prefix}&a&l elitekey"
+			send "{@prefix}&a&l exkey"
+			send "{@prefix}&a&l expluskey"
+			send "{@prefix}&a&l dropkey"
+			stop
+
+		if arg 2 is "dropkey":
+			make console execute command "/crate give %arg 1% drop"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &e&ldrop&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "expluskey":
+			make console execute command "/crate give %arg 1% explus"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lEXPLUS&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "exkey":
+			make console execute command "/crate give %arg 1% ex"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lEX&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "elitekey":
+			make console execute command "/crate give %arg 1% elite"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &c&lELITE&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "herokey":
+			make console execute command "/crate give %arg 1% hero"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &b&lHERO&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "pickaxekey":
+			make console execute command "/crate give %arg 1% pickaxe"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &1&lPICKAXE&7 Key i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+
+		if arg 2 is "chestsell":
+			make console execute command "/pex user %arg 1% permission set rank.chestsell"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &b&lCHEST SELL&7 rank i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		if arg 2 is "hero":
+			make console execute command "/pex user %arg 1% group add hero"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+		
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &b&lHERO&7 rank i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		
+		if arg 2 is "elite":
+		
+			make console execute command "/pex user %arg 1% group add elite"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &C&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &c&lELITE&7 rank i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+	
+			
+		if arg 2 is "EX":
+			make console execute command "/pex user %arg 1% group add ex"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &5&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &5&lEX&7 rank i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+		
+		if arg 2 is "explus":
+			make console execute command "/pex user %arg 1% group add ex+"
+			send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &5&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &5&lex&f&lPLUS&7 rank i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast "          &7Bcminen er ved &8/&a&lwarp"
+			broadcast ""
+	
+
+		if arg 2 is "Hero-Elite":
+			make console execute command "/pex user %arg 1% group remove hero"
+			make console execute command "/pex user %arg 1% group add elite"
+			#send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			#execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &C&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &c&LRANK &F&LUPGRADE&7 i &8/&d&lbuy"
+			broadcast ""
+			broadcast "     &7Buycraft minen er blevet resat"
+			broadcast ""
+
+
+		if arg 2 is "elite-ex":
+			make console execute command "/pex user %arg 1% group remove elite"
+			make console execute command "/pex user %arg 1% group add ex"
+			#send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			#execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &C&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &c&LRANK &F&LUPGRADE&7 i &8/&d&lbuy"
+			broadcast ""
+			broadcast ""
+
+		if arg 2 is "ex-explus":
+			make console execute command "/pex user %arg 1% group remove ex"
+			make console execute command "/pex user %arg 1% group add ex+"
+			#send all players title "&b&lBUYCRAFTMINE" with subtitle "&7brug &a/warp bcmine" for 5 seconds
+			#execute console command "/bcmine"
+			broadcast ""
+			broadcast "             &f&l✦ &C&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &c&LRANK &F&LUPGRADE&7 i &8/&d&lbuy"
+			broadcast ""
+			broadcast ""
+	
+
+			
+		if arg 2 is "gems2500":
+			make console execute command "/gems add %arg 1% 2500"
+	
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&l2.500 &F&lGEMS&7 i &8/&d&lbuy"
+			broadcast ""
+
+		if arg 2 is "gems25000":
+			make console execute command "/gems add %arg 1% 25000"
+	
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&l25.000 &F&lGEMS&7 i &8/&d&lbuy"
+			broadcast ""
+		
+			
+		if arg 2 is "gems5000":
+			make console execute command "/gems add %arg 1% 5000"
+
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&l5.000 &F&lGEMS&7 i &8/&d&lbuy"
+			broadcast ""
+		
+			
+		if arg 2 is "gems10000":
+			make console execute command "/gems add %arg 1% 10000"
+		
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&l10.000 &F&lGEMS&7 i &8/&d&lbuy"
+			broadcast ""
+	
+			
+		if arg 2 is "lillemine":
+			make console execute command "/givemine %arg 1% small"
+	
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&lLILLE &F&LMINE&7 i &8/&d&lbuy"
+			broadcast ""
+	
+			
+		if arg 2 is "mellemmine":
+			make console execute command "/givemine %arg 1% medium"
+	
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&lMELLEM &F&LMINE&7 i &8/&d&lbuy"
+			broadcast ""
+			
+			
+		if arg 2 is "stormine":
+			make console execute command "/givemine %arg 1% large"
+			
+			broadcast ""
+			broadcast "             &f&l✦ &b&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "     &7sit køb af &B&lSTOR &F&LMINE&7 i &8/&d&lbuy"
+			broadcast ""
+	
+		if arg 2 is "boost1.1x":
+			execute console command "/setboost 1.1x"
+			broadcast ""
+			broadcast "             &f&l✦ &d&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lBOOST &f&l1.1x &7 i &8/&d&lbuy"
+			broadcast ""
+			
+		if arg 2 is "boost1.3x":
+			execute console command "/setboost 1.3x"
+			broadcast ""
+			broadcast "             &f&l✦ &d&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lBOOST &f&l1.3x &7 i &8/&d&lbuy"
+			broadcast ""
+
+		if arg 2 is "boost1.5x":
+			execute console command "/setboost 1.5x"
+			broadcast ""
+			broadcast "             &f&l✦ &d&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lBOOST &f&l1.5x &7 i &8/&d&lbuy"
+			broadcast ""
+
+		if arg 2 is "boost2.0x":
+			execute console command "/setboost 2.0x"
+			broadcast ""
+			broadcast "             &f&l✦ &d&l&nBUTIK&r &8- &F&l&nKØB&f&l ✦"
+			broadcast ""
+			broadcast "   &7Tillykke til &a&l%arg 1% &7som har modtaget"
+			broadcast "       &7sit køb af &d&lBOOST &f&l2.0x &7 i &8/&d&lbuy"
+			broadcast ""
+			
+	 
+		loop all players:
+			launch flickering ball firework colored blue and white at loop-player's location timed 0
+			
+command /bcmine:
+	permission: *
+	permission message: &8&L| &4&lBCMINE &8&L| &CIngen adgang..
+	trigger:
+		execute console command "/mine reset bcmine"

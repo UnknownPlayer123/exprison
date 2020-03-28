@@ -1,0 +1,262 @@
+options:
+	prefix1: &8&L| &c&lSTAFFMODE &8&L|
+	prefix2: &8&L| &4&LBEMÆRK &8&L|
+	
+	
+command /staff:
+	aliases: /staffmode
+	permission: staff.use
+	permission message: &8&L| &c&lSTAFFMODE &8&L| &7Du har &c&likke &7adgang til denne kommando!
+	trigger:
+		if {spec::%player%} is not set:
+				
+			set {spec::%player%} to true
+			
+			set {_count} to 0
+			loop 36 times:
+				set {staffinv.%{_count}%.%player%} to slot {_count} of player's inventory
+				add 1 to {_count}
+				
+			set {staffinv.helmet.%player%} to player's helmet
+			set {staffinv.chest.%player%} to player's chestplate
+			set {staffinv.legs.%player%} to player's leggings
+			set {staffinv.feet.%player%} to player's boots
+			
+			wait 3 tick
+			clear player's inventory 
+			
+			equip player with diamond helmet
+			enchant the player's helmet with unbreaking 3
+			enchant the player's helmet with protection 1
+			wait 1 tick	
+			set player's gamemode to creative
+			
+			set slot 0 of player to a music disc named "&a&lRANDOM TP &8&l( &f&lKLIK &8&l)"
+			set slot 1 of player to book named "&b&LINVENTORY &8&l( &f&lKLIK &8&l)"
+			set slot 3 of player to packed ice named "&b&lFREEZE &8&l( &f&lKLIK &8&l)"
+			set slot 5 of player to player head named "&e&lREPORT LISTE &8&l( &C&LIKKE ÅBEN &8&l)"
+			set slot 7 of player to a gray dye named "&c&lVANISH &8&L( &c&LFRA &8&l)"
+			set slot 8 of player to a lead named "&9&lFØLG SPILLER &8&l( &f&lKLIK &8&l)"
+			
+			
+			loop all players:
+				if loop-player has permission "staff.use":
+					message "{@prefix1} &a&l%player's name% &7Er gået i &c&lStaffmode" to loop-player
+					
+					
+					
+		else:
+			delete {spec::%player%}
+			set player's gamemode to survival
+			clear player's inventory
+			reveal player from all players
+			
+			set {_count} to 0
+			loop 36 times:
+				set slot {_count} of player's inventory to {staffinv.%{_count}%.%player%}
+				clear {inv.%{_count}%.%player%}
+				add 1 to {_count}
+			set the helmet of player to {staffinv.helmet.%player%}
+			set the chestplate of player to {staffinv.chest.%player%}
+			set the boots of player to {staffinv.feet.%player%}
+			set the leggings of player to {staffinv.legs.%player%}
+			
+			wait 3 tick 
+
+			loop all players:
+				if loop-player has permission "staff.use":
+					message "{@prefix1} &a&l%player's name% &7Er gået ud af &c&lStaffmode" to loop-player
+					
+					
+			stop
+			
+			
+			
+			
+			
+			
+on right click:
+	if player's tool is a head:
+		if name of player's tool is "&e&lREPORT LISTE &8&l( &C&LIKKE ÅBEN &8&l)":
+			if player has permission "staff.use":
+				wait 5 ticks
+				message "&8&L| &c&lREPORTS &8&L| &7Report listen er &c&likke &7åben endnu!"
+				stop
+				
+				
+				
+				
+
+		
+		
+		
+on right click with music disc:
+	if player is holding a music disc named "&a&lRANDOM TP &8&l( &f&lKLIK &8&l)":
+		if player has permission "staff.use":
+			set {_random} to a random player out of all players
+			if {_random} is not name of player:
+				teleport player 1 behind {_random}
+				send "&8&L| &c&lSTAFFMODE &8&L| &7Du random teleporterede til &a&l%{_random}%"
+				
+			
+			
+on rightclick with dye:
+	if {spec::%player%} is true:
+		if name of player's tool is "&a&lVANISH &8&L( &a&lTIL &8&l)":
+			set slot 7 of player to gray dye named "&c&lVANISH &8&L( &c&LFRA &8&l)"
+			reveal player from all players
+			
+		else if name of player's tool is "&c&lVANISH &8&L( &c&LFRA &8&l)":
+			set slot 7 of player to light green dye named "&a&lVANISH &8&L( &a&lTIL &8&l)"
+			
+			loop all players:
+				if loop-player doesn't have permission "staff.use":
+					hide player from loop-player 
+			
+			
+			
+			
+			
+on right click on a player:
+	if player's tool is a book:
+		if name of player's tool is "&b&LINVENTORY &8&l( &f&lKLIK &8&l)":
+			if player has permission "staff.use":
+				open the inventory of the clicked entity to the player
+				send "{@prefix1} &7Åbner &a&l%player's targeted player%'s &7inventory!" to player
+				stop 
+				
+			
+			
+on right click with lead:
+	if player is holding a lead named "&9&lFØLG SPILLER &8&l( &f&lKLIK &8&l)":
+		if player has permission "staff.use":
+			if entity's target is a player:
+				set {_name} to "%target entity%" parsed as a player
+				send "&8&L| &c&lSTAFFMODE &8&L| &7Du følger nu &a&l%{_name}%"
+				make player ride {_name}
+			else:
+				message "&8&L| &c&lSTAFFMODE &8&L| &7Du skal &c&lhøjreklikke &7på en spiller for at følge dem." to player
+			
+			
+on rightclick with packed ice:
+	if {spec::%player%} is true:
+		if player's targeted player is set:
+			execute player command "freeze %player's targeted player%"
+		else:
+			message "&8&L| &c&lSTAFFMODE &8&L| &7Du skal &c&lhøjreklikke &7på en spiller for at fryse dem." to player
+			
+			
+	
+
+command /freeze [<offline player>]:
+	permission: staff.use
+	trigger:
+		if arg-1 is not set:
+			message "{@prefix1} &7Du skal vælge en spille!"
+			stop		
+			
+		if arg-1 is set:
+			if {freeze.%arg-1%} is not set:
+			
+				if arg-1 doesn't have permission "staff.use":
+					message "{@prefix2} &7Du freezet &c&l%arg-1%!"
+					message "{@prefix2} &7Du er blevet freezet af &a&l%player%" to arg-1
+					send arg-1 title "&b&lFREEZE!" with subtitle "&7du skal joine &d&lPrison.crystaldev.co" for 10 seconds	
+					set {freeze.%arg-1%} to true
+					stop
+				else:
+					message "{@prefix1} &7Du kan ikke freeze &c&l%arg-1%!"
+					message "{@prefix1} &a&l%player% &7prøvede at freeze dig!" to arg-1
+					
+				
+			if {freeze.%arg-1%} is set:
+				message "{@prefix2} &7Du unfreezet &c&l%arg-1%!"
+				message "{@prefix2} &7Du er blevet unfreezet af &a&l%player%" to arg-1
+				delete {freeze.%arg-1%}
+				stop
+				
+				
+command /unfreeze [<offline player>]:
+	permission: staff.use
+	trigger:
+		if arg-1 is set:
+			message "{@prefix2} &7Du unfreezet &a&l%arg-1%!"
+			message "{@prefix2} &7Du er blevet unfreezet af &a&l%player%" to arg-1
+			delete {freeze.%arg-1%}
+				
+				
+		
+		
+on any movement:
+	if {freeze.%player%} is true:
+		cancel event
+
+		
+on quit:
+	if {freeze.%player%} is true:
+		execute console command "/tempban %player% 4d logud (freeze)"
+		broadcast "&c&l%player% &7forlod serveren i &c&lSS &7og blev banned i &c&l4 dage!"
+		delete {freeze.%player%}
+		
+		
+on command:
+   {freeze.%player%} is true
+   cancel event
+   send "&8&L| &B&lFREEZE &8&L| &7Du er freezet, join &C&LPrison.crystaldev.co"	
+   
+   
+   
+   
+				
+on damage:
+	if {spec::%attacker%} is true:
+		cancel event
+on break:
+	if {spec::%player%} is true:
+		cancel event
+on drop:
+	{spec::%player%} is true:
+		cancel event
+on inventory click:
+	{spec::%player%} is true
+	cancel event
+on pickup:
+	{spec::%player%} is true
+	cancel event
+on hunger bar change:
+	{spec::%player%} is true
+	cancel event
+	
+	
+on place:
+	if {spec::%player%} is true:
+		cancel event
+on break:
+	if {spec::%player%} is true:
+		cancel event
+		
+		
+on quit:
+	if {spec::%player%} is true:
+		delete {spec::%player%}
+		set player's gamemode to survival
+		clear player's inventory
+		reveal player from all players
+		
+		set {_count} to 0
+		loop 36 times:
+			set slot {_count} of player's inventory to {staffinv.%{_count}%.%player%}
+			clear {inv.%{_count}%.%player%}
+			add 1 to {_count}
+		set the helmet of player to {staffinv.helmet.%player%}
+		set the chestplate of player to {staffinv.chest.%player%}
+		set the boots of player to {staffinv.feet.%player%}
+		set the leggings of player to {staffinv.legs.%player%}
+		
+		wait 3 tick 
+
+		loop all players:
+			if loop-player has permission "staff.use":
+				message "{@prefix1} &a&l%player's name% &7Er logget ud i &c&lStaffmode" to loop-player
+	
+	
